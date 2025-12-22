@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->json('features')->nullable(); // For bullet points
             $table->string('button_text')->nullable();
             $table->string('button_link')->nullable();
