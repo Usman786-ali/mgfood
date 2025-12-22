@@ -286,7 +286,7 @@
                 <div
                     style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
                     <div style="width: 100%; height: 300px; overflow: hidden;">
-                        <img src="{{ asset('images/ceo.jpg') }}" alt="CEO"
+                        <img src="{{ asset('images/CEO.jpg') }}" alt="CEO"
                             style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 25px;">
@@ -307,7 +307,7 @@
                 <div
                     style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
                     <div style="width: 100%; height: 300px; overflow: hidden;">
-                        <img src="{{ asset('images/director.jpg') }}" alt="Director"
+                        <img src="{{ asset('images/Director.jpg') }}" alt="Director"
                             style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 25px;">
