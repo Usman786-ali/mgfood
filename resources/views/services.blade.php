@@ -27,41 +27,58 @@
     </section>
 
 
-    <!-- Dynamic Services Sections -->
+    <!-- Dynamic Venues Sections -->
     @forelse($services as $index => $service)
         <section style="padding: 100px 0; {{ $index % 2 != 0 ? 'background: #fdfaf5;' : '' }}">
             <div class="container">
                 <div class="about-grid"
                     style="align-items: center; {{ $index % 2 != 0 ? 'grid-template-columns: 1fr 1fr;' : '' }}">
                     <div class="about-image" data-aos="fade-{{ $index % 2 == 0 ? 'right' : 'left' }}"
-                        style="{{ $index % 2 != 0 ? 'order: 1;' : '' }}">
+                        style="{{ $index % 2 != 0 ? 'order: 1;' : 'order: 0;' }}">
                         <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->title }}"
-                            style="border-radius: 20px;">
+                            style="border-radius: 20px; width: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
                     </div>
                     <div class="about-content" data-aos="fade-{{ $index % 2 == 0 ? 'left' : 'right' }}"
-                        style="{{ $index % 2 != 0 ? 'order: 2;' : '' }}">
-                        <h2 class="section-title" style="text-align: left;">{!! $service->title !!}</h2>
-                        <p class="section-description" style="text-align: left; margin: 0 0 30px;">
+                        style="{{ $index % 2 != 0 ? 'order: 0;' : 'order: 1;' }}">
+                        <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">{!! $service->title !!}</h2>
+                        <p class="section-description"
+                            style="text-align: left; margin: 0 0 30px; font-size: 16px; line-height: 1.8; color: #555;">
                             {{ $service->description }}
                         </p>
 
+                        <!-- Pricing Table -->
+                        <div
+                            style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 5px solid #D4A853;">
+                            <h4 style="color: #1a1a2e; margin-bottom: 15px; font-size: 18px; font-weight: 700;">💰 Venue Pricing
+                            </h4>
+                            <div style="display: flex; gap: 40px;">
+                                <div>
+                                    <span
+                                        style="display: block; font-size: 12px; color: #777; text-transform: uppercase; letter-spacing: 1px;">Weekdays</span>
+                                    <span
+                                        style="font-size: 20px; font-weight: 700; color: #D4A853;">{{ $service->features[0] ?? 'Contact for Price' }}</span>
+                                </div>
+                                <div style="width: 1px; background: #eee;"></div>
+                                <div>
+                                    <span
+                                        style="display: block; font-size: 12px; color: #777; text-transform: uppercase; letter-spacing: 1px;">Weekends</span>
+                                    <span
+                                        style="font-size: 20px; font-weight: 700; color: #D4A853;">{{ $service->features[1] ?? 'Contact for Price' }}</span>
+                                </div>
+                            </div>
+                        </div>
 
-                        @if($service->features && is_array($service->features) && count($service->features) > 0)
-                            <ul class="service-details" style="list-style: none; padding: 0;">
-                                @foreach($service->features as $featureIndex => $feature)
-                                    <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                                        <span
-                                            style="color: var(--primary); margin-right: 15px; font-weight: bold;">{{ str_pad($featureIndex + 1, 2, '0', STR_PAD_LEFT) }}.</span>
-                                        {{ $feature }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
-
-
-                        @if($service->button_text && $service->button_link)
-                            <a href="{{ $service->button_link }}" class="btn btn-primary"
-                                style="margin-top: 30px;">{{ $service->button_text }}</a>
+                        <!-- Location Button -->
+                        @if($service->button_link)
+                            <a href="{{ $service->button_link }}" target="_blank" class="btn btn-primary"
+                                style="margin-top: 10px; display: inline-flex; align-items: center; gap: 10px; padding: 12px 30px; border-radius: 50px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                {{ $service->button_text ?: 'View Location' }}
+                            </a>
                         @endif
                     </div>
                 </div>
@@ -70,35 +87,40 @@
     @empty
         <section style="padding: 100px 0;">
             <div class="container" style="text-align: center;">
-                <h3>No services available yet.</h3>
+                <h3>No venues available yet.</h3>
                 <p style="color: #777;">Please check back later.</p>
             </div>
         </section>
     @endforelse
 
-    <!-- Services Grid: Specialized Add-ons -->
-    <section style="padding: 100px 0;">
+    <!-- Premium Add-ons -->
+    <section style="padding: 100px 0; background: #1a1a2e; color: white;">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Specialized Event Add-ons</h2>
-                <p class="section-description">The magic is in the details. We provide niche services to elevate the guest
-                    experience.</p>
+                <h2 class="section-title" style="color: white;">Complete Venue Experience</h2>
+                <p class="section-description" style="color: #ccc;">We don't just provide space; we provide a complete
+                    ecosystem for your event.</p>
             </div>
             <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100"
+                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
                     <div style="font-size: 40px; margin-bottom: 20px;">🍲</div>
-                    <h3>Gourmet Catering</h3>
-                    <p>Live BBQ counters, artisanal dessert bars, and customized multi-cuisine menus.</p>
+                    <h3 style="color: #D4A853;">In-House Catering</h3>
+                    <p style="color: #bbb;">Live BBQ counters, artisanal dessert bars, and customized multi-cuisine menus.
+                    </p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div style="font-size: 40px; margin-bottom: 20px;">📸</div>
-                    <h3>Media Production</h3>
-                    <p>Cinematic wedding films, 360 photobooths, and professional event coverage.</p>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200"
+                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="font-size: 40px; margin-bottom: 20px;">🛡️</div>
+                    <h3 style="color: #D4A853;">Secure Valet</h3>
+                    <p style="color: #bbb;">Professional parking management and security services for all your guests.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div style="font-size: 40px; margin-bottom: 20px;">🎪</div>
-                    <h3>Structrual Decor</h3>
-                    <p>Custom-built entrance gates, dance floors, and weather-proof outdoor setups.</p>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300"
+                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="font-size: 40px; margin-bottom: 20px;">❄️</div>
+                    <h3 style="color: #D4A853;">Climate Control</h3>
+                    <p style="color: #bbb;">State of the art HVAC systems ensuring comfort regardless of the weather
+                        outside.</p>
                 </div>
             </div>
         </div>
