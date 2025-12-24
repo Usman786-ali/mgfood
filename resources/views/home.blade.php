@@ -109,7 +109,7 @@
                 <div class="hero-right-column">
                     <!-- Right Contact Form -->
                     <div class="hero-quick-form" data-aos="fade-left" data-aos-delay="400">
-                        <form action="{{ route('contact.submit') }}" method="POST" id="heroQuickForm">
+                        <form action="{{ route('contact.submit') }}" method="POST" id="heroQuickForm" target="_blank">
                             @csrf
                             <div class="quick-form-group">
                                 <label>Name</label>
@@ -631,8 +631,8 @@
 
                 <div class="contact-grid">
                     <div class="contact-form-wrapper" data-aos="fade-right">
-                        <form action="{{ route('contact.submit') }}" method="POST" class="contact-form"
-                            id="contactForm">
+                        <form action="{{ route('contact.submit') }}" method="POST" class="contact-form" id="contactForm"
+                            target="_blank">
                             @csrf
                             <div class="form-row">
                                 <div class="form-group">

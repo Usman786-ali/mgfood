@@ -37,6 +37,9 @@ class ContactController extends Controller
         }
 
         $message .= "*🎊 Event:* " . ($submission->event_type ?? 'N/A') . "\n";
+        if ($submission->budget) {
+            $message .= "*💰 Budget:* " . $submission->budget . "\n";
+        }
 
         if ($submission->event_date) {
             $message .= "*📅 Date:* " . $submission->event_date->format('F d, Y') . "\n";

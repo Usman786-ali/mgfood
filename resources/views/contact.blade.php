@@ -68,7 +68,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('contact.submit') }}" method="POST" class="contact-form"
+                    <form action="{{ route('contact.submit') }}" method="POST" class="contact-form" target="_blank"
                         style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);">
                         @csrf
 
