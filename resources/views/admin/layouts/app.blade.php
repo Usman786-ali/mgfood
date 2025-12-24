@@ -14,21 +14,27 @@
     <div class="admin-wrapper">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="admin-brand">
+            <div class="admin-brand"
+                style="padding: 25px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.1);">
                 <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                     <div>
-                        <h2 style="margin:0; font-size: 1.2rem; line-height: 1.2;">MG Food & Event Planners</h2>
-                        <p style="margin:0; font-size: 0.7rem; opacity: 0.7;">ADMIN PANEL</p>
+                        <h2
+                            style="margin:0; font-size: 1.6rem; line-height: 1.1; color: #D4A853; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                            MG Food & <br> Event Planners
+                        </h2>
+                        <p
+                            style="margin:5px 0 0; font-size: 0.75rem; opacity: 0.6; letter-spacing: 3px; font-weight: 600; color: #fff;">
+                            ADMIN PANEL</p>
                     </div>
                     <div class="admin-user-menu">
                         <button class="dots-btn" id="userMenuBtn"
-                            style="color: #d4a853; font-size: 24px; background:none; border:none; cursor:pointer;">⋮</button>
-                        <div class="user-dropdown" id="userDropdown">
+                            style="color: #D4A853; font-size: 28px; background:none; border:none; cursor:pointer; padding: 5px; opacity: 0.8; transition: 0.3s;">⋮</button>
+                        <div class="user-dropdown" id="userDropdown" style="left: auto; right: 0; margin-top: 10px;">
                             <a href="{{ route('admin.profile.index') }}">👤 Profile Settings</a>
                             <form action="{{ route('admin.logout') }}" method="POST" style="margin: 0;">
                                 @csrf
                                 <button type="submit"
-                                    style="width: 100%; text-align: left; background: none; border: none; color: #ff6b6b; cursor: pointer; padding: 10px 15px; font-size: 14px;">🚪
+                                    style="width: 100%; text-align: left; background: none; border: none; color: #ff6b6b; cursor: pointer; padding: 10px 15px; font-size: 14px; display: block;">🚪
                                     Logout</button>
                             </form>
                         </div>
