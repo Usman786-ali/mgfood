@@ -5,11 +5,11 @@
 @section('content')
     <!-- Hero Section -->
     <section class="hero" style="
-                    min-height: 65vh; 
-                    padding-top: 160px;
-                    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                                url('{{ asset('images/Services-Background.jpeg') }}') center/cover;
-                    background-attachment: fixed;">
+                        min-height: 65vh; 
+                        padding-top: 160px;
+                        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                                    url('{{ asset('images/Services-Background.jpeg') }}') center/cover;
+                        background-attachment: fixed;">
         <div class="hero-overlay"></div>
         <div class="container hero-container">
             <div class="hero-content">
@@ -49,19 +49,22 @@
                         <!-- Pricing Table -->
                         <div
                             style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 5px solid #D4A853;">
-                            <h4 style="color: #1a1a2e; margin-bottom: 15px; font-size: 18px; font-weight: 700;">💰 Venue Pricing
+                            <h4 style="color: #1a1a2e; margin-bottom: 15px; font-size: 18px; font-weight: 700;">💰 Starting
+                                Price
                             </h4>
                             <div style="display: flex; gap: 40px;">
                                 <div>
                                     <span
-                                        style="display: block; font-size: 12px; color: #777; text-transform: uppercase; letter-spacing: 1px;">Weekdays</span>
+                                        style="display: block; font-size: 12px; color: #777; text-transform: uppercase; letter-spacing: 1px;">Minimum
+                                        Price</span>
                                     <span
                                         style="font-size: 20px; font-weight: 700; color: #D4A853;">{{ $service->features[0] ?? 'Contact for Price' }}</span>
                                 </div>
                                 <div style="width: 1px; background: #eee;"></div>
                                 <div>
                                     <span
-                                        style="display: block; font-size: 12px; color: #777; text-transform: uppercase; letter-spacing: 1px;">Weekends</span>
+                                        style="display: block; font-size: 12px; color: #777; text-transform: uppercase; letter-spacing: 1px;">Maximum
+                                        Price</span>
                                     <span
                                         style="font-size: 20px; font-weight: 700; color: #D4A853;">{{ $service->features[1] ?? 'Contact for Price' }}</span>
                                 </div>

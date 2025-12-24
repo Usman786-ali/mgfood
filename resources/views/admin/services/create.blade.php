@@ -38,15 +38,15 @@
 
             <div class="form-group"
                 style="background: #fdfaf5; padding: 20px; border-radius: 12px; border: 1px solid #eee;">
-                <label style="color: #D4A853; font-weight: 700; margin-bottom: 15px; display: block;">💰 Price Of
-                    Venue</label>
+                <label style="color: #D4A853; font-weight: 700; margin-bottom: 15px; display: block;">💰 Starting
+                    Price</label>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div>
-                        <label style="font-size: 13px;">Weekdays Price</label>
+                        <label style="font-size: 13px;">Minimum Price</label>
                         <input type="text" name="features[]" value="{{ old('features.0') }}" placeholder="e.g., Rs. 50,000">
                     </div>
                     <div>
-                        <label style="font-size: 13px;">Weekend Price</label>
+                        <label style="font-size: 13px;">Maximum Price</label>
                         <input type="text" name="features[]" value="{{ old('features.1') }}" placeholder="e.g., Rs. 75,000">
                     </div>
                 </div>
