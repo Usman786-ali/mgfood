@@ -64,13 +64,24 @@ class SettingsController extends Controller
         $contactFields = ['contact_phone', 'contact_whatsapp', 'contact_email', 'contact_address'];
         $socialFields = ['social_facebook', 'social_instagram', 'social_youtube', 'social_tiktok'];
 
-        foreach ($request->except('_token', '_method') as $key => $value) {
+        // Handle all inputs including text and files
+        foreach ($request->all() as $key => $value) {
+            // Skip system fields
+            if (in_array($key, ['_token', '_method']))
+                continue;
+
+            $group = $this->getGroup($key, $homepageFields, $contactFields, $socialFields);
+
             if ($request->hasFile($key)) {
+                // If it's a file, store it and save path
                 $path = $request->file($key)->store('settings', 'public');
-                SiteSetting::set($key, $path, 'image', $this->getGroup($key, $homepageFields, $contactFields, $socialFields));
-            } else {
-                $group = $this->getGroup($key, $homepageFields, $contactFields, $socialFields);
-                SiteSetting::set($key, $value, 'text', $group);
+                SiteSetting::set($key, $path, 'image', $group);
+            } elseif (is_string($value) || is_null($value)) {
+                // For text fields, save the value
+                // Only save if it's in our defined fields to avoid cluttering with random inputs
+                if (in_array($key, array_merge($homepageFields, $contactFields, $socialFields))) {
+                    SiteSetting::set($key, $value, 'text', $group);
+                }
             }
         }
 
