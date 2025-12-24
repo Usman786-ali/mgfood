@@ -1430,16 +1430,10 @@ body {
 
 .clients-slider-wrapper {
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+    /* Hide scrollbar */
     padding: 20px 0;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    cursor: grab;
-}
-
-.clients-slider-wrapper::-webkit-scrollbar {
-    display: none;
+    position: relative;
 }
 
 .clients-track {
@@ -1447,6 +1441,23 @@ body {
     gap: 30px;
     width: max-content;
     padding: 0 20px;
+    animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 15px));
+        /* Half of total width including half gap */
+    }
+}
+
+/* Pause on hover */
+.clients-slider-wrapper:hover .clients-track {
+    animation-play-state: paused;
 }
 
 .client-card {

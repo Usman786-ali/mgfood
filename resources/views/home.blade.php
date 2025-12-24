@@ -418,6 +418,13 @@
                             <img src="https://placehold.co/200x100/png?text=Client+3" alt="Client 3">
                         </div>
                     @endforelse
+
+                    {{-- Repeat for seamless loop --}}
+                    @foreach($clients as $client)
+                        <div class="client-card">
+                            <img src="{{ asset($client->logo) }}" alt="{{ $client->name }}">
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
