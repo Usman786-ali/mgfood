@@ -37,12 +37,12 @@
                     </li>
                     <li><a href="{{ route('portfolio') }}"
                             class="nav-link {{ Route::is('portfolio') ? 'active' : '' }}">Portfolio</a></li>
-                    <li><a href="{{ route('services') }}"
-                            class="nav-link {{ Route::is('services') ? 'active' : '' }}">Services</a></li>
                     <li><a href="{{ route('about') }}"
                             class="nav-link {{ Route::is('about') ? 'active' : '' }}">About</a></li>
                     <li><a href="{{ route('blog') }}" class="nav-link {{ Route::is('blog') ? 'active' : '' }}">Blog</a>
                     </li>
+                    <li><a href="{{ route('services') }}"
+                            class="nav-link {{ Route::is('services') ? 'active' : '' }}">Venues</a></li>
                     <li><a href="{{ route('contact') }}"
                             class="nav-link {{ Route::is('contact') ? 'active' : '' }}">Contact</a></li>
                 </ul>

@@ -44,9 +44,9 @@
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="{{ route('home') }}" class="nav-link active">Home</a></li>
                     <li><a href="{{ route('portfolio') }}" class="nav-link">Portfolio</a></li>
-                    <li><a href="{{ route('services') }}" class="nav-link">Services</a></li>
                     <li><a href="{{ route('about') }}" class="nav-link">About</a></li>
                     <li><a href="{{ route('blog') }}" class="nav-link">Blog</a></li>
+                    <li><a href="{{ route('services') }}" class="nav-link">Venues</a></li>
                     <li><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="nav-actions">
@@ -219,15 +219,15 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Venues Section -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="section-badge">What We Do</span>
-                <h2 class="section-title">Creative Event Solutions</h2>
+                <span class="section-badge">Our Venues</span>
+                <h2 class="section-title">Exquisite Event Venues</h2>
                 <p class="section-description">
-                    From concept to execution, we bring your vision to life with innovative ideas and flawless
-                    execution. Every event is unique, and so is our approach.
+                    Discover the perfect setting for your next event. From grand ballrooms to intimate spaces, we offer
+                    exclusive venues tailored to your unique requirements.
                 </p>
             </div>
 
@@ -765,12 +765,12 @@
                             <h3>Quick Links</h3>
                             <ul class="footer-links">
                                 <li><a href="{{ route('home') }}">Best Event Planner in Karachi</a></li>
-                                <li><a href="{{ route('services') }}">Wedding Event Planners</a></li>
-                                <li><a href="{{ route('services') }}">Corporate Event Management</a></li>
-                                <li><a href="{{ route('services') }}">Catering Services</a></li>
-                                <li><a href="#">Brand Activations & Giveaways</a></li>
+                                <li><a href="{{ route('services') }}">Exclusive Event Venues</a></li>
+                                <li><a href="{{ route('services') }}">Wedding & Party Venues</a></li>
+                                <li><a href="{{ route('services') }}">Corporate Venues</a></li>
+                                <li><a href="{{ route('services') }}">Venues Catering</a></li>
                                 <li><a href="{{ route('portfolio') }}">Gallery</a></li>
-                                <li><a href="#">Blog</a></li>
+                                <li><a href="{{ route('blog') }}">Blog</a></li>
                                 <li><a href="{{ route('contact') }}">Contact Us</a></li>
                             </ul>
                         </div>

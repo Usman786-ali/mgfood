@@ -1,27 +1,26 @@
 @extends('layouts.app')
 
-@section('title', 'Detailed Services - MG Food & Event Planners')
+@section('title', 'Exclusive Venues - MG Food & Event Planners')
 
 @section('content')
     <!-- Hero Section -->
     <section class="hero" style="
-                min-height: 65vh; 
-                padding-top: 160px;
-                background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                            url('{{ asset('images/Services-Background.jpeg') }}') center/cover;
-                background-attachment: fixed;">
+                    min-height: 65vh; 
+                    padding-top: 160px;
+                    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                                url('{{ asset('images/Services-Background.jpeg') }}') center/cover;
+                    background-attachment: fixed;">
         <div class="hero-overlay"></div>
         <div class="container hero-container">
             <div class="hero-content">
-                <span class="hero-badge" data-aos="fade-up">OUR EXPERTISE</span>
+                <span class="hero-badge" data-aos="fade-up">EXCLUSIVE SPACES</span>
                 <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
-                    Complete Event Solutions <span class="highlight">Under One Roof</span>
+                    Premium Event Venues <span class="highlight">for Every Occasion</span>
                 </h1>
                 <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
-                    At MG Food & Event Planner, we provide a complete range of event planning and management services,
-                    covering every aspect of your event from concept creation to final execution. Our specialized teams
-                    handle planning, décor, catering, logistics, and on-site coordination to ensure a seamless and
-                    stress-free experience.
+                    At MG Food & Event Planner, we offer a curated selection of premium venues in Karachi. From elegant
+                    wedding halls to modern corporate spaces, our venues are designed to provide the perfect backdrop for
+                    your most significant moments.
                 </p>
             </div>
         </div>
