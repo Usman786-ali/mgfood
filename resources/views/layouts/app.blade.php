@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/footer-fix.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/footer-social.css') }}?v={{ time() }}">
+    <link rel="stylesheet" href="{{ asset('css/mobile-responsive.css') }}?v={{ time() }}">
     @yield('styles')
 </head>
 
