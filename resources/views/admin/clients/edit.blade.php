@@ -43,10 +43,10 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="order" class="form-label">Display Order</label>
+                            <label for="order" class="form-label">Logo Number / Order</label>
                             <input type="number" class="form-control @error('order') is-invalid @enderror" 
                                    id="order" name="order" value="{{ old('order', $client->order) }}">
-                            <small class="text-muted">Lower number = Higher priority</small>
+                            <small class="text-muted">Assigned number for logo sequence (e.g. 1, 2, 3...)</small>
                             @error('order')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

@@ -24,7 +24,7 @@
                     <table class="table table-hover">
                         <thead class="table-light">
                             <tr>
-                                <th width="80">Order</th>
+                                <th width="60">#</th>
                                 <th width="120">Logo</th>
                                 <th>Client Name</th>
                                 <th width="100">Status</th>
@@ -32,12 +32,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($clients as $client)
+                            @forelse($clients as $index => $client)
                                 <tr>
-                                    <td>{{ $client->order }}</td>
+                                    <td style="font-weight: bold; color: #1a1a2e;">{{ $loop->iteration }}</td>
                                     <td>
-                                        <img src="{{ asset($client->logo) }}" alt="{{ $client->name }}"
-                                            style="max-width: 100px; height: auto; border-radius: 5px;">
+                                        <div
+                                            style="background: #f8f9fa; padding: 10px; border-radius: 8px; border: 1px solid #eee; display: inline-block;">
+                                            <img src="{{ asset($client->logo) }}" alt="{{ $client->name }}"
+                                                style="max-width: 80px; height: auto; display: block;">
+                                        </div>
                                     </td>
                                     <td>{{ $client->name }}</td>
                                     <td>
