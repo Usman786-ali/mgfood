@@ -179,14 +179,20 @@
         padding: 0 20px;
     }
 
-    /* Navbar */
+    /* Navbar - Glass Effect */
     .navbar {
         width: 100%;
         top: 0;
         border-radius: 0;
         padding: 15px 20px;
-        background: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: blur(30px) !important;
+        -webkit-backdrop-filter: blur(30px) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25) !important;
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.15),
+            0 4px 16px rgba(212, 168, 83, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
     }
 
     .logo h1 {
@@ -199,11 +205,17 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(0, 0, 0, 0.98);
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(30px) !important;
+        -webkit-backdrop-filter: blur(30px) !important;
         flex-direction: column;
         padding: 20px;
         gap: 15px;
         border-radius: 0 0 20px 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.2),
+            0 4px 16px rgba(212, 168, 83, 0.1) !important;
     }
 
     .nav-menu.active {
