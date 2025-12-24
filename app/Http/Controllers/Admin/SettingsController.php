@@ -50,7 +50,15 @@ class SettingsController extends Controller
             'cta_title',
             'cta_description',
             'cta_btn_text',
-            'cta_btn_link'
+            'cta_btn_link',
+            // Home Media Fields
+            'hero_video',
+            'ceo_image',
+            'director_image',
+            'team_photo',
+            'venue_hall_image',
+            'event_setup_image',
+            'wedding_feature_video'
         ];
 
         $contactFields = ['contact_phone', 'contact_whatsapp', 'contact_email', 'contact_address'];
