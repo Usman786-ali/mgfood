@@ -14,9 +14,26 @@
     <div class="admin-wrapper">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="sidebar-header">
-                <h2>MG Food & Event Planners</h2>
-                <p>Admin Panel</p>
+            <div class="admin-brand">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div>
+                        <h2 style="margin:0; font-size: 1.2rem; line-height: 1.2;">MG Food & Event Planners</h2>
+                        <p style="margin:0; font-size: 0.7rem; opacity: 0.7;">ADMIN PANEL</p>
+                    </div>
+                    <div class="admin-user-menu">
+                        <button class="dots-btn" id="userMenuBtn"
+                            style="color: #d4a853; font-size: 24px; background:none; border:none; cursor:pointer;">⋮</button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="{{ route('admin.profile.index') }}">👤 Profile Settings</a>
+                            <form action="{{ route('admin.logout') }}" method="POST" style="margin: 0;">
+                                @csrf
+                                <button type="submit"
+                                    style="width: 100%; text-align: left; background: none; border: none; color: #ff6b6b; cursor: pointer; padding: 10px 15px; font-size: 14px;">🚪
+                                    Logout</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <nav class="sidebar-nav">
@@ -64,22 +81,7 @@
                     class="nav-item {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                     <i class="fas fa-cog"></i> Site Settings
                 </a>
-                <a href="{{ route('admin.profile.index') }}"
-                    class="nav-item {{ request()->routeIs('admin.profile.*') ? 'active' : '' }}"
-                    style="background: rgba(255,255,255,0.05); border-left: 3px solid #d4a853;">
-                    <i class="fas fa-user-circle"></i> Profile Settings
-                </a>
             </nav>
-
-            <div class="sidebar-footer">
-                <form method="POST" action="{{ route('admin.logout') }}">
-                    @csrf
-                    <button type="submit" class="btn-logout">
-                        <span class="icon">🚪</span>
-                        Logout
-                    </button>
-                </form>
-            </div>
         </aside>
 
         <!-- Main Content -->
@@ -112,6 +114,91 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/admin-scripts.js') }}"></script>
     @yield('scripts')
+    <style>
+        .admin-user-menu {
+            position: relative;
+        }
+
+        .dots-btn {
+            background: none;
+            border: none;
+            color: #d4a853;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px 10px;
+            line-height: 1;
+            transition: 0.3s;
+        }
+
+        .dots-btn:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .user-dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background: #2c2c34;
+            min-width: 160px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .user-dropdown.show {
+            display: block;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .user-dropdown a {
+            display: block;
+            padding: 10px 15px;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .user-dropdown a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #d4a853;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dotsBtn = document.getElementById('userMenuBtn');
+            const dropdown = document.getElementById('userDropdown');
+
+            if (dotsBtn) {
+                dotsBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('show');
+                });
+            }
+
+            document.addEventListener('click', function () {
+                if (dropdown) dropdown.classList.remove('show');
+            });
+        });
+    </script>
 </body>
 
 </html>
