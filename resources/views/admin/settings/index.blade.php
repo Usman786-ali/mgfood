@@ -202,6 +202,107 @@
                 </div>
             </div>
 
+            <!-- HOME MEDIA MANAGEMENT -->
+            <div class="admin-section-box"
+                style="background: #fff3e0; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #ff9800;">
+                <h3 style="margin: 0 0 25px; color: #ff9800; font-size: 20px;">
+                    🎬 Home Page Media (Images & Videos)
+                </h3>
+
+                <h4 style="margin: 20px 0 15px; color: #555; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+                    📹 Videos
+                </h4>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label for="hero_video">Hero Section Background Video</label>
+                        <input type="file" id="hero_video" name="hero_video" accept="video/*">
+                        <small style="color: #666;">Current:
+                            {{ $settings['homepage']->where('key', 'hero_video')->first()->value ?? 'Video/Untitled design (6).mp4' }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="wedding_feature_video">Wedding Feature Section Video</label>
+                        <input type="file" id="wedding_feature_video" name="wedding_feature_video" accept="video/*">
+                        <small style="color: #666;">Current:
+                            {{ $settings['homepage']->where('key', 'wedding_feature_video')->first()->value ?? 'Video/marena club.mp4' }}</small>
+                    </div>
+                </div>
+
+                <h4 style="margin: 30px 0 15px; color: #555; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+                    👥 Board Members Photos
+                </h4>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label for="ceo_image">CEO Photo</label>
+                        <input type="file" id="ceo_image" name="ceo_image" accept="image/*">
+                        <small style="color: #666;">Current:
+                            {{ $settings['homepage']->where('key', 'ceo_image')->first()->value ?? 'images/CEO.jpg' }}</small>
+                        @if($settings['homepage']->where('key', 'ceo_image')->first())
+                            <img src="{{ asset('storage/' . $settings['homepage']->where('key', 'ceo_image')->first()->value) }}"
+                                style="max-width: 200px; margin-top: 10px; border-radius: 8px;">
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="director_image">Director Photo</label>
+                        <input type="file" id="director_image" name="director_image" accept="image/*">
+                        <small style="color: #666;">Current:
+                            {{ $settings['homepage']->where('key', 'director_image')->first()->value ?? 'images/Director.jpg' }}</small>
+                        @if($settings['homepage']->where('key', 'director_image')->first())
+                            <img src="{{ asset('storage/' . $settings['homepage']->where('key', 'director_image')->first()->value) }}"
+                                style="max-width: 200px; margin-top: 10px; border-radius: 8px;">
+                        @endif
+                    </div>
+                </div>
+
+                <h4 style="margin: 30px 0 15px; color: #555; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+                    🏢 About & Premium Info Images
+                </h4>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label for="team_photo">Team Photo</label>
+                        <input type="file" id="team_photo" name="team_photo" accept="image/*">
+                        <small style="color: #666;">Current:
+                            {{ $settings['homepage']->where('key', 'team_photo')->first()->value ?? 'images/team-photo.jpg.JPG' }}</small>
+                        @if($settings['homepage']->where('key', 'team_photo')->first())
+                            <img src="{{ asset('storage/' . $settings['homepage']->where('key', 'team_photo')->first()->value) }}"
+                                style="max-width: 150px; margin-top: 10px; border-radius: 8px;">
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="venue_hall_image">Venue Hall Image</label>
+                        <input type="file" id="venue_hall_image" name="venue_hall_image" accept="image/*">
+                        <small style="color: #666;">Current:
+                            {{ $settings['homepage']->where('key', 'venue_hall_image')->first()->value ?? 'images/venue-hall.JPG' }}</small>
+                        @if($settings['homepage']->where('key', 'venue_hall_image')->first())
+                            <img src="{{ asset('storage/' . $settings['homepage']->where('key', 'venue_hall_image')->first()->value) }}"
+                                style="max-width: 150px; margin-top: 10px; border-radius: 8px;">
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="event_setup_image">Event Setup Image</label>
+                        <input type="file" id="event_setup_image" name="event_setup_image" accept="image/*">
+                        <small style="color: #666;">Current:
+                            {{ $settings['homepage']->where('key', 'event_setup_image')->first()->value ?? 'images/event-setup.JPG' }}</small>
+                        @if($settings['homepage']->where('key', 'event_setup_image')->first())
+                            <img src="{{ asset('storage/' . $settings['homepage']->where('key', 'event_setup_image')->first()->value) }}"
+                                style="max-width: 150px; margin-top: 10px; border-radius: 8px;">
+                        @endif
+                    </div>
+                </div>
+
+                <div
+                    style="background: #fff9e6; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 3px solid #ffa726;">
+                    <p style="margin: 0; color: #666; font-size: 14px;">
+                        <strong>📝 Note:</strong> Videos and images will be uploaded to <code>storage/settings/</code>
+                        folder.
+                        Make sure to run <code>php artisan storage:link</code> if you haven't already.
+                    </p>
+                </div>
+            </div>
+
+
             <!-- CONTACT INFO -->
             <div class="admin-section-box"
                 style="background: #f4ecf7; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #9b59b6;">
