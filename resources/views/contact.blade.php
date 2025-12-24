@@ -61,25 +61,47 @@
         <div class="container">
             <div class="about-grid" style="grid-template-columns: 1.5fr 1fr; gap: 60px;">
                 <div data-aos="fade-right">
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 40px;">Send a Detailed Inquiry</h2>
-                    <form class="contact-form" id="contactForm"
+                    @if(session('success'))
+                        <div
+                            style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ route('contact.submit') }}" method="POST" class="contact-form"
                         style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);">
+                        @csrf
+
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                             <div class="form-group">
-                                <label>Your Name</label>
-                                <input type="text" placeholder="Full Name" required
+                                <label>Your Name *</label>
+                                <input type="text" name="name" placeholder="Full Name" required
                                     style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
                             </div>
                             <div class="form-group">
-                                <label>Email Address</label>
-                                <input type="email" placeholder="Email Address" required
+                                <label>Email Address *</label>
+                                <input type="email" name="email" placeholder="Email Address" required
                                     style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
                             </div>
                         </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" name="phone" placeholder="+92 300 1234567"
+                                    style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                            </div>
+                            <div class="form-group">
+                                <label>Event Date (Approx)</label>
+                                <input type="date" name="event_date"
+                                    style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                            </div>
+                        </div>
+
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                             <div class="form-group">
                                 <label>Event Type</label>
-                                <select name="event_type" required
+                                <select name="event_type"
                                     style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
                                     <option value="">Select Event Type</option>
                                     @php
@@ -92,8 +114,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Expected Budget</label>
-                                <select style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
-                                    <option>Select Range</option>
+                                <select name="budget"
+                                    style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                                    <option value="">Select Range</option>
                                     <option>Under 5 Lac</option>
                                     <option>5 Lac - 15 Lac</option>
                                     <option>15 Lac - 50 Lac</option>
@@ -103,7 +126,7 @@
                         </div>
                         <div class="form-group" style="margin-bottom: 30px;">
                             <label>Event Vision & Details</label>
-                            <textarea rows="5" placeholder="Tell us about your dream event..."
+                            <textarea name="message" rows="5" placeholder="Tell us about your dream event..."
                                 style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Schedule My

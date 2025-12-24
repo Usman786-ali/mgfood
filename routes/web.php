@@ -44,6 +44,8 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'submit'])->name('contact.submit');
+
 Route::get('/blog', function () {
     $blogs = App\Models\Blog::where('is_published', true)
         ->orderBy('created_at', 'desc')
@@ -97,8 +99,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Team Members Management
         Route::resource('team', App\Http\Controllers\Admin\TeamMemberController::class);
 
-        // Event Types Management
-        Route::resource('event-types', App\Http\Controllers\Admin\EventTypeController::class);
+        // Contact Form Management (includes Event Types)
+        Route::prefix('contact-form')->name('contact-form.')->group(function () {
+            Route::get('/', [App\Http\Controllers\Admin\ContactFormController::class, 'index'])->name('index');
+            Route::get('/{submission}', [App\Http\Controllers\Admin\ContactFormController::class, 'show'])->name('show');
+            Route::delete('/{submission}', [App\Http\Controllers\Admin\ContactFormController::class, 'destroy'])->name('destroy');
+
+            // Event Types sub-section
+            Route::get('/event-types/manage', [App\Http\Controllers\Admin\ContactFormController::class, 'eventTypes'])->name('event-types');
+            Route::post('/event-types', [App\Http\Controllers\Admin\ContactFormController::class, 'storeEventType'])->name('event-types.store');
+            Route::put('/event-types/{eventType}', [App\Http\Controllers\Admin\ContactFormController::class, 'updateEventType'])->name('event-types.update');
+            Route::delete('/event-types/{eventType}', [App\Http\Controllers\Admin\ContactFormController::class, 'destroyEventType'])->name('event-types.destroy');
+        });
 
         // Settings Management
         Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settings.index');
