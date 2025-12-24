@@ -5,11 +5,11 @@
 @section('content')
     <!-- Hero Section -->
     <section class="hero" style="
-            min-height: 65vh; 
-            padding-top: 160px;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('{{ asset('images/Services-Background.jpeg') }}') center/cover;
-            background-attachment: fixed;">
+                min-height: 65vh; 
+                padding-top: 160px;
+                background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                            url('{{ asset('images/Services-Background.jpeg') }}') center/cover;
+                background-attachment: fixed;">
         <div class="hero-overlay"></div>
         <div class="container hero-container">
             <div class="hero-content">
@@ -46,7 +46,8 @@
                             {{ $service->description }}
                         </p>
 
-                        @if($service->features && count($service->features) > 0)
+
+                        @if($service->features && is_array($service->features) && count($service->features) > 0)
                             <ul class="service-details" style="list-style: none; padding: 0;">
                                 @foreach($service->features as $featureIndex => $feature)
                                     <li style="margin-bottom: 15px; display: flex; align-items: center;">
@@ -57,6 +58,7 @@
                                 @endforeach
                             </ul>
                         @endif
+
 
                         @if($service->button_text && $service->button_link)
                             <a href="{{ $service->button_link }}" class="btn btn-primary"
