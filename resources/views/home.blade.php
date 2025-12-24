@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/portfolio-hover.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/footer-fix.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/footer-social.css') }}?v={{ time() }}">
+    <link rel="stylesheet" href="{{ asset('css/mobile-responsive.css') }}?v={{ time() }}">
     <style>
         /* Force left alignment - Override any cached styles */
         .hero-content {
