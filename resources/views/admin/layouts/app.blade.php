@@ -65,8 +65,8 @@
                 </a>
                 <a href="{{ route('admin.services.index') }}"
                     class="nav-item {{ Request::is('admin/services*') ? 'active' : '' }}">
-                    <span class="icon">🎯</span>
-                    Services
+                    <span class="icon">🏢</span>
+                    Venues
                 </a>
                 <a href="{{ route('admin.about.index') }}"
                     class="nav-item {{ Request::is('admin/about*') ? 'active' : '' }}">

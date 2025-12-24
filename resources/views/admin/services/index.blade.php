@@ -1,11 +1,11 @@
 @extends('admin.layouts.app')
 
-@section('page-title', 'Services Management')
+@section('page-title', 'Venues Management')
 
 @section('content')
     <div class="page-header">
-        <h1>Services Management</h1>
-        <a href="{{ route('admin.services.create') }}" class="btn btn-primary">+ Create New Service</a>
+        <h1>Venues Management</h1>
+        <a href="{{ route('admin.services.create') }}" class="btn btn-primary">+ Create New Venue</a>
     </div>
 
     @if(session('success'))
@@ -55,8 +55,8 @@
                 @empty
                     <tr>
                         <td colspan="5" style="text-align: center; padding: 40px;">
-                            <p class="no-data">No services yet. <a href="{{ route('admin.services.create') }}">Create your first
-                                    service →</a></p>
+                            <p class="no-data">No venues yet. <a href="{{ route('admin.services.create') }}">Create your first
+                                    venue →</a></p>
                         </td>
                     </tr>
                 @endforelse

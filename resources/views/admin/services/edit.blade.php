@@ -1,17 +1,17 @@
 @extends('admin.layouts.app')
 
-@section('page-title', 'Edit Service')
+@section('page-title', 'Edit Venue')
 
 @section('content')
     <div class="form-card">
-        <h2 style="margin-bottom: 30px; font-size: 24px; font-weight: 700;">Edit Service</h2>
+        <h2 style="margin-bottom: 30px; font-size: 24px; font-weight: 700;">Edit Venue</h2>
 
         <form method="POST" action="{{ route('admin.services.update', $service) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="form-group">
-                <label for="title">Service Title *</label>
+                <label for="title">Venue Title *</label>
                 <input type="text" id="title" name="title" value="{{ old('title', $service->title) }}" required>
                 @error('title')
                     <span style="color: #dc3545; font-size: 13px;">{{ $message }}</span>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="form-group">
-                <label for="image">Service Image</label>
+                <label for="image">Venue Image</label>
                 @if($service->image)
                     <div style="margin-bottom: 10px;">
                         <img src="{{ asset('storage/' . $service->image) }}" alt="Current"
@@ -40,7 +40,7 @@
             </div>
 
             <div class="form-group">
-                <label>Service Features (Bullet Points)</label>
+                <label>Venue Features / Facilities (Bullet Points)</label>
                 <div id="features-container">
                     @if($service->features && count($service->features) > 0)
                         @foreach($service->features as $feature)
@@ -48,7 +48,8 @@
                         @endforeach
                     @else
                         @for($i = 0; $i < 4; $i++)
-                            <input type="text" name="features[]" placeholder="Feature {{ $i + 1 }}" style="margin-bottom: 10px;">
+                            <input type="text" name="features[]" placeholder="e.g., 500 Guests Capacity"
+                                style="margin-bottom: 10px;">
                         @endfor
                     @endif
                 </div>
@@ -81,7 +82,7 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Update Service</button>
+                <button type="submit" class="btn btn-primary">Update Venue</button>
                 <a href="{{ route('admin.services.index') }}" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
