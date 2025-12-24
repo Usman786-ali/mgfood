@@ -5,11 +5,11 @@
 @section('content')
     <!-- Hero Section -->
     <section class="hero" style="
-                        min-height: 65vh; 
-                        padding-top: 160px;
-                        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                                    url('{{ asset('images/Services-Background.jpeg') }}') center/cover;
-                        background-attachment: fixed;">
+                            min-height: 65vh; 
+                            padding-top: 160px;
+                            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                                        url('{{ asset('images/Services-Background.jpeg') }}') center/cover;
+                            background-attachment: fixed;">
         <div class="hero-overlay"></div>
         <div class="container hero-container">
             <div class="hero-content">
@@ -43,7 +43,7 @@
                         <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">{!! $service->title !!}</h2>
                         <p class="section-description"
                             style="text-align: left; margin: 0 0 30px; font-size: 16px; line-height: 1.8; color: #555;">
-                            {{ $service->description }}
+                            {!! $service->description !!}
                         </p>
 
                         <!-- Pricing Table -->
