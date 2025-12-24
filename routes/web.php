@@ -94,6 +94,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Clients Management
         Route::resource('clients', App\Http\Controllers\Admin\ClientController::class);
 
+        // Profile Management
+        Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'index'])->name('profile.index');
+        Route::put('/profile/update', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('profile.update');
+
         // Services Management
         Route::resource('services', App\Http\Controllers\Admin\ServiceController::class);
 

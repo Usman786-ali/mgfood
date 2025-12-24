@@ -61,9 +61,13 @@
                     Contact Form
                 </a>
                 <a href="{{ route('admin.settings.index') }}"
-                    class="nav-item {{ Request::is('admin/settings*') ? 'active' : '' }}">
-                    <span class="icon">⚙️</span>
-                    Site Settings
+                    class="nav-item {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
+                    <i class="fas fa-cog"></i> Site Settings
+                </a>
+                <a href="{{ route('admin.profile.index') }}"
+                    class="nav-item {{ request()->routeIs('admin.profile.*') ? 'active' : '' }}"
+                    style="background: rgba(255,255,255,0.05); border-left: 3px solid #d4a853;">
+                    <i class="fas fa-user-circle"></i> Profile Settings
                 </a>
             </nav>
 
