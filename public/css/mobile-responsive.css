@@ -2,6 +2,15 @@
    Mobile Responsive Fixes
    =================================== */
 
+/* Logo Responsive Display */
+.logo-mobile {
+    display: none;
+}
+
+.logo-desktop {
+    display: inline;
+}
+
 /* Tablets and Below (991px) */
 @media (max-width: 991px) {
     .container {
@@ -211,6 +220,15 @@
 
     .mobile-toggle span {
         background: white;
+    }
+
+    /* Logo Toggle for Mobile */
+    .logo-desktop {
+        display: none;
+    }
+
+    .logo-mobile {
+        display: inline;
     }
 
     /* Hero Section */

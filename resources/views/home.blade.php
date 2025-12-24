@@ -36,7 +36,10 @@
         <div class="container">
             <div class="nav-wrapper">
                 <div class="logo">
-                    <h1>MG <span class="highlight">Food</span></h1>
+                    <h1>
+                        <span class="logo-desktop">MG <span class="highlight">Food & Event Planners</span></span>
+                        <span class="logo-mobile">MG <span class="highlight">Food</span></span>
+                    </h1>
                 </div>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="{{ route('home') }}" class="nav-link active">Home</a></li>
