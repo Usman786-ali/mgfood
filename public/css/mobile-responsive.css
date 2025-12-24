@@ -353,10 +353,42 @@
         font-size: 15px;
     }
 
-    /* Board Members Section */
+    /* Board Members Section Header */
+    section:has(.board-members-grid) .container>div:first-child {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 20px !important;
+        margin-bottom: 40px !important;
+    }
+
+    section:has(.board-members-grid) h2 {
+        font-size: 28px !important;
+        text-align: center !important;
+    }
+
+    /* Board Members Section - Swipeable on Mobile */
     .board-members-grid {
-        grid-template-columns: 1fr !important;
-        gap: 30px !important;
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        gap: 20px !important;
+        padding: 10px 5px 30px 5px !important;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        margin: 0 -20px !important;
+        /* Negative margin to bleed to edges */
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .board-members-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .board-members-grid>div {
+        min-width: 280px !important;
+        flex-shrink: 0 !important;
+        scroll-snap-align: center !important;
     }
 
     /* Wedding Feature */

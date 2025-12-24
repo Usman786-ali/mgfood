@@ -294,7 +294,7 @@
                 </a>
             </div>
 
-            <div
+            <div class="board-members-grid"
                 style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 800px; margin: 0 auto;">
                 <!-- CEO Card -->
                 <div
