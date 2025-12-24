@@ -97,6 +97,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Team Members Management
         Route::resource('team', App\Http\Controllers\Admin\TeamMemberController::class);
 
+        // Event Types Management
+        Route::resource('event-types', App\Http\Controllers\Admin\EventTypeController::class);
+
         // Settings Management
         Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settings.index');
         Route::put('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'update'])->name('settings.update');

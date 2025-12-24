@@ -55,6 +55,11 @@
                     <span class="icon">👥</span>
                     Team Members
                 </a>
+                <a href="{{ route('admin.event-types.index') }}"
+                    class="nav-item {{ Request::is('admin/event-types*') ? 'active' : '' }}">
+                    <span class="icon">📋</span>
+                    Event Types
+                </a>
                 <a href="{{ route('admin.settings.index') }}"
                     class="nav-item {{ Request::is('admin/settings*') ? 'active' : '' }}">
                     <span class="icon">⚙️</span>
