@@ -25,6 +25,7 @@ class SettingsController extends Controller
 
     public function update(Request $request)
     {
+        set_time_limit(300); // 5 minutes limit for large files
         $homepageFields = [
             'hero_badge',
             'hero_title',
