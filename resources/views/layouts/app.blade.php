@@ -25,7 +25,10 @@
             <div class="nav-wrapper">
                 <div class="logo">
                     <a href="{{ route('home') }}" style="text-decoration: none;">
-                        <h1>MG <span class="highlight">Events</span></h1>
+                        <h1>
+                            <span class="logo-desktop">MG <span class="highlight">Food & Event Planners</span></span>
+                            <span class="logo-mobile">MG <span class="highlight">Food & event Planner</span></span>
+                        </h1>
                     </a>
                 </div>
                 <ul class="nav-menu" id="navMenu">
