@@ -85,12 +85,6 @@
                             class="btn btn-secondary btn-lg btn-animated-border">
                             {{ $siteSettings['hero_btn1_text'] ?? 'Start Planning Now' }}
                         </a>
-                        @if(isset($siteSettings['hero_btn2_text']))
-                            <a href="{{ $siteSettings['hero_btn2_link'] ?? route('portfolio') }}"
-                                class="btn btn-white btn-lg" style="margin-left: 15px;">
-                                {{ $siteSettings['hero_btn2_text'] }}
-                            </a>
-                        @endif
                     </div>
                 </div>
 
