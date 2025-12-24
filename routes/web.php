@@ -46,6 +46,11 @@ Route::get('/contact', function () {
 
 Route::post('/contact', [App\Http\Controllers\ContactController::class, 'submit'])->name('contact.submit');
 
+// Test route - remove after testing
+Route::get('/test-event-types', function () {
+    return view('test-event-types');
+});
+
 Route::get('/blog', function () {
     $blogs = App\Models\Blog::where('is_published', true)
         ->orderBy('created_at', 'desc')
@@ -110,6 +115,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/event-types', [App\Http\Controllers\Admin\ContactFormController::class, 'storeEventType'])->name('event-types.store');
             Route::put('/event-types/{eventType}', [App\Http\Controllers\Admin\ContactFormController::class, 'updateEventType'])->name('event-types.update');
             Route::delete('/event-types/{eventType}', [App\Http\Controllers\Admin\ContactFormController::class, 'destroyEventType'])->name('event-types.destroy');
+
+            // Email update route
+            Route::post('/update-email', [App\Http\Controllers\Admin\ContactFormController::class, 'updateEmail'])->name('update-email');
         });
 
         // Settings Management

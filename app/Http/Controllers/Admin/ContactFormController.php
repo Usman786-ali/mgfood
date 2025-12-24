@@ -79,4 +79,22 @@ class ContactFormController extends Controller
         return redirect()->route('admin.contact-form.event-types')
             ->with('success', 'Event type deleted successfully!');
     }
+
+    public function updateEmail(Request $request)
+    {
+        $request->validate([
+            'contact_form_email' => 'required|email|max:255'
+        ]);
+
+        \App\Models\SiteSetting::updateOrCreate(
+            ['key' => 'contact_form_email'],
+            [
+                'value' => $request->contact_form_email,
+                'group' => 'contact',
+                'type' => 'text'
+            ]
+        );
+
+        return redirect()->back()->with('success', 'Notification email updated successfully!');
+    }
 }

@@ -25,7 +25,8 @@ class ContactController extends Controller
 
         // Send email notification
         try {
-            $adminEmail = env('ADMIN_EMAIL', 'info@mgfoodevent.com');
+            $siteSettings = \App\Models\SiteSetting::where('key', 'contact_form_email')->first();
+            $adminEmail = $siteSettings->value ?? env('ADMIN_EMAIL', 'info@mgfoodevent.com');
 
             Mail::send('emails.contact-notification', ['submission' => $submission], function ($message) use ($adminEmail, $submission) {
                 $message->to($adminEmail)

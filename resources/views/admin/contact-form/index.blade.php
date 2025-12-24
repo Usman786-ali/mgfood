@@ -10,9 +10,23 @@
         </a>
     </div>
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+    <div class="table-card"
+        style="margin-bottom: 30px; padding: 20px; background: #fff8f0; border-left: 4px solid #f39c12;">
+        <h3 style="margin: 0 0 15px; color: #d35400; font-size: 18px;">📧 Notification Settings</h3>
+        <form action="{{ route('admin.contact-form.update-email') }}" method="POST"
+            style="display: flex; gap: 15px; align-items: end;">
+            @csrf
+            <div style="flex: 1;">
+                <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 14px;">Notification Email
+                    (Queries yahan aayengi)</label>
+                <input type="email" name="contact_form_email"
+                    value="{{ \App\Models\SiteSetting::where('key', 'contact_form_email')->first()->value ?? '' }}" required
+                    placeholder="e.g., info@mgfoodevent.com"
+                    style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+            </div>
+            <button type="submit" class="btn btn-primary" style="padding: 10px 25px;">Update Email</button>
+        </form>
+    </div>
 
     <div class="stats-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px;">
         <div class="stat-card"
