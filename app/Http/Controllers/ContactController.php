@@ -23,32 +23,38 @@ class ContactController extends Controller
         // Save to database
         $submission = ContactSubmission::create($validated);
 
-        // Send email notification
-        try {
-            $settings = \App\Models\SiteSetting::where('group', 'mail')->orWhere('key', 'contact_form_email')->get()->pluck('value', 'key');
+        // Get Settings - including WhatsApp number
+        $settings = \App\Models\SiteSetting::whereIn('key', ['admin_whatsapp_number', 'contact_form_email'])->get()->pluck('value', 'key');
+        $whatsappNumber = $settings['admin_whatsapp_number'] ?? '923000000000';
 
-            $adminEmail = $settings['contact_form_email'] ?? env('ADMIN_EMAIL', 'info@mgfoodevent.com');
+        // Prepare WhatsApp Message
+        $message = "*🎉 New Booking Inquiry - MG Food & Event*\n\n";
+        $message .= "*👤 Name:* " . $submission->name . "\n";
+        $message .= "*📞 Phone:* " . ($submission->phone ?? 'N/A') . "\n";
 
-            // Dynamic SMTP configuration
-            config([
-                'mail.mailers.smtp.host' => $settings['mail_host'] ?? env('MAIL_HOST'),
-                'mail.mailers.smtp.port' => $settings['mail_port'] ?? env('MAIL_PORT'),
-                'mail.mailers.smtp.username' => $settings['mail_username'] ?? env('MAIL_USERNAME'),
-                'mail.mailers.smtp.password' => $settings['mail_password'] ?? env('MAIL_PASSWORD'),
-                'mail.mailers.smtp.encryption' => $settings['mail_encryption'] ?? env('MAIL_ENCRYPTION'),
-                'mail.from.address' => $settings['mail_from_address'] ?? env('MAIL_FROM_ADDRESS'),
-                'mail.from.name' => $settings['mail_from_name'] ?? env('MAIL_FROM_NAME'),
-            ]);
-
-            Mail::send('emails.contact-notification', ['submission' => $submission], function ($message) use ($adminEmail, $submission) {
-                $message->to($adminEmail)
-                    ->subject('New Contact Form Submission - ' . $submission->name);
-            });
-        } catch (\Exception $e) {
-            // Log error but don't fail the submission
-            \Log::error('Failed to send contact email: ' . $e->getMessage());
+        if ($submission->email) {
+            $message .= "*📧 Email:* " . $submission->email . "\n";
         }
 
-        return redirect()->back()->with('success', 'Thank you for contacting us! We will get back to you soon.');
+        $message .= "*🎊 Event:* " . ($submission->event_type ?? 'N/A') . "\n";
+
+        if ($submission->event_date) {
+            $message .= "*📅 Date:* " . $submission->event_date->format('F d, Y') . "\n";
+        }
+
+        if ($submission->message) {
+            $message .= "*💬 Message:* " . $submission->message;
+        }
+
+        $whatsappUrl = "https://wa.me/" . $whatsappNumber . "?text=" . urlencode($message);
+
+        // Optional: Keep email as background if needed (silent)
+        try {
+            // ... silent email logic if needed
+        } catch (\Exception $e) {
+        }
+
+        // Redirect user to WhatsApp
+        return redirect()->away($whatsappUrl);
     }
 }

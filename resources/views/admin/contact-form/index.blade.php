@@ -31,6 +31,22 @@
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Update Recipient</button>
             </form>
+
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+            <form action="{{ route('admin.contact-form.update-smtp') }}" method="POST">
+                @csrf
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 14px;">WhatsApp Number
+                        (Format: 923001234567)</label>
+                    <input type="text" name="admin_whatsapp_number"
+                        value="{{ \App\Models\SiteSetting::where('key', 'admin_whatsapp_number')->first()->value ?? '' }}"
+                        required placeholder="923001234567"
+                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+                </div>
+                <button type="submit" class="btn btn-success"
+                    style="width: 100%; background: #25d366; border-color: #25d366;">Update WhatsApp Number</button>
+            </form>
         </div>
 
         <!-- SMTP Configuration -->
