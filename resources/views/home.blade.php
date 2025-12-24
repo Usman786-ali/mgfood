@@ -65,7 +65,11 @@
     <section class="hero" id="home">
         <!-- Video Background -->
         <video autoplay muted loop playsinline class="hero-video-bg">
-            <source src="{{ asset('Video/Untitled design (6).mp4') }}" type="video/mp4">
+            @php
+                $heroVideo = $siteSettings['hero_video'] ?? null;
+                $videoPath = $heroVideo ? asset('storage/' . $heroVideo) : asset('Video/Untitled design (6).mp4');
+            @endphp
+            <source src="{{ $videoPath }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="hero-overlay"></div>
@@ -284,8 +288,11 @@
                 <div
                     style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
                     <div style="width: 100%; height: 300px; overflow: hidden;">
-                        <img src="{{ asset('images/CEO.jpg') }}" alt="CEO"
-                            style="width: 100%; height: 100%; object-fit: cover;">
+                        @php
+                            $ceoImage = $siteSettings['ceo_image'] ?? null;
+                            $ceoPath = $ceoImage ? asset('storage/' . $ceoImage) : asset('images/CEO.jpg');
+                        @endphp
+                        <img src="{{ $ceoPath }}" alt="CEO" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 25px;">
                         <h4 style="font-size: 18px; font-weight: 700; color: #1a1a2e; margin-bottom: 5px;">CEO</h4>
@@ -305,7 +312,11 @@
                 <div
                     style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
                     <div style="width: 100%; height: 300px; overflow: hidden;">
-                        <img src="{{ asset('images/Director.jpg') }}" alt="Director"
+                        @php
+                            $directorImage = $siteSettings['director_image'] ?? null;
+                            $directorPath = $directorImage ? asset('storage/' . $directorImage) : asset('images/Director.jpg');
+                        @endphp
+                        <img src="{{ $directorPath }}" alt="Director"
                             style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 25px;">
@@ -337,7 +348,11 @@
                         <div class="laptop-screen">
                             <video width="100%" height="100%" autoplay muted loop playsinline
                                 style="border-radius: 8px; object-fit: cover;">
-                                <source src="{{ asset('Video/marena club.mp4') }}" type="video/mp4">
+                                @php
+                                    $weddingVideo = $siteSettings['wedding_feature_video'] ?? null;
+                                    $weddingVideoPath = $weddingVideo ? asset('storage/' . $weddingVideo) : asset('Video/marena club.mp4');
+                                @endphp
+                                <source src="{{ $weddingVideoPath }}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -474,7 +489,11 @@
                 </div>
 
                 <div class="about-image" data-aos="fade-left">
-                    <img src="{{ asset('images/team-photo.jpg.JPG') }}" alt="MG Food & Event Planners Team">
+                    @php
+                        $teamPhoto = $siteSettings['team_photo'] ?? null;
+                        $teamPhotoPath = $teamPhoto ? asset('storage/' . $teamPhoto) : asset('images/team-photo.jpg.JPG');
+                    @endphp
+                    <img src="{{ $teamPhotoPath }}" alt="MG Food & Event Planners Team">
                     <div class="experience-badge">
                         <h3>15+</h3>
                         <p>Years of Excellence</p>
@@ -489,8 +508,14 @@
                 <div class="premium-info-grid">
                     <!-- Left: Overlapping Images -->
                     <div class="premium-info-images" data-aos="fade-right">
-                        <img src="{{ asset('images/venue-hall.JPG') }}" alt="Exquisite Hall" class="image-back">
-                        <img src="{{ asset('images/event-setup.JPG') }}" alt="Premium Event Setup" class="image-front">
+                        @php
+                            $venueHall = $siteSettings['venue_hall_image'] ?? null;
+                            $venueHallPath = $venueHall ? asset('storage/' . $venueHall) : asset('images/venue-hall.JPG');
+                            $eventSetup = $siteSettings['event_setup_image'] ?? null;
+                            $eventSetupPath = $eventSetup ? asset('storage/' . $eventSetup) : asset('images/event-setup.JPG');
+                        @endphp
+                        <img src="{{ $venueHallPath }}" alt="Exquisite Hall" class="image-back">
+                        <img src="{{ $eventSetupPath }}" alt="Premium Event Setup" class="image-front">
                     </div>
 
                     <!-- Right: Content -->
