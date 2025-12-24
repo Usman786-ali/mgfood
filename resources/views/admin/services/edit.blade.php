@@ -100,7 +100,15 @@
 @section('scripts')
     <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('description');
+        CKEDITOR.replace('description', {
+            toolbar: [
+                { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'RemoveFormat'] },
+                { name: 'colors', items: ['TextColor', 'BGColor'] },
+                { name: 'paragraph', items: ['NumberedList', 'BulletedList'] },
+                { name: 'links', items: ['Link', 'Unlink'] }
+            ],
+            height: 300
+        });
     </script>
 @endsection
 
