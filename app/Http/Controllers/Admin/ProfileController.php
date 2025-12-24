@@ -11,13 +11,13 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
+        $user = Auth::guard('admin')->user();
         return view('admin.profile.index', compact('user'));
     }
 
     public function update(Request $request)
     {
-        $user = Auth::user();
+        $user = Auth::guard('admin')->user();
 
         $request->validate([
             'name' => 'required|string|max:255',
