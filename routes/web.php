@@ -118,6 +118,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
             // Email update route
             Route::post('/update-email', [App\Http\Controllers\Admin\ContactFormController::class, 'updateEmail'])->name('update-email');
+
+            // SMTP update route
+            Route::post('/update-smtp', [App\Http\Controllers\Admin\ContactFormController::class, 'updateSmtp'])->name('update-smtp');
         });
 
         // Settings Management

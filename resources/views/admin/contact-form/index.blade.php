@@ -10,22 +10,87 @@
         </a>
     </div>
 
-    <div class="table-card"
-        style="margin-bottom: 30px; padding: 20px; background: #fff8f0; border-left: 4px solid #f39c12;">
-        <h3 style="margin: 0 0 15px; color: #d35400; font-size: 18px;">📧 Notification Settings</h3>
-        <form action="{{ route('admin.contact-form.update-email') }}" method="POST"
-            style="display: flex; gap: 15px; align-items: end;">
-            @csrf
-            <div style="flex: 1;">
-                <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 14px;">Notification Email
-                    (Queries yahan aayengi)</label>
-                <input type="email" name="contact_form_email"
-                    value="{{ \App\Models\SiteSetting::where('key', 'contact_form_email')->first()->value ?? '' }}" required
-                    placeholder="e.g., info@mgfoodevent.com"
-                    style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
-            </div>
-            <button type="submit" class="btn btn-primary" style="padding: 10px 25px;">Update Email</button>
-        </form>
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px; margin-bottom: 30px;">
+        <!-- Recipient Email -->
+        <div class="table-card" style="padding: 20px; background: #fff8f0; border-left: 4px solid #f39c12; margin: 0;">
+            <h3 style="margin: 0 0 15px; color: #d35400; font-size: 18px;">📧 Notification Recipient</h3>
+            <form action="{{ route('admin.contact-form.update-email') }}" method="POST">
+                @csrf
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 14px;">Recipient
+                        Email</label>
+                    <input type="email" name="contact_form_email"
+                        value="{{ \App\Models\SiteSetting::where('key', 'contact_form_email')->first()->value ?? '' }}"
+                        required placeholder="e.g., info@mgfoodevent.com"
+                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+                    <p style="margin: 5px 0 0; font-size: 12px; color: #666;">Queries is email par recieve hongi.</p>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Update Recipient</button>
+            </form>
+        </div>
+
+        <!-- SMTP Configuration -->
+        <div class="table-card" style="padding: 20px; background: #f0f7ff; border-left: 4px solid #3498db; margin: 0;">
+            <h3 style="margin: 0 0 15px; color: #2980b9; font-size: 18px;">⚙️ Mail Server (SMTP) Settings</h3>
+            @php
+                $mailSettings = \App\Models\SiteSetting::where('group', 'mail')->get()->pluck('value', 'key');
+            @endphp
+            <form action="{{ route('admin.contact-form.update-smtp') }}" method="POST">
+                @csrf
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px;">SMTP
+                            Host</label>
+                        <input type="text" name="mail_host" value="{{ $mailSettings['mail_host'] ?? 'smtp.gmail.com' }}"
+                            style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px;">Port</label>
+                        <input type="text" name="mail_port" value="{{ $mailSettings['mail_port'] ?? '587' }}"
+                            style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px;">
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px;">Username
+                            (Sender Email)</label>
+                        <input type="text" name="mail_username" value="{{ $mailSettings['mail_username'] ?? '' }}"
+                            placeholder="your-email@gmail.com"
+                            style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px;">Password (App
+                            Password)</label>
+                        <input type="password" name="mail_password" value="{{ $mailSettings['mail_password'] ?? '' }}"
+                            placeholder="Enter password"
+                            style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px;">
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: end;">
+                    <div style="flex: 1;">
+                        <label
+                            style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px;">Encryption</label>
+                        <select name="mail_encryption"
+                            style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px;">
+                            <option value="tls" {{ ($mailSettings['mail_encryption'] ?? '') == 'tls' ? 'selected' : '' }}>TLS
+                            </option>
+                            <option value="ssl" {{ ($mailSettings['mail_encryption'] ?? '') == 'ssl' ? 'selected' : '' }}>SSL
+                            </option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-secondary"
+                        style="background: #3498db; color: white; padding: 10px 25px;">Save SMTP Settings</button>
+                </div>
+            </form>
+            <p style="margin: 10px 0 0; font-size: 12px; color: #666;">
+                <strong>Tip:</strong> For Gmail, use a 16-digit <a href="https://myaccount.google.com/apppasswords"
+                    target="_blank">App Password</a>.
+            </p>
+        </div>
     </div>
 
     <div class="stats-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px;">

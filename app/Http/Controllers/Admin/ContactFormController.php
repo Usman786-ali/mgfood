@@ -97,4 +97,22 @@ class ContactFormController extends Controller
 
         return redirect()->back()->with('success', 'Notification email updated successfully!');
     }
+
+    public function updateSmtp(Request $request)
+    {
+        $data = $request->except('_token');
+
+        foreach ($data as $key => $value) {
+            \App\Models\SiteSetting::updateOrCreate(
+                ['key' => $key],
+                [
+                    'value' => $value ?? '',
+                    'group' => 'mail',
+                    'type' => 'text'
+                ]
+            );
+        }
+
+        return redirect()->back()->with('success', 'SMTP Settings updated successfully!');
+    }
 }

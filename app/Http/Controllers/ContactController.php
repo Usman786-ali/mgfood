@@ -25,8 +25,20 @@ class ContactController extends Controller
 
         // Send email notification
         try {
-            $siteSettings = \App\Models\SiteSetting::where('key', 'contact_form_email')->first();
-            $adminEmail = $siteSettings->value ?? env('ADMIN_EMAIL', 'info@mgfoodevent.com');
+            $settings = \App\Models\SiteSetting::where('group', 'mail')->orWhere('key', 'contact_form_email')->get()->pluck('value', 'key');
+
+            $adminEmail = $settings['contact_form_email'] ?? env('ADMIN_EMAIL', 'info@mgfoodevent.com');
+
+            // Dynamic SMTP configuration
+            config([
+                'mail.mailers.smtp.host' => $settings['mail_host'] ?? env('MAIL_HOST'),
+                'mail.mailers.smtp.port' => $settings['mail_port'] ?? env('MAIL_PORT'),
+                'mail.mailers.smtp.username' => $settings['mail_username'] ?? env('MAIL_USERNAME'),
+                'mail.mailers.smtp.password' => $settings['mail_password'] ?? env('MAIL_PASSWORD'),
+                'mail.mailers.smtp.encryption' => $settings['mail_encryption'] ?? env('MAIL_ENCRYPTION'),
+                'mail.from.address' => $settings['mail_from_address'] ?? env('MAIL_FROM_ADDRESS'),
+                'mail.from.name' => $settings['mail_from_name'] ?? env('MAIL_FROM_NAME'),
+            ]);
 
             Mail::send('emails.contact-notification', ['submission' => $submission], function ($message) use ($adminEmail, $submission) {
                 $message->to($adminEmail)
