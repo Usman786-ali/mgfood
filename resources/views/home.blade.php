@@ -120,10 +120,6 @@
                                 <input type="tel" name="phone" placeholder="Enter Your Phone" required>
                             </div>
                             <div class="quick-form-group">
-                                <label>Email</label>
-                                <input type="email" name="email" placeholder="Enter Your Email" required>
-                            </div>
-                            <div class="quick-form-group">
                                 <label>Select Event Type</label>
                                 <select name="event_type" required>
                                     <option value="">Select Event Type</option>
