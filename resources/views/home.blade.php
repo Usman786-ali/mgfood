@@ -38,7 +38,7 @@
                 <div class="logo">
                     <h1>
                         <span class="logo-desktop">MG <span class="highlight">Food & Event Planners</span></span>
-                        <span class="logo-mobile">MG <span class="highlight">Food</span></span>
+                        <span class="logo-mobile">MG <span class="highlight">Food & event Planner</span></span>
                     </h1>
                 </div>
                 <ul class="nav-menu" id="navMenu">
