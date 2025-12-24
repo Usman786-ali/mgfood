@@ -371,14 +371,12 @@
         display: flex !important;
         overflow-x: auto !important;
         scroll-snap-type: x mandatory !important;
-        gap: 20px !important;
-        padding: 10px 5px 30px 5px !important;
+        gap: 15px !important;
+        padding: 10px 20px 30px 20px !important;
         scrollbar-width: none;
         -ms-overflow-style: none;
-        margin: 0 -20px !important;
-        /* Negative margin to bleed to edges */
-        padding-left: 20px !important;
-        padding-right: 20px !important;
+        margin: 0 !important;
+        justify-content: flex-start !important;
     }
 
     .board-members-grid::-webkit-scrollbar {
@@ -386,9 +384,31 @@
     }
 
     .board-members-grid>div {
-        min-width: 280px !important;
+        min-width: 260px !important;
+        /* Slightly smaller to fit better */
         flex-shrink: 0 !important;
         scroll-snap-align: center !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Fixed image height for mobile cards */
+    .board-members-grid div[style*="height: 300px"] {
+        height: 220px !important;
+    }
+
+    .board-members-grid h4 {
+        font-size: 16px !important;
+        margin-bottom: 2px !important;
+    }
+
+    .board-members-grid p {
+        font-size: 13px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .board-members-grid a[style*="padding: 10px 20px"] {
+        padding: 8px 15px !important;
+        font-size: 12px !important;
     }
 
     /* Wedding Feature */
