@@ -61,6 +61,15 @@
         </div>
     </nav>
 
+    <!-- Success Message -->
+    @if(session('success'))
+        <div
+            style="position: fixed; top: 100px; right: 20px; z-index: 9999; background: #d4edda; color: #155724; padding: 20px 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); border-left: 4px solid #28a745; max-width: 400px;">
+            <strong>✅ Success!</strong><br>
+            {{ session('success') }}
+        </div>
+    @endif
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <!-- Video Background -->
@@ -100,23 +109,30 @@
                 <div class="hero-right-column">
                     <!-- Right Contact Form -->
                     <div class="hero-quick-form" data-aos="fade-left" data-aos-delay="400">
-                        <form id="heroQuickForm">
+                        <form action="{{ route('contact.submit') }}" method="POST" id="heroQuickForm">
+                            @csrf
                             <div class="quick-form-group">
                                 <label>Name</label>
-                                <input type="text" placeholder="Enter Full Name" required>
+                                <input type="text" name="name" placeholder="Enter Full Name" required>
                             </div>
                             <div class="quick-form-group">
                                 <label>Phone</label>
-                                <input type="tel" placeholder="Enter Your Phone" required>
+                                <input type="tel" name="phone" placeholder="Enter Your Phone" required>
+                            </div>
+                            <div class="quick-form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" placeholder="Enter Your Email" required>
                             </div>
                             <div class="quick-form-group">
                                 <label>Select Event Type</label>
-                                <select required>
-                                    <option value="other">Other</option>
-                                    <option value="wedding">Wedding</option>
-                                    <option value="corporate">Corporate Events</option>
-                                    <option value="birthday">Birthday Party</option>
-                                    <option value="engagement">Engagement</option>
+                                <select name="event_type" required>
+                                    <option value="">Select Event Type</option>
+                                    @php
+                                        $heroEventTypes = \App\Models\EventType::active()->get();
+                                    @endphp
+                                    @foreach($heroEventTypes as $type)
+                                        <option value="{{ $type->name }}">{{ $type->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <button type="submit" class="btn-send-message">Send Message</button>
@@ -619,7 +635,9 @@
 
                 <div class="contact-grid">
                     <div class="contact-form-wrapper" data-aos="fade-right">
-                        <form class="contact-form" id="contactForm">
+                        <form action="{{ route('contact.submit') }}" method="POST" class="contact-form"
+                            id="contactForm">
+                            @csrf
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="name">Full Name *</label>
@@ -639,11 +657,12 @@
                                     <label for="event-type">Event Type *</label>
                                     <select id="event-type" name="event_type" required>
                                         <option value="">Select Event Type</option>
-                                        <option value="wedding">Wedding</option>
-                                        <option value="corporate">Corporate Event</option>
-                                        <option value="birthday">Birthday Party</option>
-                                        <option value="engagement">Engagement</option>
-                                        <option value="other">Other</option>
+                                        @php
+                                            $contactEventTypes = \App\Models\EventType::active()->get();
+                                        @endphp
+                                        @foreach($contactEventTypes as $type)
+                                            <option value="{{ $type->name }}">{{ $type->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
