@@ -107,76 +107,7 @@
                 </div>
             </div>
 
-            <!-- WHY PARTNER SECTION BOX -->
-            <div class="admin-section-box"
-                style="background: #fff8e6; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #d4a853;">
-                <h3 style="margin: 0 0 25px; color: #b8860b; font-size: 20px;">
-                    🤝 Why Partner With Us? Section
-                </h3>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div class="form-group">
-                        <label for="why_badge">Badge Text</label>
-                        <input type="text" id="why_badge" name="why_badge"
-                            value="{{ old('why_badge', $aboutSettings->why_badge ?? 'Why Partner With Us?') }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="why_title">Section Title</label>
-                        <input type="text" id="why_title" name="why_title"
-                            value="{{ old('why_title', $aboutSettings->why_title ?? 'The MG Difference') }}">
-                    </div>
-                </div>
-
-                <div
-                    style="background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #eee;">
-                    <h4 style="margin: 0 0 15px; color: #333;">Card 1</h4>
-                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 15px;">
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label for="card1_title">Title</label>
-                            <input type="text" id="card1_title" name="card1_title"
-                                value="{{ old('card1_title', $aboutSettings->card1_title ?? 'In-House Catering') }}">
-                        </div>
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label for="card1_text">Description</label>
-                            <textarea id="card1_text" name="card1_text"
-                                rows="2">{{ old('card1_text', $aboutSettings->card1_text ?? '') }}</textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    style="background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #eee;">
-                    <h4 style="margin: 0 0 15px; color: #333;">Card 2</h4>
-                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 15px;">
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label for="card2_title">Title</label>
-                            <input type="text" id="card2_title" name="card2_title"
-                                value="{{ old('card2_title', $aboutSettings->card2_title ?? 'Architectural Decor') }}">
-                        </div>
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label for="card2_text">Description</label>
-                            <textarea id="card2_text" name="card2_text"
-                                rows="2">{{ old('card2_text', $aboutSettings->card2_text ?? '') }}</textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-                    <h4 style="margin: 0 0 15px; color: #333;">Card 3</h4>
-                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 15px;">
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label for="card3_title">Title</label>
-                            <input type="text" id="card3_title" name="card3_title"
-                                value="{{ old('card3_title', $aboutSettings->card3_title ?? 'Vendor Network') }}">
-                        </div>
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label for="card3_text">Description</label>
-                            <textarea id="card3_text" name="card3_text"
-                                rows="2">{{ old('card3_text', $aboutSettings->card3_text ?? '') }}</textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary">Save All Changes</button>

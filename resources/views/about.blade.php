@@ -107,32 +107,7 @@
         </section>
     @endif
 
-    <!-- Why Choose Us - Enhanced List (Moved Down) -->
-    <section class="why-us" style="padding: 100px 0; background: var(--dark); color: white;">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-badge">{{ $aboutSettings->why_badge ?? 'Why Partner With Us?' }}</span>
-                <h2 class="section-title" style="color: white;">{{ $aboutSettings->why_title ?? 'The MG Difference' }}</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card"
-                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
-                    <h3 style="color: var(--primary);">{{ $aboutSettings->card1_title ?? 'In-House Catering' }}</h3>
-                    <p style="color: #ccc;">{{ $aboutSettings->card1_text ?? 'Unlike others, we have our own culinary teams specialized in Mughlai, Continental, and Pan-Asian cuisines.' }}</p>
-                </div>
-                <div class="service-card"
-                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
-                    <h3 style="color: var(--primary);">{{ $aboutSettings->card2_title ?? 'Architectural Decor' }}</h3>
-                    <p style="color: #ccc;">{{ $aboutSettings->card2_text ?? 'We design custom structural elements for your stage and backdrops, ensuring no two events look the same.' }}</p>
-                </div>
-                <div class="service-card"
-                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
-                    <h3 style="color: var(--primary);">{{ $aboutSettings->card3_title ?? 'Vendor Network' }}</h3>
-                    <p style="color: #ccc;">{{ $aboutSettings->card3_text ?? "A decade of networking gives us exclusive access to Pakistan's top photographers and performers at better rates." }}</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Call to action unique for About -->
     <section style="padding: 80px 0; text-align: center; background: #fff;">
