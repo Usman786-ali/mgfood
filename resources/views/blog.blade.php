@@ -10,12 +10,12 @@
 @section('content')
     <!-- Blog Hero Section -->
     <section class="blog-hero" style="
-                        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                                    url('{{ asset('images/Blog-Background.jpeg') }}') center/cover;
-                        min-height: 60vh;
-                        display: flex;
-                        align-items: center;
-                        padding-top: 100px;">
+                            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                                        url('{{ asset('images/Blog-Background.jpeg') }}') center/cover;
+                            min-height: 60vh;
+                            display: flex;
+                            align-items: center;
+                            padding-top: 100px;">
         <div class="container">
             <div class="blog-hero-content" data-aos="fade-up">
                 <span class="section-badge">Our Blog</span>
@@ -103,20 +103,4 @@
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="blog-newsletter">
-        <div class="container">
-            <div class="newsletter-content" data-aos="fade-up">
-                <div class="newsletter-text">
-                    <h2>Stay Updated with Our Latest Insights</h2>
-                    <p>Subscribe to our newsletter and never miss expert tips, trends, and exclusive event planning advice.
-                    </p>
-                </div>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn-subscribe">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </section>
 @endsection
