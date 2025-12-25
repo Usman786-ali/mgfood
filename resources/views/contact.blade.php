@@ -138,8 +138,9 @@
                                 📞</div>
                             <div>
                                 <h4 style="margin-bottom: 5px;">General Inquiries</h4>
-                                <p style="color: #666;">info@mgevents.pk</p>
-                                <p style="color: #666;">+92 300 0000000</p>
+                                <p style="color: #666;">info@mgfoodevent.com</p>
+                                <p style="color: #666;">+92 300 8849180</p>
+                                <p style="color: #666;">+92 021-35807088</p>
                             </div>
                         </div>
                         <div style="display: flex; gap: 20px; margin-bottom: 30px;">
@@ -149,7 +150,8 @@
                             <div>
                                 <h4 style="margin-bottom: 5px;">Quick WhatsApp</h4>
                                 <p style="color: #666;">Start a chat for fast quotes</p>
-                                <a href="#" style="color: #25D366; font-weight: bold;">Chat Now →</a>
+                                <a href="https://wa.me/923008849180" target="_blank"
+                                    style="color: #25D366; font-weight: bold;">Chat Now →</a>
                             </div>
                         </div>
                     </div>
@@ -158,8 +160,8 @@
                         <h4 style="color: var(--primary); margin-bottom: 15px;">Looking for Careers?</h4>
                         <p style="font-size: 14px; margin-bottom: 15px;">We are always looking for creative florists, chefs,
                             and coordinators.</p>
-                        <a href="mailto:hr@mgevents.pk" style="color: white; text-decoration: underline;">Apply at
-                            hr@mgevents.pk</a>
+                        <a href="mailto:hr@mgfoodevent.com" style="color: white; text-decoration: underline;">Apply at
+                            hr@mgfoodevent.com</a>
                     </div>
                 </div>
             </div>
