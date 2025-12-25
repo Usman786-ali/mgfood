@@ -34,16 +34,21 @@
                         {{ $aboutSettings->vision_description2 ?? "Our founder's philosophy has always been \"The Guest First.\" This drives us to source the finest ingredients for our catering and the most innovative decor for our setups." }}
                     </p>
                     <div class="mission-cards"
-                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px;">
+                        style="display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 40px;">
                         <div class="m-card"
                             style="padding: 25px; background: #f8f9fa; border-left: 4px solid var(--primary); border-radius: 10px;">
-                            <h4 style="color: var(--dark); margin-bottom: 10px;">{{ $aboutSettings->mission_title ?? 'Our Mission' }}</h4>
-                            <p style="font-size: 14px; color: #666;">{{ $aboutSettings->mission_text ?? 'To provide stress-free, luxury event management that exceeds expectations through creative passion.' }}</p>
+                            <h4 style="color: var(--dark); margin-bottom: 10px;">Our Decorate</h4>
+                            <p style="font-size: 14px; color: #666;">We provide the most innovative and breathtaking decor setups in Pakistan, custom-designed to bring your specific vision to life with architectural precision.</p>
                         </div>
                         <div class="m-card"
                             style="padding: 25px; background: #f8f9fa; border-left: 4px solid var(--primary); border-radius: 10px;">
-                            <h4 style="color: var(--dark); margin-bottom: 10px;">{{ $aboutSettings->value_title ?? 'Our Value' }}</h4>
-                            <p style="font-size: 14px; color: #666;">{{ $aboutSettings->value_text ?? 'Transparency, Innovation, and Timely Delivery are the pillars that support our brand reputation.' }}</p>
+                            <h4 style="color: var(--dark); margin-bottom: 10px;">Our Food</h4>
+                            <p style="font-size: 14px; color: #666;">Experience world-class culinary excellence with our specialized Mughlai, Continental, and Pan-Asian menus, crafted by top-tier chefs using premium ingredients.</p>
+                        </div>
+                        <div class="m-card"
+                            style="padding: 25px; background: #f8f9fa; border-left: 4px solid var(--primary); border-radius: 10px;">
+                            <h4 style="color: var(--dark); margin-bottom: 10px;">Our Venue</h4>
+                            <p style="font-size: 14px; color: #666;">Gain exclusive access to the most prestigious and luxurious venues across Karachi, Lahore, and Islamabad, ensuring the perfect backdrop for your events.</p>
                         </div>
                     </div>
                 </div>
