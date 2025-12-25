@@ -36,6 +36,12 @@ class AboutController extends Controller
             'card2_text' => 'nullable|string',
             'card3_title' => 'nullable|string|max:100',
             'card3_text' => 'nullable|string',
+            'decorate_title' => 'nullable|string|max:100',
+            'decorate_text' => 'nullable|string',
+            'food_title' => 'nullable|string|max:100',
+            'food_text' => 'nullable|string',
+            'venue_title' => 'nullable|string|max:100',
+            'venue_text' => 'nullable|string',
         ]);
 
         $aboutSettings = AboutSetting::first();

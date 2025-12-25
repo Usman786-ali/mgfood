@@ -50,32 +50,43 @@
                     <small style="color: #666;">Image shown next to the vision text</small>
                 </div>
 
-                <h4 style="margin: 25px 0 15px; color: #555; border-top: 1px solid #ddd; padding-top: 20px;">Mission & Value
-                    Cards</h4>
+                <h4 style="margin: 25px 0 15px; color: #555; border-top: 1px solid #ddd; padding-top: 20px;">
+                    Our Focus Cards (Decorate, Food, Venue)
+                </h4>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
                     <div class="form-group">
-                        <label for="mission_title">Mission Title</label>
-                        <input type="text" id="mission_title" name="mission_title"
-                            value="{{ old('mission_title', $aboutSettings->mission_title ?? 'Our Mission') }}">
+                        <label for="decorate_title">Decorate Title</label>
+                        <input type="text" id="decorate_title" name="decorate_title"
+                            value="{{ old('decorate_title', $aboutSettings->decorate_title ?? 'Our Decorate') }}">
                     </div>
                     <div class="form-group">
-                        <label for="value_title">Value Title</label>
-                        <input type="text" id="value_title" name="value_title"
-                            value="{{ old('value_title', $aboutSettings->value_title ?? 'Our Value') }}">
+                        <label for="food_title">Food Title</label>
+                        <input type="text" id="food_title" name="food_title"
+                            value="{{ old('food_title', $aboutSettings->food_title ?? 'Our Food') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="venue_title">Venue Title</label>
+                        <input type="text" id="venue_title" name="venue_title"
+                            value="{{ old('venue_title', $aboutSettings->venue_title ?? 'Our Venue') }}">
                     </div>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
                     <div class="form-group">
-                        <label for="mission_text">Mission Text</label>
-                        <textarea id="mission_text" name="mission_text"
-                            rows="3">{{ old('mission_text', $aboutSettings->mission_text ?? '') }}</textarea>
+                        <label for="decorate_text">Decorate Text</label>
+                        <textarea id="decorate_text" name="decorate_text"
+                            rows="3">{{ old('decorate_text', $aboutSettings->decorate_text ?? '') }}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="value_text">Value Text</label>
-                        <textarea id="value_text" name="value_text"
-                            rows="3">{{ old('value_text', $aboutSettings->value_text ?? '') }}</textarea>
+                        <label for="food_text">Food Text</label>
+                        <textarea id="food_text" name="food_text"
+                            rows="3">{{ old('food_text', $aboutSettings->food_text ?? '') }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="venue_text">Venue Text</label>
+                        <textarea id="venue_text" name="venue_text"
+                            rows="3">{{ old('venue_text', $aboutSettings->venue_text ?? '') }}</textarea>
                     </div>
                 </div>
 

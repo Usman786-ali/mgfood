@@ -27,6 +27,12 @@ class AboutSetting extends Model
         'card2_title',
         'card2_text',
         'card3_title',
-        'card3_text'
+        'card3_text',
+        'decorate_title',
+        'decorate_text',
+        'food_title',
+        'food_text',
+        'venue_title',
+        'venue_text'
     ];
 }

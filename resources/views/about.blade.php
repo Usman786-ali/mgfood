@@ -33,24 +33,6 @@
                     <p style="margin-bottom: 25px; color: #555; font-size: 18px; line-height: 1.8;">
                         {{ $aboutSettings->vision_description2 ?? "Our founder's philosophy has always been \"The Guest First.\" This drives us to source the finest ingredients for our catering and the most innovative decor for our setups." }}
                     </p>
-                    <div class="mission-cards"
-                        style="display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 40px;">
-                        <div class="m-card"
-                            style="padding: 25px; background: #f8f9fa; border-left: 4px solid var(--primary); border-radius: 10px;">
-                            <h4 style="color: var(--dark); margin-bottom: 10px;">Our Decorate</h4>
-                            <p style="font-size: 14px; color: #666;">We provide the most innovative and breathtaking decor setups in Pakistan, custom-designed to bring your specific vision to life with architectural precision.</p>
-                        </div>
-                        <div class="m-card"
-                            style="padding: 25px; background: #f8f9fa; border-left: 4px solid var(--primary); border-radius: 10px;">
-                            <h4 style="color: var(--dark); margin-bottom: 10px;">Our Food</h4>
-                            <p style="font-size: 14px; color: #666;">Experience world-class culinary excellence with our specialized Mughlai, Continental, and Pan-Asian menus, crafted by top-tier chefs using premium ingredients.</p>
-                        </div>
-                        <div class="m-card"
-                            style="padding: 25px; background: #f8f9fa; border-left: 4px solid var(--primary); border-radius: 10px;">
-                            <h4 style="color: var(--dark); margin-bottom: 10px;">Our Venue</h4>
-                            <p style="font-size: 14px; color: #666;">Gain exclusive access to the most prestigious and luxurious venues across Karachi, Lahore, and Islamabad, ensuring the perfect backdrop for your events.</p>
-                        </div>
-                    </div>
                 </div>
                 <div class="about-image-stack" data-aos="fade-left" style="position: relative;">
                     <img src="{{ $aboutSettings && $aboutSettings->vision_image ? asset('storage/' . $aboutSettings->vision_image) : 'https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?w=800' }}" alt="Team Work"
@@ -60,6 +42,25 @@
                         <h2 style="color: var(--primary);">{{ $aboutSettings->stats_number ?? '500+' }}</h2>
                         <p style="font-size: 14px;">{{ $aboutSettings->stats_label ?? 'Successful Weddings Managed' }}</p>
                     </div>
+                </div>
+            </div>
+
+            <div class="mission-cards"
+                style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 60px;">
+                <div class="m-card" data-aos="fade-up" data-aos-delay="100"
+                    style="padding: 25px 20px; background: #f8f9fa; border-left: 3px solid var(--primary); border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.03);">
+                    <h4 style="color: var(--dark); font-size: 18px; margin-bottom: 12px;">{{ $aboutSettings->decorate_title ?? 'Our Decorate' }}</h4>
+                    <p style="font-size: 13px; color: #666; line-height: 1.5;">{{ $aboutSettings->decorate_text ?? 'Innovating breathtaking decor setups in Pakistan, custom-designed for your vision.' }}</p>
+                </div>
+                <div class="m-card" data-aos="fade-up" data-aos-delay="200"
+                    style="padding: 25px 20px; background: #f8f9fa; border-left: 3px solid var(--primary); border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.03);">
+                    <h4 style="color: var(--dark); font-size: 18px; margin-bottom: 12px;">{{ $aboutSettings->food_title ?? 'Our Food' }}</h4>
+                    <p style="font-size: 13px; color: #666; line-height: 1.5;">{{ $aboutSettings->food_text ?? 'World-class culinary excellence with specialized menus crafted by top-tier chefs.' }}</p>
+                </div>
+                <div class="m-card" data-aos="fade-up" data-aos-delay="300"
+                    style="padding: 25px 20px; background: #f8f9fa; border-left: 3px solid var(--primary); border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.03);">
+                    <h4 style="color: var(--dark); font-size: 18px; margin-bottom: 12px;">{{ $aboutSettings->venue_title ?? 'Our Venue' }}</h4>
+                    <p style="font-size: 13px; color: #666; line-height: 1.5;">{{ $aboutSettings->venue_text ?? 'Gain exclusive access to the most prestigious and luxurious venues across Pakistan.' }}</p>
                 </div>
             </div>
         </div>
