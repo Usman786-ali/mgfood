@@ -5,11 +5,11 @@
 @section('content')
     <!-- Hero Section -->
     <section class="hero" style="
-                            min-height: 65vh; 
-                            padding-top: 160px;
-                            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                                        url('{{ asset('images/Services-Background.jpeg') }}') center/cover;
-                            background-attachment: fixed;">
+                                min-height: 65vh; 
+                                padding-top: 160px;
+                                background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                                            url('{{ asset('images/Services-Background.jpeg') }}') center/cover;
+                                background-attachment: fixed;">
         <div class="hero-overlay"></div>
         <div class="container hero-container">
             <div class="hero-content">
@@ -97,32 +97,35 @@
     @endforelse
 
     <!-- Premium Add-ons -->
-    <section style="padding: 100px 0; background: #1a1a2e; color: white;">
+    <section style="padding: 100px 0; background: #ffffff; color: #1a1a2e;">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title" style="color: white;">Complete Venue Experience</h2>
-                <p class="section-description" style="color: #ccc;">We don't just provide space; we provide a complete
+                <h2 class="section-title" style="color: #1a1a2e;">Complete Venue Experience</h2>
+                <p class="section-description" style="color: #666;">We don't just provide space; we provide a complete
                     ecosystem for your event.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100"
-                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                    style="background: #1a1a2e; border: 1px solid rgba(255,255,255,0.1); padding: 40px 30px; border-radius: 20px;">
                     <div style="font-size: 40px; margin-bottom: 20px;">🍲</div>
                     <h3 style="color: #D4A853;">In-House Catering</h3>
-                    <p style="color: #bbb;">Live BBQ counters, artisanal dessert bars, and customized multi-cuisine menus.
+                    <p style="color: #ffffff; opacity: 0.9;">Live BBQ counters, artisanal dessert bars, and customized
+                        multi-cuisine menus.
                     </p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="200"
-                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                    style="background: #1a1a2e; border: 1px solid rgba(255,255,255,0.1); padding: 40px 30px; border-radius: 20px;">
                     <div style="font-size: 40px; margin-bottom: 20px;">🛡️</div>
                     <h3 style="color: #D4A853;">Secure Valet</h3>
-                    <p style="color: #bbb;">Professional parking management and security services for all your guests.</p>
+                    <p style="color: #ffffff; opacity: 0.9;">Professional parking management and security services for all
+                        your guests.</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="300"
-                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                    style="background: #1a1a2e; border: 1px solid rgba(255,255,255,0.1); padding: 40px 30px; border-radius: 20px;">
                     <div style="font-size: 40px; margin-bottom: 20px;">❄️</div>
                     <h3 style="color: #D4A853;">Climate Control</h3>
-                    <p style="color: #bbb;">State of the art HVAC systems ensuring comfort regardless of the weather
+                    <p style="color: #ffffff; opacity: 0.9;">State of the art HVAC systems ensuring comfort regardless of
+                        the weather
                         outside.</p>
                 </div>
             </div>
