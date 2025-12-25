@@ -1498,7 +1498,7 @@ body {
    =================================== */
 .premium-info-section {
     padding: 100px 0;
-    background: #ffffff;
+    background: #f1f5f9;
     overflow: hidden;
 }
 
@@ -1542,7 +1542,13 @@ body {
 }
 
 .premium-info-content {
-    padding-left: 20px;
+    background: #ffffff;
+    padding: 60px;
+    border-radius: 40px;
+    box-shadow: 0 50px 120px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    position: relative;
+    z-index: 5;
 }
 
 .premium-info-subtitle {
