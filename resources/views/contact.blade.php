@@ -24,33 +24,28 @@
     <section style="padding: 100px 0; background: #fff;">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Our Regional Offices</h2>
-                <p class="section-description">Visit our experience centers to browse our decor catalog and taste our
-                    signature menu items.</p>
+                <h2 class="section-title">Our Key Locations</h2>
+                <p class="section-description">Visit our office for consultations or reach out to our central kitchen for
+                    catering inquiries.</p>
             </div>
-            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <!-- Karachi -->
-                <div class="service-card" style="text-align: left; padding: 40px; border: 1px solid #eee;">
+            <div class="services-grid" style="grid-template-columns: repeat(2, 1fr); gap: 30px;">
+                <!-- Karachi Office -->
+                <div class="service-card"
+                    style="text-align: left; padding: 40px; border: 1px solid #eee; background: #fff; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02);">
                     <h3 style="color: var(--dark); margin-bottom: 15px;">Karachi Head Office</h3>
                     <p style="color: #666; margin-bottom: 20px;">Plot # 15-C, Mezzanine Floor, 4th Zamzama Commercial Lane,
-                        Phase 5, DHA.</p>
-                    <p style="font-weight: 600;">+92 21 35301807</p>
-                    <p style="color: var(--primary);">Open: 10:00 AM - 8:00 PM</p>
+                        Phase 5, DHA, Karachi.</p>
+                    <p style="font-weight: 600; font-size: 18px; color: var(--primary);">+92 21 35301807</p>
+                    <p style="color: #888; margin-top: 10px;">Consultation Hours: 10:00 AM - 8:00 PM</p>
                 </div>
-                <!-- Lahore -->
-                <div class="service-card" style="text-align: left; padding: 40px; border: 1px solid #eee;">
-                    <h3 style="color: var(--dark); margin-bottom: 15px;">Lahore Branch</h3>
-                    <p style="color: #666; margin-bottom: 20px;">Main Gulberg Road, Near Liberty Market (Opening Soon for
-                        Consultations).</p>
-                    <p style="font-weight: 600;">+92 300 1234567</p>
-                    <p style="color: var(--primary);">By Appointment Only</p>
-                </div>
-                <!-- Islamabad -->
-                <div class="service-card" style="text-align: left; padding: 40px; border: 1px solid #eee;">
-                    <h3 style="color: var(--dark); margin-bottom: 15px;">Islamabad Suite</h3>
-                    <p style="color: #666; margin-bottom: 20px;">F-7 Markaz, Blue Area, Business Hub Center.</p>
-                    <p style="font-weight: 600;">+92 321 7654321</p>
-                    <p style="color: var(--primary);">Open: 11:00 AM - 7:00 PM</p>
+                <!-- Karachi Kitchen -->
+                <div class="service-card"
+                    style="text-align: left; padding: 40px; border: 1px solid #eee; background: #fff; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02);">
+                    <h3 style="color: var(--dark); margin-bottom: 15px;">Our Central Kitchen</h3>
+                    <p style="color: #666; margin-bottom: 20px;">Plot L-5, Street No. 1, Altaf Town, Korangi Creek,
+                        Karachi, Pakistan.</p>
+                    <p style="font-weight: 600; font-size: 18px; color: var(--primary);">+92 300 8849180</p>
+                    <p style="color: #888; margin-top: 10px;">Catering Facility & Operations Center</p>
                 </div>
             </div>
         </div>
