@@ -62,23 +62,4 @@
         </div>
     </section>
 
-    <!-- Stats Bar unique for Portfolio -->
-    <section style="padding: 80px 0; background: var(--dark); color: white;">
-        <div class="container">
-            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 40px; text-align: center;">
-                <div>
-                    <h2 style="color: var(--primary); font-size: 48px; margin-bottom: 10px;">1200+</h2>
-                    <p style="text-transform: uppercase; letter-spacing: 2px;">Events Completed</p>
-                </div>
-                <div>
-                    <h2 style="color: var(--primary); font-size: 48px; margin-bottom: 10px;">15</h2>
-                    <p style="text-transform: uppercase; letter-spacing: 2px;">Award Nominations</p>
-                </div>
-                <div>
-                    <h2 style="color: var(--primary); font-size: 48px; margin-bottom: 10px;">98%</h2>
-                    <p style="text-transform: uppercase; letter-spacing: 2px;">Client Satisfaction</p>
-                </div>
-            </div>
-        </div>
-    </section>
 @endsection
