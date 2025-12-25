@@ -27,7 +27,7 @@ class AboutController extends Controller
             'value_text' => 'nullable|string',
             'stats_number' => 'nullable|string|max:50',
             'stats_label' => 'nullable|string|max:100',
-            'vision_image' => 'nullable|image|max:2048',
+            'vision_image' => 'nullable|image|max:5120',
             'decorate_title' => 'nullable|string|max:100',
             'decorate_text' => 'nullable|string',
             'food_title' => 'nullable|string|max:100',
