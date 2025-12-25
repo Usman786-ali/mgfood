@@ -169,29 +169,7 @@
     </section>
 
 
-    <!-- CTA Section Before Map -->
-    <section style="background: #000; padding: 80px 20px;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto;">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px;">
-                <div style="flex: 1; min-width: 300px;">
-                    <p
-                        style="color: #D4A853; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 15px 0; font-weight: 600;">
-                        BOOK AN APPOINTMENT TODAY</p>
-                    <h2
-                        style="color: #D4A853; font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; margin: 0; line-height: 1.3;">
-                        Make Your Event Unforgettable with<br>Our Expert Planners
-                    </h2>
-                </div>
-                <div style="flex: 0 0 auto;">
-                    <a href="{{ route('contact') }}"
-                        style="display: inline-flex; align-items: center; gap: 10px; background: #D4A853; color: #000; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; transition: all 0.3s;">
-                        Book Now
-                        <span style="font-size: 20px;">→</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Map Section -->
     <section class="map-section" style="padding: 0; margin-bottom: 0;">
