@@ -74,7 +74,7 @@
 
     /* Hero Quick Form */
     .hero-quick-form {
-        max-width: 100%;
+        display: none !important;
     }
 
     /* Services Grid */
@@ -294,17 +294,7 @@
 
     /* Hero Quick Form */
     .hero-quick-form {
-        padding: 25px 20px;
-    }
-
-    .quick-form-group label {
-        font-size: 13px;
-    }
-
-    .quick-form-group input,
-    .quick-form-group select {
-        font-size: 14px;
-        padding: 12px 15px;
+        display: none !important;
     }
 
     /* Hero Social Icons */
