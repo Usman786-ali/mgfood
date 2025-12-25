@@ -97,7 +97,7 @@
     @endforelse
 
     <!-- Premium Add-ons -->
-    <section style="padding: 100px 0; background: #ffffff; color: #1a1a2e;">
+    <section style="padding: 120px 0 100px; background: #ffffff; color: #1a1a2e; border-top: 1px solid #eee;">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <h2 class="section-title" style="color: #1a1a2e;">Complete Venue Experience</h2>
