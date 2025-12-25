@@ -516,18 +516,38 @@
         padding: 60px 0;
     }
 
+    .premium-info-subtitle {
+        font-size: 11px !important;
+        margin-bottom: 15px !important;
+        justify-content: center;
+    }
+
     .premium-info-title {
-        font-size: 28px;
+        font-size: 24px !important;
+        text-align: center;
+        margin-bottom: 20px !important;
     }
 
     .premium-info-desc {
-        font-size: 16px;
+        font-size: 14px !important;
+        text-align: center;
+        margin-bottom: 20px !important;
     }
 
     .premium-info-content {
-        padding: 40px 25px !important;
-        border-radius: 30px !important;
-        margin-top: 30px !important;
+        padding: 30px 20px !important;
+        border-radius: 25px !important;
+        margin-top: 20px !important;
+    }
+
+    .premium-info-bottom {
+        flex-direction: column !important;
+        gap: 30px !important;
+        align-items: center !important;
+    }
+
+    .feature-list li {
+        font-size: 13px !important;
     }
 
     .premium-info-images .image-back,
@@ -683,5 +703,22 @@
 
     .footer-logo h2 {
         font-size: 20px;
+    }
+
+    /* Small Mobile Specific - Award Section */
+    .premium-info-title {
+        font-size: 20px !important;
+    }
+
+    .premium-info-desc {
+        font-size: 13px !important;
+    }
+
+    .premium-info-content {
+        padding: 25px 15px !important;
+    }
+
+    .feature-list li {
+        font-size: 12px !important;
     }
 }
