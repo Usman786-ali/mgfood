@@ -42,13 +42,14 @@ class AboutController extends Controller
             $aboutSettings = new AboutSetting();
         }
 
-        // Handle image upload
+        // Handle image upload separately to avoid overwriting with null
         if ($request->hasFile('vision_image')) {
             $path = $request->file('vision_image')->store('about', 'public');
-            $validated['vision_image'] = $path;
+            $aboutSettings->vision_image = $path;
         }
 
-        $aboutSettings->fill($validated);
+        // Update other fields
+        $aboutSettings->fill($request->except('vision_image'));
         $aboutSettings->save();
 
         return redirect()->route('admin.about.index')->with('success', 'About page updated successfully!');
