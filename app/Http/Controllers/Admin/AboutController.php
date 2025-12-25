@@ -37,19 +37,18 @@ class AboutController extends Controller
         ]);
 
         $aboutSettings = AboutSetting::first();
-
         if (!$aboutSettings) {
             $aboutSettings = new AboutSetting();
         }
 
-        // Handle image upload separately to avoid overwriting with null
+        // Handle image upload separately
         if ($request->hasFile('vision_image')) {
             $path = $request->file('vision_image')->store('about', 'public');
             $aboutSettings->vision_image = $path;
         }
 
-        // Update other fields
-        $aboutSettings->fill($request->except('vision_image'));
+        // Use validated data for other fields
+        $aboutSettings->fill(collect($validated)->except('vision_image')->toArray());
         $aboutSettings->save();
 
         return redirect()->route('admin.about.index')->with('success', 'About page updated successfully!');
