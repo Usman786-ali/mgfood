@@ -16,6 +16,8 @@ Route::get('/', function () {
         ->ordered()
         ->get();
 
+    $siteSettings = App\Models\SiteSetting::all()->pluck('value', 'key')->toArray();
+
     return view('home', compact('clients', 'portfolioItems', 'siteSettings', 'reviews'));
 })->name('home');
 
