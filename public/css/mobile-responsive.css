@@ -326,6 +326,7 @@
     .hero-social-icons {
         justify-content: center;
         gap: 15px;
+        margin-top: -20px !important;
     }
 
     .hero-social-icon {
