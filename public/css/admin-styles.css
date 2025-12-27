@@ -19,7 +19,7 @@ body {
 /* Sidebar */
 .sidebar {
     width: 280px;
-    background: #1a1a2e;
+    background: #000000;
     color: white;
     display: flex;
     flex-direction: column;
