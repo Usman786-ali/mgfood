@@ -27,6 +27,19 @@
         .hero-buttons {
             justify-content: flex-start !important;
         }
+
+        /* Remove bottom gap fix */
+        body, html {
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow-x: hidden;
+            height: auto !important;
+            min-height: 100%;
+        }
+        .main-footer {
+            margin-bottom: 0 !important;
+            display: block !important;
+        }
     </style>
 </head>
 
@@ -911,7 +924,6 @@
                 </div>
             </div>
         </footer>
-
         <script src="{{ asset('js/script.js') }}?v={{ time() }}"></script>
 </body>
 
