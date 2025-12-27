@@ -62,7 +62,7 @@ class SettingsController extends Controller
             'wedding_feature_video'
         ];
 
-        $contactFields = ['contact_phone', 'contact_whatsapp', 'contact_email', 'contact_address'];
+        $contactFields = ['contact_phone', 'contact_whatsapp', 'contact_email', 'contact_address', 'contact_map_office', 'contact_map_kitchen'];
         $socialFields = ['social_facebook', 'social_instagram', 'social_youtube', 'social_tiktok'];
 
         // Handle all inputs including text and files
@@ -82,6 +82,14 @@ class SettingsController extends Controller
 
                 SiteSetting::set($key, $path, $type, $group);
             } elseif (in_array($key, array_merge($homepageFields, $contactFields, $socialFields))) {
+                // Extract src if value contains iframe tag (useful if user pastes the whole embed code)
+                if (is_string($value) && str_contains($value, '<iframe')) {
+                    preg_match('/src="([^"]+)"/', $value, $matches);
+                    if (!empty($matches[1])) {
+                        $value = $matches[1];
+                    }
+                }
+
                 // Only save text value if it's a known field
                 SiteSetting::set($key, $value, 'text', $group);
             }

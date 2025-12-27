@@ -336,6 +336,27 @@
                             value="{{ $settings['contact']->where('key', 'contact_address')->first()->value ?? '' }}">
                     </div>
                 </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                    <div class="form-group">
+                        <label for="contact_map_office">Head Office Map Link (Google Maps Embed URL)</label>
+                        <textarea id="contact_map_office" name="contact_map_office" rows="3"
+                            placeholder="https://www.google.com/maps/embed?pb=...">{{ $settings['contact']->where('key', 'contact_map_office')->first()->value ?? '' }}</textarea>
+                        <small style="color: #666; display: block; margin-top: 5px;">
+                            <strong>How to get this:</strong> Search on Google Maps > Share > Embed a map > Copy the URL
+                            inside <code>src="..."</code>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_map_kitchen">Central Kitchen Map Link (Google Maps Embed URL)</label>
+                        <textarea id="contact_map_kitchen" name="contact_map_kitchen" rows="3"
+                            placeholder="https://www.google.com/maps/embed?pb=...">{{ $settings['contact']->where('key', 'contact_map_kitchen')->first()->value ?? '' }}</textarea>
+                        <small style="color: #666; display: block; margin-top: 5px;">
+                            <strong>Note:</strong> Regular Google Maps links (e.g. <code>google.com/maps/place/...</code>)
+                            will <strong>NOT</strong> work. You must use the Embed URL.
+                        </small>
+                    </div>
+                </div>
             </div>
 
             <!-- SOCIAL LINKS -->

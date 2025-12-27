@@ -684,6 +684,57 @@
             </div>
         </section>
 
+        <!-- Map Section -->
+        <section class="map-section" style="padding: 100px 0; background: #fff;">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up" style="text-align: center; margin-bottom: 50px;">
+                    <h2 class="section-title">Locate Us</h2>
+                    <p class="section-description">Detailed map locations for our head office and production facility.
+                    </p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;" class="services-grid">
+                    <!-- Head Office Map -->
+                    <div data-aos="fade-right">
+                        <div style="text-align: center; margin-bottom: 25px;">
+                            <h3
+                                style="font-family: 'Playfair Display', serif; color: var(--dark); font-size: 24px; margin-bottom: 10px;">
+                                Our Head Office</h3>
+                            <div style="width: 50px; height: 2px; background: var(--primary); margin: 0 auto;"></div>
+                        </div>
+                        @php
+                            $officeMap = \App\Models\SiteSetting::get('contact_map_office', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14483.838332944744!2d67.06206999416932!3d24.831055751671055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33d60eace38e1%3A0xff484eea25f9d107!2sMG%20food%20%26%20Event%20Planners!5e0!3m2!1sen!2s!4v1766091325523!5m2!1sen!2s');
+                            if (is_string($officeMap) && str_contains($officeMap, '<iframe')) {
+                                preg_match('/src="([^"]+)"/', $officeMap, $matches);
+                                $officeMap = $matches[1] ?? $officeMap;
+                            }
+                        @endphp
+                        <iframe src="{{ $officeMap }}" width="100%" height="450"
+                            style="border:0; border-radius: 20px; display: block; box-shadow: 0 15px 45px rgba(0,0,0,0.08);"
+                            allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <!-- Kitchen Map -->
+                    <div data-aos="fade-left">
+                        <div style="text-align: center; margin-bottom: 25px;">
+                            <h3
+                                style="font-family: 'Playfair Display', serif; color: var(--dark); font-size: 24px; margin-bottom: 10px;">
+                                Our Central Kitchen</h3>
+                            <div style="width: 50px; height: 2px; background: var(--primary); margin: 0 auto;"></div>
+                        </div>
+                        @php
+                            $kitchenMap = \App\Models\SiteSetting::get('contact_map_kitchen', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.123456789!2d67.045618!3d24.823456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33d747a747a7b%3A0x7a7a7a7a7a7a7a7a!2sZamzama%20Commercial%20Area!5e0!3m2!1sen!2s!4v1766000000000!5m2!1sen!2s');
+                            if (is_string($kitchenMap) && str_contains($kitchenMap, '<iframe')) {
+                                preg_match('/src="([^"]+)"/', $kitchenMap, $matches);
+                                $kitchenMap = $matches[1] ?? $kitchenMap;
+                            }
+                        @endphp
+                        <iframe src="{{ $kitchenMap }}" width="100%" height="450"
+                            style="border:0; border-radius: 20px; display: block; box-shadow: 0 15px 45px rgba(0,0,0,0.08);"
+                            allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Professional Footer -->
         <footer class="main-footer">
             <!-- CTA Section -->
