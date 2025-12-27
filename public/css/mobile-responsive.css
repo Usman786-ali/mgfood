@@ -232,17 +232,26 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(255, 255, 255, 0.1) !important;
-        backdrop-filter: blur(30px) !important;
-        -webkit-backdrop-filter: blur(30px) !important;
+        background: rgba(15, 15, 30, 0.95) !important;
+        /* Darker background for visibility */
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
         flex-direction: column;
-        padding: 20px;
-        gap: 15px;
-        border-radius: 0 0 20px 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
-        box-shadow:
-            0 8px 32px rgba(0, 0, 0, 0.2),
-            0 4px 16px rgba(212, 168, 83, 0.1) !important;
+        padding: 30px 20px;
+        gap: 20px;
+        border-radius: 0 0 30px 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+        z-index: 9999 !important;
+    }
+
+    .nav-menu .nav-link {
+        color: white !important;
+        font-size: 18px !important;
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
     }
 
     .nav-menu.active {
