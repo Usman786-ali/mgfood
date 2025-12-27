@@ -17,6 +17,11 @@
     @if($googleVerify)
         {!! $googleVerify !!}
     @endif
+
+    @php $googleAnalytics = \App\Models\SiteSetting::get('google_analytics'); @endphp
+    @if($googleAnalytics)
+        {!! $googleAnalytics !!}
+    @endif
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/footer-fix.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/footer-social.css') }}?v={{ time() }}">

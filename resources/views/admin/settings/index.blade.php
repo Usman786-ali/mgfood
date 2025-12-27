@@ -427,6 +427,16 @@
                         usually looks like <code>&lt;meta name="google-site-verification" content="..." /&gt;</code>.
                     </small>
                 </div>
+                <div class="form-group"
+                    style="margin-top: 25px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px;">
+                    <label for="google_analytics">Google Analytics Tracking Code (Global Site Tag)</label>
+                    <textarea id="google_analytics" name="google_analytics" rows="5"
+                        placeholder="Paste your gtag.js or analytics.js code here">{{ $settings['social']->where('key', 'google_analytics')->first()->value ?? '' }}</textarea>
+                    <small style="color: #666; display: block; margin-top: 8px;">
+                        <strong>Step:</strong> Copy the full <code>&lt;script&gt;</code> block from Google Analytics and
+                        paste it here. This will help you track visitors on your website.
+                    </small>
+                </div>
             </div>
 
             <div class="form-actions">

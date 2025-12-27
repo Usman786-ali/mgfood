@@ -13,9 +13,16 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
         rel="stylesheet">
 
-    @if(!empty($siteSettings['google_verification']))
-        {!! $siteSettings['google_verification'] !!}
+    @php $googleVerify = \App\Models\SiteSetting::get('google_verification'); @endphp
+    @if($googleVerify)
+        {!! $googleVerify !!}
     @endif
+
+    @php $googleAnalytics = \App\Models\SiteSetting::get('google_analytics'); @endphp
+    @if($googleAnalytics)
+        {!! $googleAnalytics !!}
+    @endif
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/portfolio-hover.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/footer-fix.css') }}?v={{ time() }}">
