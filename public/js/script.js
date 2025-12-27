@@ -55,6 +55,14 @@ if (mobileToggle) {
         navMenu.classList.toggle('active');
         mobileToggle.classList.toggle('active');
     });
+
+    // Close menu on scroll
+    window.addEventListener('scroll', () => {
+        if (navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            mobileToggle.classList.remove('active');
+        }
+    });
 }
 
 // Scroll Animations (Simple AOS alternative)
