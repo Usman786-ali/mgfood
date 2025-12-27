@@ -156,7 +156,7 @@
                         </div>
                     </div>
 
-                    <div style="background: var(--dark); color: white; padding: 30px; border-radius: 20px;">
+                    <div style="background: #000000; color: white; padding: 30px; border-radius: 20px;">
                         <h4 style="color: var(--primary); margin-bottom: 15px;">Looking for Careers?</h4>
                         <p style="font-size: 14px; margin-bottom: 15px;">We are always looking for creative florists, chefs,
                             and coordinators.</p>
