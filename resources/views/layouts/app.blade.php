@@ -9,9 +9,13 @@
         content="@yield('meta_description', 'Karachi\'s top event planner for weddings, corporate events, and catering services. Let us make your special moments one of a kind.')">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
-        rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+    rel="stylesheet">
+
+    @php $googleVerify = \App\Models\SiteSetting::get('google_verification'); @endphp
+    @if($googleVerify)
+        {!! $googleVerify !!}
+    @endif
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/footer-fix.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/footer-social.css') }}?v={{ time() }}">

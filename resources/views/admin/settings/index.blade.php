@@ -411,6 +411,24 @@
                 </div>
             </div>
 
+            <!-- SEO & VERIFICATION -->
+            <div class="admin-section-box"
+                style="background: #fdf2f2; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #e74c3c;">
+                <h3 style="margin: 0 0 25px; color: #e74c3c; font-size: 20px;">
+                    🔍 SEO & Webmaster Verification
+                </h3>
+                <div class="form-group">
+                    <label for="google_verification">Google Search Console Verification Tag</label>
+                    <input type="text" id="google_verification" name="google_verification"
+                        value="{{ $settings['social']->where('key', 'google_verification')->first()->value ?? '' }}"
+                        placeholder='<meta name="google-site-verification" content="..." />'>
+                    <small style="color: #666; display: block; margin-top: 8px;">
+                        <strong>Step:</strong> Copy the HTML meta tag from Google Search Console and paste it here. It
+                        usually looks like <code>&lt;meta name="google-site-verification" content="..." /&gt;</code>.
+                    </small>
+                </div>
+            </div>
+
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary">Save All Settings</button>
                 <a href="{{ route('home') }}" target="_blank" class="btn btn-secondary">Preview Home Page</a>

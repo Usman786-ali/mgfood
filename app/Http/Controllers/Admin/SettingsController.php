@@ -63,7 +63,7 @@ class SettingsController extends Controller
         ];
 
         $contactFields = ['contact_phone', 'contact_whatsapp', 'contact_email', 'contact_address', 'contact_map_office', 'contact_map_kitchen'];
-        $socialFields = ['social_facebook', 'social_instagram', 'social_youtube', 'social_tiktok', 'google_review_code'];
+        $socialFields = ['social_facebook', 'social_instagram', 'social_youtube', 'social_tiktok', 'google_review_code', 'google_verification'];
 
         // Handle all inputs including text and files
         foreach ($request->all() as $key => $value) {
