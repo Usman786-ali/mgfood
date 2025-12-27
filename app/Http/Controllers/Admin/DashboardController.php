@@ -15,6 +15,7 @@ class DashboardController extends Controller
             'total_blogs' => BlogPost::count(),
             'published_blogs' => BlogPost::where('is_published', true)->count(),
             'portfolio_items' => PortfolioItem::count(),
+            'total_reviews' => \App\Models\GoogleReview::count(),
             'recent_blogs' => BlogPost::latest()->take(5)->get(),
         ];
 

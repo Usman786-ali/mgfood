@@ -1460,6 +1460,132 @@ body {
     animation-play-state: paused;
 }
 
+/* ===================================
+   Google Reviews Section
+   =================================== */
+.reviews-section {
+    background: #000;
+}
+
+.reviews-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+.reviews-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: reviewsScroll 60s linear infinite;
+}
+
+.reviews-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes reviewsScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.review-card {
+    width: 400px;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(212, 168, 83, 0.1);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.review-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review-avatar-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.review-meta h4 {
+    font-size: 18px;
+    color: #fff;
+    margin: 0 0 5px 0;
+}
+
+.review-rating {
+    display: flex;
+    gap: 2px;
+}
+
+.review-rating .star {
+    font-size: 14px;
+    color: #444;
+}
+
+.review-rating .star.filled {
+    color: #fbbc05;
+}
+
+.google-logo-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.review-body p {
+    color: #ccc;
+    font-size: 15px;
+    line-height: 1.6;
+    font-style: italic;
+    margin: 0;
+}
+
+.review-date {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .review-card {
+        width: 300px;
+        padding: 20px;
+    }
+}
+
 .client-card {
     min-width: 200px;
     height: 150px;

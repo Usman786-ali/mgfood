@@ -83,6 +83,11 @@
                     <span class="icon">📧</span>
                     Contact Form
                 </a>
+                <a href="{{ route('admin.reviews.index') }}"
+                    class="nav-item {{ Request::is('admin/reviews*') ? 'active' : '' }}">
+                    <span class="icon">⭐</span>
+                    Google Reviews
+                </a>
                 <a href="{{ route('admin.settings.index') }}"
                     class="nav-item {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                     <i class="fas fa-cog"></i> Site Settings

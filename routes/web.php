@@ -12,10 +12,11 @@ Route::get('/', function () {
         ->limit(3)
         ->get();
 
-    // Get all site settings as key-value array
-    $siteSettings = App\Models\SiteSetting::all()->pluck('value', 'key')->toArray();
+    $reviews = App\Models\GoogleReview::active()
+        ->ordered()
+        ->get();
 
-    return view('home', compact('clients', 'portfolioItems', 'siteSettings'));
+    return view('home', compact('clients', 'portfolioItems', 'siteSettings', 'reviews'));
 })->name('home');
 
 Route::get('/portfolio', function () {
@@ -130,5 +131,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Settings Management
         Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settings.index');
         Route::put('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'update'])->name('settings.update');
+
+        // Google Reviews Management
+        Route::resource('reviews', App\Http\Controllers\Admin\GoogleReviewController::class);
     });
 });

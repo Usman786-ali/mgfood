@@ -37,6 +37,14 @@
                     <p>Draft Posts</p>
                 </div>
             </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #fbbc05;">⭐</div>
+                <div class="stat-info">
+                    <h3>{{ $stats['total_reviews'] }}</h3>
+                    <p>Google Reviews</p>
+                </div>
+            </div>
         </div>
 
         <!-- Quick Actions -->
