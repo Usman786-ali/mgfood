@@ -391,6 +391,24 @@
                             value="{{ $settings['social']->where('key', 'social_tiktok')->first()->value ?? '' }}">
                     </div>
                 </div>
+
+                <div style="margin-top: 30px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 25px;">
+                    <h4 style="margin: 0 0 15px; color: #5dade2; font-size: 16px;">
+                        ⭐⭐ Google Business Reviews (Widget)
+                    </h4>
+                    <div class="form-group">
+                        <label for="google_review_code">Google Review Widget Script / Embed Code</label>
+                        <textarea id="google_review_code" name="google_review_code" rows="6"
+                            placeholder="Paste your Google Review widget code here (e.g. from Trustindex, Elfsight, or Google)">{{ $settings['social']->where('key', 'google_review_code')->first()->value ?? '' }}</textarea>
+                        <small style="color: #666; display: block; margin-top: 8px;">
+                            <strong>Instructions:</strong> Use a service like <a href="https://www.trustindex.io/"
+                                target="_blank">Trustindex</a> or <a href="https://elfsight.com/google-reviews-widget/"
+                                target="_blank">Elfsight</a> to get your Google Reviews widget code. Paste the
+                            <code>&lt;script&gt;</code> or <code>&lt;iframe&gt;</code> code here. This will automatically
+                            sync your real Google Map reviews to the homepage.
+                        </small>
+                    </div>
+                </div>
             </div>
 
             <div class="form-actions">

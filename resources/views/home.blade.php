@@ -646,7 +646,19 @@
         </section>
 
         <!-- Google Reviews Section -->
-        @if($reviews->count() > 0)
+        @if(!empty($siteSettings['google_review_code']))
+            <section class="reviews-section" style="padding: 80px 0; background: #000; overflow: hidden;">
+                <div class="container">
+                    <div class="section-header" data-aos="fade-up" style="text-align: center; margin-bottom: 40px;">
+                        <span class="section-subtitle" style="color: var(--primary);">GOOGLE REVIEWS</span>
+                        <h2 class="section-title" style="color: #fff;">Real Experiences Shared on Google</h2>
+                    </div>
+                    <div class="google-widget-container" style="background: transparent; border-radius: 20px;">
+                        {!! $siteSettings['google_review_code'] !!}
+                    </div>
+                </div>
+            </section>
+        @elseif($reviews->count() > 0)
             <section class="reviews-section" style="padding: 100px 0; background: #000; overflow: hidden;">
                 <div class="container">
                     <div class="section-header" data-aos="fade-up" style="text-align: center; margin-bottom: 60px;">
