@@ -18,7 +18,28 @@
     <link rel="stylesheet" href="{{ asset('css/footer-social.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/mobile-responsive.css') }}?v={{ time() }}">
     <style>
-        /* Force left alignment - Override any cached styles */
+        /* Force remove any bottom gap */
+        html,
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            height: auto !important;
+            min-height: 100% !important;
+            overflow-x: hidden !important;
+            background-color: #fff !important;
+        }
+
+        .main-footer {
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+            display: block !important;
+        }
+
+        .footer-copyright {
+            margin-bottom: 0 !important;
+        }
+
+        /* Mobile menu fixes duplicated here for safety */
         .hero-content {
             text-align: left !important;
             margin: 0 !important;
@@ -27,23 +48,10 @@
         .hero-buttons {
             justify-content: flex-start !important;
         }
-
-        /* Remove bottom gap fix */
-        body, html {
-            margin: 0 !important;
-            padding: 0 !important;
-            overflow-x: hidden;
-            height: auto !important;
-            min-height: 100%;
-        }
-        .main-footer {
-            margin-bottom: 0 !important;
-            display: block !important;
-        }
     </style>
 </head>
 
-<body>
+<body style="margin: 0 !important; padding: 0 !important;">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
