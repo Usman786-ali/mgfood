@@ -209,6 +209,65 @@
 
     </section>
 
+    <!-- Separator Line -->
+    <div style="height: 1px; background: linear-gradient(to right, transparent, #e0e0e0, transparent); margin: 0;"></div>
+
+    <!-- Ramadan Promo Section -->
+    <link rel="stylesheet" href="{{ asset('css/ramadan-style.css') }}?v={{ time() }}">
+    <section class="ramadan-promo">
+        <div class="container">
+            <span class="ramadan-title-badge" data-aos="fade-down">Coming Soon</span>
+            <h2 class="ramadan-heading" data-aos="fade-up">Ramadan Special Offers</h2>
+
+            <!-- Countdown Timer -->
+            <div class="ramadan-countdown" data-aos="zoom-in">
+                <div class="time-unit">
+                    <span class="time-value" id="r-months">00</span>
+                    <span class="time-label">Months</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="r-days">00</span>
+                    <span class="time-label">Days</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="r-hours">00</span>
+                    <span class="time-label">Hours</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="r-minutes">00</span>
+                    <span class="time-label">Minutes</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="r-seconds">00</span>
+                    <span class="time-label">Seconds</span>
+                </div>
+            </div>
+
+            <div class="ramadan-grid">
+                <!-- Food Packages Card -->
+                <div class="ramadan-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="ramadan-icon">🍽️</div>
+                    <h3>Exclusive Food Packages</h3>
+                    <p>Experience the blessing of Ramadan with our specially curated Iftar and Suhoor menus. Premium taste
+                        at unbeatable prices.</p>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+
+                <!-- Decor Packages Card -->
+                <div class="ramadan-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="ramadan-icon">✨</div>
+                    <h3>Decor Discount Packages</h3>
+                    <p>Transform your space for the holy month. Get exclusive discounts on elegant Ramadan-themed
+                        decorations.</p>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Separator Line -->
+    <div style="height: 1px; background: linear-gradient(to right, transparent, #e0e0e0, transparent); margin: 0;"></div>
+
     <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
         <div class="container">
@@ -1062,6 +1121,50 @@
             </div>
         </footer>
         <script src="{{ asset('js/script.js') }}?v={{ time() }}"></script>
+    <script>
+        // Ramadan Countdown Script
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set the date we're counting down to
+            // Note: This is an approximation. Ramadan dates vary by moon sighting.
+            // Targeting Feb 17, 2026 for the upcoming Ramadan
+            const ramadanDate = new Date("Feb 17, 2026 00:00:00").getTime();
+
+            const countdownFunction = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = ramadanDate - now;
+
+                if (distance < 0) {
+                    clearInterval(countdownFunction);
+                    document.getElementById("ramadanCountdown").innerHTML = "<h3>Ramadan Mubarak!</h3>";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Calculate months roughly for display purposes (optional logic, but requested)
+                // A simple approximation: 30 days = 1 month
+                const monthsLeft = Math.floor(days / 30);
+                const daysLeft = days % 30;
+
+                // Update DOM
+                const monthsEl = document.getElementById("r-months");
+                const daysEl = document.getElementById("r-days");
+                const hoursEl = document.getElementById("r-hours");
+                const minutesEl = document.getElementById("r-minutes");
+                const secondsEl = document.getElementById("r-seconds");
+
+                if (monthsEl) monthsEl.innerText = monthsLeft < 10 ? "0" + monthsLeft : monthsLeft;
+                if (daysEl) daysEl.innerText = daysLeft < 10 ? "0" + daysLeft : daysLeft;
+                if (hoursEl) hoursEl.innerText = hours < 10 ? "0" + hours : hours;
+                if (minutesEl) minutesEl.innerText = minutes < 10 ? "0" + minutes : minutes;
+                if (secondsEl) secondsEl.innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            }, 1000);
+        });
+    </script>
 </body>
 
 </html>
