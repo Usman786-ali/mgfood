@@ -45,11 +45,12 @@
     font-family: var(--font-display);
     font-size: 48px;
     font-weight: 800;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     color: #1a1a2e;
     /* Dark heading */
     position: relative;
-    display: inline-block;
+    display: block;
+    /* Changed from inline-block to block to force new line */
 }
 
 .ramadan-grid {
@@ -177,4 +178,16 @@
     .time-label {
         font-size: 10px;
     }
+}
+
+/* Make the card clickable */
+a.ramadan-card {
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    cursor: pointer;
+}
+
+a.ramadan-card:hover h3 {
+    color: var(--primary);
 }

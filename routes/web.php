@@ -43,6 +43,14 @@ Route::get('/about', function () {
     return view('about', compact('teamMembers', 'aboutSettings'));
 })->name('about');
 
+Route::get('/ramadan/food', function () {
+    return view('ramadan-food');
+})->name('ramadan.food');
+
+Route::get('/ramadan/decor', function () {
+    return view('ramadan-decor');
+})->name('ramadan.decor');
+
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
@@ -133,6 +141,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Settings Management
         Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settings.index');
         Route::put('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'update'])->name('settings.update');
+
+        // Ramadan Settings
+        Route::get('/ramadan', [App\Http\Controllers\Admin\RamadanController::class, 'index'])->name('ramadan.index');
+        Route::put('/ramadan', [App\Http\Controllers\Admin\RamadanController::class, 'update'])->name('ramadan.update');
 
         // Google Reviews Management
         Route::resource('reviews', App\Http\Controllers\Admin\GoogleReviewController::class);

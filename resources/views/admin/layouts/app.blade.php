@@ -84,6 +84,11 @@
                     <span class="icon">📧</span>
                     Contact Form
                 </a>
+                <a href="{{ route('admin.ramadan.index') }}"
+                    class="nav-item {{ request()->routeIs('admin.ramadan.*') ? 'active' : '' }}">
+                    <span class="icon">🌙</span>
+                    Ramadan Settings
+                </a>
                 <a href="{{ route('admin.settings.index') }}"
                     class="nav-item {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                     <i class="fas fa-cog"></i> Site Settings
