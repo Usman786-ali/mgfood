@@ -7,7 +7,7 @@
     <style>
         .ramadan-hero {
             position: relative;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=1600&q=80');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1542751110-97427bbecf20?w=1600&q=80');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -213,7 +213,7 @@
 @section('content')
     <!-- Hero Section -->
     <section class="ramadan-hero"
-        style="@if (\App\Models\SiteSetting::get('ramadan_food_hero_bg')) background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ asset('storage/' . \App\Models\SiteSetting::get('ramadan_food_hero_bg')) }}'); @endif">
+        style="@if (\App\Models\SiteSetting::get('ramadan_food_hero_bg')) background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{{ asset('storage/' . \App\Models\SiteSetting::get('ramadan_food_hero_bg')) }}'); @else background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1542751110-97427bbecf20?w=1600&q=80'); @endif">
         <div class="container">
             <div data-aos="fade-up">
                 <span class="ramadan-title-badge"
