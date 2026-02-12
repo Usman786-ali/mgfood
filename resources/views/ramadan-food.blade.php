@@ -100,6 +100,79 @@
             text-transform: uppercase;
         }
 
+        /* Menu Grid Styles */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .menu-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #fff;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(212, 168, 83, 0.3);
+        }
+
+        .menu-image-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 140%;
+            /* 1:1.4 aspect ratio for menu cards */
+            overflow: hidden;
+        }
+
+        .menu-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .menu-card:hover .menu-image {
+            transform: scale(1.1);
+        }
+
+        .menu-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(212, 168, 83, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-card:hover .menu-overlay {
+            opacity: 1;
+        }
+
+        .menu-overlay i {
+            font-size: 32px;
+            color: white;
+        }
+
+        @media (max-width: 1200px) {
+            .menu-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
         @media (max-width: 991px) {
             .details-grid {
                 grid-template-columns: 1fr;
@@ -113,6 +186,25 @@
             .ramadan-hero {
                 text-align: center;
                 padding-top: 150px;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
         }
     </style>
@@ -135,85 +227,69 @@
         </div>
     </section>
 
-    <!-- Iftar Menu Section -->
+    <!-- Menu Section -->
     <section class="details-section">
         <div class="container">
-            <div class="details-grid">
-                <div class="package-content" data-aos="fade-right">
-                    <span class="highlight-text">Breaking Fast with Joy</span>
-                    <h3>Exclusive Iftar Menus</h3>
-                    <p class="package-description">
-                        From traditional fruit chaat and samosas to premium dinner buffets, our Iftar menus are designed to
-                        cater to every taste.
-                        Perfect for corporate gatherings and family reunions.
-                    </p>
-
-                    <ul class="menu-list">
-                        @php
-                            $iftarMenu = \App\Models\SiteSetting::get('ramadan_food_iftar_menu', "Premium Iftar Platter || Coming Soon\nCorporate Iftar Buffet || Coming Soon\nLive Fried Station || Coming Soon\nSpecial Drinks & Desserts || Coming Soon");
-                            $iftarItems = explode("\n", $iftarMenu);
-                        @endphp
-                        @foreach ($iftarItems as $item)
-                            @php $parts = explode('||', $item); @endphp
-                            <li>
-                                <span>{{ trim($parts[0]) }}</span>
-                                @if (isset($parts[1]))
-                                    <strong>{{ trim($parts[1]) }}</strong>
-                                @endif
-                            </li>
-                        @endforeach
-                    </ul>
-
-                    <a href="{{ route('contact') }}" class="btn btn-primary">Book Iftar</a>
-                </div>
-                <div class="package-image-container" data-aos="fade-left">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80" alt="Iftar Feast"
-                        class="package-image">
-                </div>
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="highlight-text">Ramadan Special</span>
+                <h2
+                    style="font-family: var(--font-display); font-size: 42px; font-weight: 700; color: var(--dark); margin-top: 10px;">
+                    Our <span style="color: var(--primary);">Menu</span>
+                </h2>
+                <p style="max-width: 700px; margin: 20px auto; font-size: 18px; color: #666;">
+                    Explore our delicious Ramadan menu offerings. Perfect for your special occasions.
+                </p>
             </div>
-        </div>
-    </section>
 
-    <!-- Separator -->
-    <div style="height: 1px; background: linear-gradient(to right, transparent, #e0e0e0, transparent);"></div>
+            @php
+                // Get all menu images (up to 30)
+                $menuImages = [];
+                for ($i = 1; $i <= 30; $i++) {
+                    $menuImg = \App\Models\SiteSetting::get('ramadan_food_menu_' . $i);
+                    if ($menuImg) {
+                        $menuImages[] = $menuImg;
+                    }
+                }
+            @endphp
 
-    <!-- Sehar Menu Section -->
-    <section class="details-section" style="background-color: #f9f9f9;">
-        <div class="container">
-            <div class="details-grid">
-                <!-- Image on Left for variation -->
-                <div class="package-image-container" data-aos="fade-right">
-                    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=80" alt="Sehar Meal"
-                        class="package-image">
+            @if(count($menuImages) > 0)
+                <div class="menu-grid" data-aos="fade-up">
+                    @foreach($menuImages as $index => $menuImage)
+                        <div class="menu-card" data-aos="zoom-in" data-aos-delay="{{ $index * 50 }}">
+                            <div class="menu-image-wrapper">
+                                <img src="{{ asset('storage/' . $menuImage) }}" alt="Menu {{ $index + 1 }}" class="menu-image">
+                                <div class="menu-overlay">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                            @php
+                                $menuPrice = \App\Models\SiteSetting::get('ramadan_food_price_' . ($index + 1));
+                            @endphp
+                            @if($menuPrice)
+                                <div style="padding: 15px; text-align: center; background: #fff; border-top: 1px solid #f0f0f0;">
+                                    <span
+                                        style="display: block; color: var(--primary); font-family: var(--font-display); font-size: 22px; font-weight: 700;">
+                                        Rs. {{ $menuPrice }}
+                                    </span>
+                                </div>
+                            @endif
+                        </div>
+                    @endforeach
                 </div>
-
-                <div class="package-content" data-aos="fade-left">
-                    <span class="highlight-text">Start Your Fast Right</span>
-                    <h3>Wholesome Sehar Menus</h3>
-                    <p class="package-description">
-                        Begin your fast with energy and taste. Our Sehar packages include traditional parathas, lassi,
-                        yogurt, and a variety of curries
-                        to keep you energized throughout the day.
-                    </p>
-
-                    <ul class="menu-list">
-                        @php
-                            $seharMenu = \App\Models\SiteSetting::get('ramadan_food_sehar_menu', "Traditional Desi Sehar || Coming Soon\nLassi & Yogurt Deals || Coming Soon\nOmelette & Paratha Box || Coming Soon\nFull Night Live Tandoor || Coming Soon");
-                            $seharItems = explode("\n", $seharMenu);
-                        @endphp
-                        @foreach ($seharItems as $item)
-                            @php $parts = explode('||', $item); @endphp
-                            <li>
-                                <span>{{ trim($parts[0]) }}</span>
-                                @if (isset($parts[1]))
-                                    <strong>{{ trim($parts[1]) }}</strong>
-                                @endif
-                            </li>
-                        @endforeach
-                    </ul>
-
-                    <a href="{{ route('contact') }}" class="btn btn-primary">Book Sehar</a>
+            @else
+                <div class="text-center" data-aos="fade-up">
+                    <div style="background: #f9f9f9; padding: 60px 20px; border-radius: 20px; border: 2px dashed #ddd;">
+                        <i class="fas fa-utensils" style="font-size: 48px; color: var(--primary); margin-bottom: 20px;"></i>
+                        <h4 style="color: #666; margin-bottom: 10px;">Menu Coming Soon</h4>
+                        <p style="color: #999;">Our special Ramadan menu will be uploaded shortly.</p>
+                    </div>
                 </div>
+            @endif
+
+            <div class="text-center mt-5" data-aos="fade-up">
+                <a href="{{ route('contact') }}" class="btn btn-primary" style="padding: 15px 40px; font-size: 16px;">
+                    <i class="fas fa-phone-alt me-2"></i> Book Now
+                </a>
             </div>
         </div>
     </section>

@@ -61,18 +61,47 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="ramadan_food_iftar_menu">Iftar Menu List (One item per line | Add 'Coming Soon' after ||
-                        separator for status)</label>
-                    <textarea id="ramadan_food_iftar_menu" name="ramadan_food_iftar_menu" rows="5"
-                        placeholder="Premium Iftar Platter || Coming Soon
-    Chicken Biryani Deal || Available Now">{{ $settings->where('key', 'ramadan_food_iftar_menu')->first()->value ?? '' }}</textarea>
+                    <label style="font-size: 18px; font-weight: 600; margin-bottom: 15px; display: block;">
+                        📋 Menu Images (Upload up to 30 menus)
+                    </label>
+                    <p style="color: #666; margin-bottom: 20px; font-size: 14px;">
+                        Upload your Ramadan food menu images. They will be displayed in a grid layout (5 per row).
+                        Recommended size: 800x1120px
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+                        @for($i = 1; $i <= 30; $i++)
+                            <div style="border: 2px dashed #ddd; border-radius: 8px; padding: 15px; background: #fafafa;">
+                                <label for="ramadan_food_menu_{{ $i }}"
+                                    style="font-weight: 600; color: #f9a825; margin-bottom: 8px; display: block;">
+                                    Menu #{{ $i }}
+                                </label>
+                                <input type="file" id="ramadan_food_menu_{{ $i }}" name="ramadan_food_menu_{{ $i }}"
+                                    accept="image/*" style="font-size: 12px; margin-bottom: 10px;">
+
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label style="font-size: 12px; margin-bottom: 5px; display: block;">Price (e.g. 485 Per
+                                        Box)</label>
+                                    <input type="text" name="ramadan_food_price_{{ $i }}"
+                                        value="{{ $settings->where('key', 'ramadan_food_price_' . $i)->first()->value ?? '' }}"
+                                        placeholder="Enter Price" style="font-size: 13px; padding: 5px 10px;">
+                                </div>
+
+                                @php
+                                    $currentMenu = $settings->where('key', 'ramadan_food_menu_' . $i)->first();
+                                @endphp
+
+                                @if($currentMenu)
+                                    <div style="margin-top: 10px;">
+                                        <img src="{{ asset('storage/' . $currentMenu->value) }}"
+                                            style="width: 100%; height: 150px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                    </div>
+                                @endif
+                            </div>
+                        @endfor
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="ramadan_food_sehar_menu">Sehar Menu List (One item per line)</label>
-                    <textarea id="ramadan_food_sehar_menu" name="ramadan_food_sehar_menu" rows="5"
-                        placeholder="Traditional Desi Sehar || Coming Soon">{{ $settings->where('key', 'ramadan_food_sehar_menu')->first()->value ?? '' }}</textarea>
-                </div>
 
                 <h4 style="margin: 30px 0 15px; color: #f9a825; border-bottom: 2px solid #fdd835; padding-bottom: 10px;">
                     ✨ Decor Page Settings
