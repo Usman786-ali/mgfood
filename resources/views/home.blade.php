@@ -254,7 +254,8 @@
                     <div class="ramadan-icon">🍽️</div>
                     <h3>{{ \App\Models\SiteSetting::get('ramadan_home_food_title', 'Exclusive Food Packages') }}
                     </h3>
-                    <p>Experience the blessing of Ramadan with our specially curated Iftar and Suhoor menus. Premium taste
+                    <p>Experience the blessing of Ramadan with our specially curated Iftar and Suhoor menus. Premium
+                        taste
                         at unbeatable prices.</p>
                     <span class="coming-soon-badge">See More</span>
                 </a>

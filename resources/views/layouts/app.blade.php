@@ -146,6 +146,8 @@
                             <li><a href="{{ route('services') }}">Wedding Event Planners</a></li>
                             <li><a href="{{ route('services') }}">Corporate Event Management</a></li>
                             <li><a href="{{ route('services') }}">Catering Services</a></li>
+                            <li><a href="{{ route('ramadan.food') }}" style="color: #D4A853;">Ramadan Special Menu</a>
+                            </li>
                             <li><a href="#">Brand Activations & Giveaways</a></li>
                             <li><a href="{{ route('portfolio') }}">Gallery</a></li>
                             <li><a href="#">Blog</a></li>

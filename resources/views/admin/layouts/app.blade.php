@@ -93,6 +93,12 @@
                     class="nav-item {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                     <i class="fas fa-cog"></i> Site Settings
                 </a>
+                <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
+                    <a href="{{ route('home') }}" target="_blank" class="nav-item" style="color: #3498db;">
+                        <span class="icon">🌐</span>
+                        Visit Website
+                    </a>
+                </div>
             </nav>
         </aside>
 

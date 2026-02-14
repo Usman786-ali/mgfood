@@ -123,8 +123,14 @@
                 </div>
             </div>
 
-            <div class="form-actions">
+            <div class="form-actions" style="display: flex; gap: 10px; align-items: center;">
                 <button type="submit" class="btn btn-primary">Save Ramadan Settings</button>
+                <a href="{{ route('ramadan.food') }}" target="_blank" class="btn btn-secondary"
+                    style="background: #6c757d; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; transition: 0.3s;">👁️
+                    Preview Food Page</a>
+                <a href="{{ route('ramadan.decor') }}" target="_blank" class="btn btn-secondary"
+                    style="background: #6c757d; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; transition: 0.3s;">🏠
+                    Preview Decor Page</a>
             </div>
         </form>
     </div>
