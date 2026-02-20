@@ -217,59 +217,200 @@
     <link rel="stylesheet" href="{{ asset('css/ramadan-style.css') }}?v={{ time() }}">
     <section class="ramadan-promo">
         <div class="container">
-            <h2 class="ramadan-heading" data-aos="fade-up">
-                {{ \App\Models\SiteSetting::get('ramadan_home_heading', 'Ramadan Special Offers') }}
-            </h2>
-            <span class="ramadan-title-badge" data-aos="fade-down">
-                {{ \App\Models\SiteSetting::get('ramadan_home_badge', 'Coming Soon') }}
-            </span>
+            <!-- Ramadan Mubarak Banner -->
+            <div class="ramadan-mubarak-banner" data-aos="zoom-in">
+                <style>
+                    .ramadan-mubarak-banner {
+                        background: linear-gradient(135deg, #0d5016 0%, #1a7a28 40%, #0d5016 100%);
+                        border-radius: 24px;
+                        padding: 50px 40px;
+                        margin: 30px auto 40px;
+                        max-width: 820px;
+                        text-align: center;
+                        position: relative;
+                        overflow: hidden;
+                        box-shadow: 0 20px 60px rgba(13, 80, 22, 0.4), 0 0 0 2px rgba(212, 168, 83, 0.3);
+                        animation: ramadanGlow 3s ease-in-out infinite alternate;
+                    }
 
-            <!-- Countdown Timer -->
-            <div class="ramadan-countdown" data-aos="zoom-in">
-                <div class="time-unit">
-                    <span class="time-value" id="r-months">00</span>
-                    <span class="time-label">Months</span>
-                </div>
-                <div class="time-unit">
-                    <span class="time-value" id="r-days">00</span>
-                    <span class="time-label">Days</span>
-                </div>
-                <div class="time-unit">
-                    <span class="time-value" id="r-hours">00</span>
-                    <span class="time-label">Hours</span>
-                </div>
-                <div class="time-unit">
-                    <span class="time-value" id="r-minutes">00</span>
-                    <span class="time-label">Minutes</span>
-                </div>
-                <div class="time-unit">
-                    <span class="time-value" id="r-seconds">00</span>
-                    <span class="time-label">Seconds</span>
+                    @keyframes ramadanGlow {
+                        from {
+                            box-shadow: 0 20px 60px rgba(13, 80, 22, 0.4), 0 0 0 2px rgba(212, 168, 83, 0.3);
+                        }
+
+                        to {
+                            box-shadow: 0 25px 80px rgba(13, 80, 22, 0.6), 0 0 0 3px rgba(212, 168, 83, 0.6);
+                        }
+                    }
+
+                    .ramadan-mubarak-banner::before {
+                        content: '';
+                        position: absolute;
+                        top: -60px;
+                        right: -60px;
+                        width: 200px;
+                        height: 200px;
+                        background: radial-gradient(circle, rgba(212, 168, 83, 0.18) 0%, transparent 70%);
+                        border-radius: 50%;
+                    }
+
+                    .ramadan-mubarak-banner::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -60px;
+                        left: -60px;
+                        width: 200px;
+                        height: 200px;
+                        background: radial-gradient(circle, rgba(212, 168, 83, 0.12) 0%, transparent 70%);
+                        border-radius: 50%;
+                    }
+
+                    .rmb-stars {
+                        font-size: 22px;
+                        letter-spacing: 6px;
+                        animation: starTwinkle 1.5s ease-in-out infinite alternate;
+                        display: block;
+                        margin-bottom: 10px;
+                    }
+
+                    @keyframes starTwinkle {
+                        from {
+                            opacity: 0.6;
+                            transform: scale(1);
+                        }
+
+                        to {
+                            opacity: 1;
+                            transform: scale(1.08);
+                        }
+                    }
+
+                    .rmb-crescent {
+                        font-size: 64px;
+                        display: block;
+                        margin-bottom: 6px;
+                        animation: crescentFloat 4s ease-in-out infinite;
+                        filter: drop-shadow(0 0 18px rgba(212, 168, 83, 0.7));
+                    }
+
+                    @keyframes crescentFloat {
+
+                        0%,
+                        100% {
+                            transform: translateY(0);
+                        }
+
+                        50% {
+                            transform: translateY(-8px);
+                        }
+                    }
+
+                    .rmb-arabic {
+                        font-size: 28px;
+                        color: #D4A853;
+                        font-weight: 700;
+                        letter-spacing: 2px;
+                        margin-bottom: 4px;
+                        display: block;
+                        text-shadow: 0 0 20px rgba(212, 168, 83, 0.5);
+                    }
+
+                    .rmb-title {
+                        font-size: 48px;
+                        font-weight: 800;
+                        color: #fff;
+                        letter-spacing: 3px;
+                        text-transform: uppercase;
+                        margin: 8px 0;
+                        display: block;
+                        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+                        animation: titleShimmer 3s ease-in-out infinite alternate;
+                    }
+
+                    @keyframes titleShimmer {
+                        from {
+                            color: #fff;
+                            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+                        }
+
+                        to {
+                            color: #ffe9a0;
+                            text-shadow: 0 2px 30px rgba(212, 168, 83, 0.6);
+                        }
+                    }
+
+                    .rmb-subtitle {
+                        font-size: 18px;
+                        color: rgba(255, 255, 255, 0.82);
+                        margin: 10px 0 24px;
+                        display: block;
+                        font-weight: 400;
+                        letter-spacing: 0.5px;
+                    }
+
+                    .rmb-divider {
+                        width: 80px;
+                        height: 2px;
+                        background: linear-gradient(to right, transparent, #D4A853, transparent);
+                        margin: 0 auto 22px;
+                        border-radius: 2px;
+                    }
+
+                    .rmb-badges {
+                        display: flex;
+                        justify-content: center;
+                        gap: 14px;
+                        flex-wrap: wrap;
+                    }
+
+                    .rmb-badge {
+                        background: rgba(212, 168, 83, 0.15);
+                        border: 1px solid rgba(212, 168, 83, 0.4);
+                        color: #D4A853;
+                        padding: 8px 20px;
+                        border-radius: 50px;
+                        font-size: 14px;
+                        font-weight: 600;
+                        letter-spacing: 0.5px;
+                        transition: all 0.3s;
+                    }
+
+                    .rmb-badge:hover {
+                        background: rgba(212, 168, 83, 0.3);
+                        border-color: #D4A853;
+                        transform: translateY(-2px);
+                    }
+
+                    @media (max-width: 600px) {
+                        .rmb-title {
+                            font-size: 32px;
+                        }
+
+                        .rmb-crescent {
+                            font-size: 48px;
+                        }
+
+                        .ramadan-mubarak-banner {
+                            padding: 36px 20px;
+                        }
+                    }
+                </style>
+
+                <span class="rmb-stars">✦ ✦ ✦ ✦ ✦</span>
+                <span class="rmb-crescent">🌙</span>
+                <span class="rmb-arabic">رَمَضَان مُبَارَك</span>
+                <span class="rmb-title">Ramadan Mubarak</span>
+                <span class="rmb-subtitle">May this holy month bring peace, blessings &amp; joy to you and your
+                    family</span>
+                <div class="rmb-divider"></div>
+                <div class="rmb-badges">
+                    <span class="rmb-badge">🍽️ Special Iftar Packages</span>
+                    <span class="rmb-badge">✨ Ramadan Decor Offers</span>
+                    <span class="rmb-badge">🤲 Blessed Month</span>
                 </div>
             </div>
 
-            <div class="ramadan-grid">
-                <!-- Food Packages Card -->
-                <a href="{{ route('ramadan.food') }}" class="ramadan-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="ramadan-icon">🍽️</div>
-                    <h3>{{ \App\Models\SiteSetting::get('ramadan_home_food_title', 'Exclusive Food Packages') }}
-                    </h3>
-                    <p>Experience the blessing of Ramadan with our specially curated Iftar and Suhoor menus. Premium
-                        taste
-                        at unbeatable prices.</p>
-                    <span class="coming-soon-badge">See More</span>
-                </a>
 
-                <!-- Decor Packages Card -->
-                <a href="{{ route('ramadan.decor') }}" class="ramadan-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="ramadan-icon">✨</div>
-                    <h3>{{ \App\Models\SiteSetting::get('ramadan_home_decor_title', 'Decor Discount Packages') }}
-                    </h3>
-                    <p>Transform your space for the holy month. Get exclusive discounts on elegant Ramadan-themed
-                        decorations.</p>
-                    <span class="coming-soon-badge">See More</span>
-                </a>
-            </div>
         </div>
     </section>
 
@@ -1130,50 +1271,7 @@
             </div>
         </footer>
         <script src="{{ asset('js/script.js') }}?v={{ time() }}"></script>
-        <script>
-            // Ramadan Countdown Script
-            document.addEventListener('DOMContentLoaded', function () {
-                // Set the date we're counting down to
-                // Note: This is an approximation. Ramadan dates vary by moon sighting.
-                // Targeting Feb 17, 2026 for the upcoming Ramadan
-                const ramadanDate = new Date("Feb 17, 2026 00:00:00").getTime();
 
-                const countdownFunction = setInterval(function () {
-                    const now = new Date().getTime();
-                    const distance = ramadanDate - now;
-
-                    if (distance < 0) {
-                        clearInterval(countdownFunction);
-                        document.getElementById("ramadanCountdown").innerHTML = "<h3>Ramadan Mubarak!</h3>";
-                        return;
-                    }
-
-                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                    // Calculate months roughly for display purposes (optional logic, but requested)
-                    // A simple approximation: 30 days = 1 month
-                    const monthsLeft = Math.floor(days / 30);
-                    const daysLeft = days % 30;
-
-                    // Update DOM
-                    const monthsEl = document.getElementById("r-months");
-                    const daysEl = document.getElementById("r-days");
-                    const hoursEl = document.getElementById("r-hours");
-                    const minutesEl = document.getElementById("r-minutes");
-                    const secondsEl = document.getElementById("r-seconds");
-
-                    if (monthsEl) monthsEl.innerText = monthsLeft < 10 ? "0" + monthsLeft : monthsLeft;
-                    if (daysEl) daysEl.innerText = daysLeft < 10 ? "0" + daysLeft : daysLeft;
-                    if (hoursEl) hoursEl.innerText = hours < 10 ? "0" + hours : hours;
-                    if (minutesEl) minutesEl.innerText = minutes < 10 ? "0" + minutes : minutes;
-                    if (secondsEl) secondsEl.innerText = seconds < 10 ? "0" + seconds : seconds;
-
-                }, 1000);
-            });
-        </script>
 </body>
 
 </html>
