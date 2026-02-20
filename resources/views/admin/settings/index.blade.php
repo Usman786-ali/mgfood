@@ -14,7 +14,18 @@
             <div class="alert alert-danger">{{ session('error') }}</div>
         @endif
 
-        <form method="POST" action="{{ route('admin.settings.update') }}" enctype="multipart/form-data">
+        <!-- Loading Overlay -->
+        <div id="uploadLoader"
+            style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.8); z-index: 10000; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+            <div class="spinner"
+                style="width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px;">
+            </div>
+            <h3 style="color: #2980b9;">Uploading & Saving Settings...</h3>
+            <p style="color: #666;">This may take a few minutes for large videos. Please do not close or refresh the page.
+            </p>
+        </div>
+
+        <form id="settingsForm" method="POST" action="{{ route('admin.settings.update') }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -468,5 +479,20 @@
             margin-bottom: 20px;
             border: 1px solid #f5c6cb;
         }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
+    <script>
+        document.getElementById('settingsForm').addEventListener('submit', function () {
+            document.getElementById('uploadLoader').style.display = 'flex';
+        });
+    </script>
 @endpush
