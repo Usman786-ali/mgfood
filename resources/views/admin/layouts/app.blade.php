@@ -89,6 +89,11 @@
                     <span class="icon">🌙</span>
                     Ramadan Settings
                 </a>
+                <a href="{{ route('admin.reels.index') }}"
+                    class="nav-item {{ request()->routeIs('admin.reels.*') ? 'active' : '' }}">
+                    <span class="icon">🎬</span>
+                    Reels / Videos
+                </a>
                 <a href="{{ route('admin.settings.index') }}"
                     class="nav-item {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                     <i class="fas fa-cog"></i> Site Settings

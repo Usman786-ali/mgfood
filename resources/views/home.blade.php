@@ -80,6 +80,7 @@
                     <li><a href="{{ route('about') }}" class="nav-link">About</a></li>
                     <li><a href="{{ route('blog') }}" class="nav-link">Blog</a></li>
                     <li><a href="{{ route('services') }}" class="nav-link">Venues</a></li>
+
                     <li><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="nav-actions">
@@ -461,6 +462,8 @@
         </div>
     </section>
 
+    <!-- Separator Line -->
+
     <!-- Venues Section -->
     <section class="services" id="services">
         <div class="container">
@@ -592,6 +595,320 @@
 
     <!-- Separator Line -->
     <div style="height: 1px; background: linear-gradient(to right, transparent, #ddd, transparent); margin: 0;"></div>
+
+    @if(isset($reels) && $reels->count() > 0)
+        <!-- ===== Reels Section ===== -->
+        <section style="padding: 80px 0; background: #ffffff; overflow: hidden; position: relative;">
+
+            <!-- Background glow -->
+            <div
+                style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px; height:300px; background:radial-gradient(ellipse, rgba(212,168,83,0.05) 0%, transparent 70%); pointer-events:none;">
+            </div>
+
+            <style>
+                /* Reels scroll track */
+                .home-reels-wrapper {
+                    overflow: hidden;
+                    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+                    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+                }
+
+                .home-reels-track {
+                    display: flex;
+                    gap: 20px;
+                    width: max-content;
+                    padding: 10px 0;
+                    animation: homeReelsScroll 30s linear infinite;
+                }
+
+                .home-reels-track:hover {
+                    animation-play-state: paused;
+                }
+
+                @keyframes homeReelsScroll {
+                    0% {
+                        transform: translateX(0);
+                    }
+
+                    100% {
+                        transform: translateX(-50%);
+                    }
+                }
+
+                .home-reel-card {
+                    width: 190px;
+                    flex-shrink: 0;
+                    border-radius: 18px;
+                    overflow: hidden;
+                    background: #fff;
+                    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+                    cursor: pointer;
+                    position: relative;
+                    transition: transform 0.3s, box-shadow 0.3s;
+                    border: 1px solid #eee;
+                }
+
+                .home-reel-card:hover {
+                    transform: translateY(-8px) scale(1.03);
+                    box-shadow: 0 20px 50px rgba(212, 168, 83, 0.15);
+                    border-color: #D4A853;
+                }
+
+                .home-reel-frame {
+                    position: relative;
+                    padding-bottom: 177.77%;
+                    height: 0;
+                    overflow: hidden;
+                    background: #000;
+                }
+
+                .home-reel-frame iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    pointer-events: none;
+                }
+
+                .home-reel-hover {
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 55%);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    padding: 14px;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                }
+
+                .home-reel-card:hover .home-reel-hover {
+                    opacity: 1;
+                }
+
+                .home-reel-play {
+                    width: 40px;
+                    height: 40px;
+                    background: #D4A853;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 16px;
+                    margin-bottom: 8px;
+                    box-shadow: 0 4px 15px rgba(212, 168, 83, 0.5);
+                    color: #000;
+                    font-weight: 900;
+                }
+
+                .home-reel-label {
+                    color: #fff;
+                    font-size: 12px;
+                    font-weight: 600;
+                    line-height: 1.3;
+                    font-family: 'Inter', sans-serif;
+                }
+
+                /* Reel Modal */
+                #homeReelModal {
+                    display: none;
+                    position: fixed;
+                    inset: 0;
+                    z-index: 99999;
+                    background: rgba(0, 0, 0, 0.93);
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                #homeReelModal.open {
+                    display: flex;
+                }
+
+                .home-reel-modal-box {
+                    position: relative;
+                    width: min(370px, 88vw);
+                    border-radius: 20px;
+                    overflow: hidden;
+                    background: #000;
+                    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+                }
+
+                .home-reel-modal-box iframe {
+                    width: 100%;
+                    aspect-ratio: 9/16;
+                    border: none;
+                    display: block;
+                }
+
+                .home-reel-modal-close {
+                    position: absolute;
+                    top: 12px;
+                    right: 12px;
+                    width: 34px;
+                    height: 34px;
+                    background: rgba(255, 255, 255, 0.15);
+                    border: none;
+                    border-radius: 50%;
+                    color: #fff;
+                    font-size: 16px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    backdrop-filter: blur(10px);
+                    z-index: 10;
+                    transition: background 0.2s;
+                }
+
+                .home-reel-modal-close:hover {
+                    background: #D4A853;
+                    color: #000;
+                }
+            </style>
+
+            <div class="container" style="margin-bottom: 44px;">
+                <div data-aos="fade-up"
+                    style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+                    <div>
+                        <span
+                            style="display:inline-block; background:#D4A853; color:#000; padding:5px 16px; border-radius:50px; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px;">🎬
+                            Our Reels</span>
+                        <h2
+                            style="font-family:'Playfair Display',serif; font-size:clamp(26px,4vw,42px); font-weight:800; color:#1a1a2e; margin:0; line-height:1.2;">
+                            Watch Our <span style="color:#D4A853;">Event Highlights</span>
+                        </h2>
+                    </div>
+                    <a href="{{ route('reels') }}"
+                        style="display:inline-flex; align-items:center; gap:8px; background:rgba(212,168,83,0.1); border:1px solid rgba(212,168,83,0.3); color:#D4A853; padding:12px 24px; border-radius:50px; text-decoration:none; font-weight:600; font-size:14px; transition:all 0.3s;"
+                        onmouseover="this.style.background='rgba(212,168,83,0.2)'"
+                        onmouseout="this.style.background='rgba(212,168,83,0.1)'">
+                        View All Reels →
+                    </a>
+                </div>
+            </div>
+
+            <div class="home-reels-wrapper">
+                <div class="home-reels-track" id="homeReelsTrack">
+                    @foreach($reels as $reel)
+                        @php
+                            $videoUrl = ($reel->type === 'file') ? asset('storage/' . $reel->video_path) : $reel->embed_url;
+                        @endphp
+                        <div class="home-reel-card"
+                            onmouseenter="const v=this.querySelector('video'); if(v) v.play()"
+                            onmouseleave="const v=this.querySelector('video'); if(v) { v.pause(); v.currentTime = 0.1; }"
+                            onclick="openHomeReel('{{ $videoUrl }}', '{{ addslashes($reel->title) }}', '{{ $reel->type }}')">
+                            <div class="home-reel-frame">
+                                @if($reel->type === 'file')
+                                    <video class="hover-video" src="{{ $videoUrl }}#t=0.1" 
+                                        @if($reel->thumbnail) poster="{{ asset('storage/' . $reel->thumbnail) }}" @endif
+                                        muted loop playsinline preload="metadata" 
+                                        style="width:100%; height:100%; object-fit:cover;"></video>
+                                @else
+                                    <iframe src="{{ $reel->embed_url }}"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen loading="lazy"></iframe>
+                                @endif
+                            </div>
+                            <div class="home-reel-hover">
+                                <div class="home-reel-play">▶</div>
+                                <div class="home-reel-label">{{ $reel->title }}</div>
+                            </div>
+                        </div>
+                    @endforeach
+                    {{-- Duplicate set for infinite loop --}}
+                    @foreach($reels as $reel)
+                        @php
+                            $videoUrl = ($reel->type === 'file') ? asset('storage/' . $reel->video_path) : $reel->embed_url;
+                        @endphp
+                        <div class="home-reel-card"
+                            onmouseenter="const v=this.querySelector('video'); if(v) v.play()"
+                            onmouseleave="const v=this.querySelector('video'); if(v) { v.pause(); v.currentTime = 0.1; }"
+                            onclick="openHomeReel('{{ $videoUrl }}', '{{ addslashes($reel->title) }}', '{{ $reel->type }}')">
+                            <div class="home-reel-frame">
+                                @if($reel->type === 'file')
+                                    <video class="hover-video" src="{{ $videoUrl }}#t=0.1" 
+                                        @if($reel->thumbnail) poster="{{ asset('storage/' . $reel->thumbnail) }}" @endif
+                                        muted loop playsinline preload="metadata" 
+                                        style="width:100%; height:100%; object-fit:cover;"></video>
+                                @else
+                                    <iframe src="{{ $reel->embed_url }}"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen loading="lazy"></iframe>
+                                @endif
+                            </div>
+                            <div class="home-reel-hover">
+                                <div class="home-reel-play">▶</div>
+                                <div class="home-reel-label">{{ $reel->title }}</div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <!-- Reel Modal -->
+            <div id="homeReelModal" onclick="if(event.target===this) closeHomeReel()">
+                <div class="home-reel-modal-box">
+                    <button class="home-reel-modal-close" onclick="closeHomeReel()">✕</button>
+                    <!-- Player for Links (YouTube/FB) -->
+                    <iframe id="homeReelIframe" src=""
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen style="display:none; width:100%; aspect-ratio:9/16; border:none;"></iframe>
+                    <!-- Player for Uploaded Files -->
+                    <video id="homeReelVideo" controls autoplay playsinline style="width:100%; aspect-ratio:9/16; display:none; background:#000;"></video>
+                </div>
+            </div>
+            <script>
+                function openHomeReel(url, title, type) {
+                    const modal = document.getElementById('homeReelModal');
+                    const iframe = document.getElementById('homeReelIframe');
+                    const video = document.getElementById('homeReelVideo');
+
+                    if (type === 'file') {
+                        iframe.style.display = 'none';
+                        iframe.src = '';
+                        video.style.display = 'block';
+                        video.src = url;
+                        video.play();
+                    } else {
+                        let src = url;
+                        // Only add autoplay to YouTube/Vimeo if not already present
+                        if (url.includes('youtube.com') || url.includes('vimeo.com')) {
+                            src = url.includes('?') ? url + '&autoplay=1' : url + '?autoplay=1';
+                        }
+                        video.style.display = 'none';
+                        video.src = '';
+                        iframe.style.display = 'block';
+                        iframe.src = src;
+                    }
+
+                    modal.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeHomeReel() {
+                    const modal = document.getElementById('homeReelModal');
+                    const iframe = document.getElementById('homeReelIframe');
+                    const video = document.getElementById('homeReelVideo');
+
+                    iframe.src = '';
+                    video.src = '';
+                    video.pause();
+                    modal.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+                document.addEventListener('keydown', e => { if (e.key === 'Escape') closeHomeReel(); });
+                // Adjust speed by count
+                const homeReelCount = {{ $reels->count() }};
+                document.getElementById('homeReelsTrack').style.animationDuration = Math.max(20, homeReelCount * 8) + 's';
+            </script>
+        </section>
+
+        <!-- Separator Line -->
+        <div style="height: 1px; background: linear-gradient(to right, transparent, #ddd, transparent); margin: 0;"></div>
+    @endif
+
 
     <!-- Wedding Feature Section -->
     <section class="wedding-feature">

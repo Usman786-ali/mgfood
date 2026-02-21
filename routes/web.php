@@ -16,9 +16,11 @@ Route::get('/', function () {
         ->ordered()
         ->get();
 
+    $reels = App\Models\Reel::active()->ordered()->get();
+
     $siteSettings = App\Models\SiteSetting::all()->pluck('value', 'key')->toArray();
 
-    return view('home', compact('clients', 'portfolioItems', 'siteSettings', 'reviews'));
+    return view('home', compact('clients', 'portfolioItems', 'siteSettings', 'reviews', 'reels'));
 })->name('home');
 
 Route::get('/portfolio', function () {
@@ -61,6 +63,11 @@ Route::post('/contact', [App\Http\Controllers\ContactController::class, 'submit'
 Route::get('/test-event-types', function () {
     return view('test-event-types');
 });
+
+Route::get('/reels', function () {
+    $reels = App\Models\Reel::active()->ordered()->get();
+    return view('reels', compact('reels'));
+})->name('reels');
 
 Route::get('/blog', function () {
     $blogs = App\Models\Blog::where('is_published', true)
@@ -146,7 +153,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/ramadan', [App\Http\Controllers\Admin\RamadanController::class, 'index'])->name('ramadan.index');
         Route::put('/ramadan', [App\Http\Controllers\Admin\RamadanController::class, 'update'])->name('ramadan.update');
 
+        // Reels Management
+        Route::resource('reels', App\Http\Controllers\Admin\ReelController::class);
+
         // Google Reviews Management
         Route::resource('reviews', App\Http\Controllers\Admin\GoogleReviewController::class);
     });
 });
+
