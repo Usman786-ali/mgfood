@@ -584,8 +584,8 @@
                 gap: 15px;
             }
             .btn-whatsapp-quote {
-                background: #25D366;
-                color: #fff;
+                background: linear-gradient(90deg, #D4A853 0%, #b38936 100%);
+                color: #000;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -596,17 +596,17 @@
                 font-weight: 700;
                 font-size: 15px;
                 transition: all 0.3s;
-                box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+                box-shadow: 0 10px 25px rgba(212, 168, 83, 0.3);
                 border: none;
                 cursor: pointer;
             }
             .btn-whatsapp-quote:hover {
-                background: #20ba56;
+                background: linear-gradient(90deg, #b38936 0%, #D4A853 100%);
                 transform: translateY(-2px);
-                box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+                box-shadow: 0 15px 30px rgba(212, 168, 83, 0.5);
             }
             .btn-whatsapp-quote svg {
-                fill: #fff;
+                fill: #000;
             }
             .whatsapp-note {
                 font-size: 11px;
@@ -949,7 +949,7 @@
                     const decorString = chosenDecor.length > 0 ? chosenDecor.join(', ') : 'None';
                     const msg = `Hello MG Food & Event Planners! I estimated my event budget on your website:\n\n• Event Type: ${activeType}\n• Guest Count: ${guestCount} Guests\n• Selected Package: ${packageName} (PKR ${formatNumber(packageCost)})\n• Chosen Add-ons: ${decorString} (PKR ${formatNumber(decorCost)})\n\nTotal Estimated Budget: PKR ${formatNumber(total)}\n\nI would like to discuss and book this setup. Please contact me back. Thank you!`;
 
-                    btnWhatsapp.href = `https://wa.me/${adminWhatsapp}?text=` + encodeURIComponent(msg);
+                    btnWhatsapp.href = `https://wa.link/w6svw6?text=` + encodeURIComponent(msg);
                 }
 
                 // Initial load
