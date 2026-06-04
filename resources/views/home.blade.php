@@ -212,61 +212,59 @@
 
     <!-- Separator Line -->
     <div style="height: 1px; background: linear-gradient(to right, transparent, #e0e0e0, transparent); margin: 0;">
-    </div>    <!-- Signature Event & Catering Packages Showcase -->
-    <section class="event-packages-section">
+    </div>
+
+    <!-- Interactive Event Cost Planner Section -->
+    <section class="event-estimator-section">
         <style>
-            /* ============================================
-               PACKAGES SECTION — WHITE & GOLD LUXURY THEME
-               ============================================ */
-            .event-packages-section {
+            .event-estimator-section {
                 padding: 100px 0;
                 background: #ffffff;
                 position: relative;
                 overflow: hidden;
             }
-            /* Subtle decorative golden glow orbs */
-            .event-packages-section::before {
+            .event-estimator-section::before {
                 content: '';
                 position: absolute;
-                top: -150px;
-                left: -150px;
+                top: -200px;
+                right: -200px;
                 width: 500px;
                 height: 500px;
-                background: radial-gradient(circle, rgba(212,168,83,0.06) 0%, transparent 70%);
+                background: radial-gradient(circle, rgba(212, 168, 83, 0.12) 0%, transparent 70%);
+                border-radius: 50%;
                 pointer-events: none;
             }
-            .event-packages-section::after {
+            .event-estimator-section::after {
                 content: '';
                 position: absolute;
-                bottom: -150px;
-                right: -150px;
+                bottom: -200px;
+                left: -200px;
                 width: 500px;
                 height: 500px;
-                background: radial-gradient(circle, rgba(212,168,83,0.06) 0%, transparent 70%);
+                background: radial-gradient(circle, rgba(212, 168, 83, 0.08) 0%, transparent 70%);
+                border-radius: 50%;
                 pointer-events: none;
             }
-            .packages-header {
+            .estimator-header {
                 text-align: center;
-                margin-bottom: 50px;
-                position: relative;
-                z-index: 1;
+                margin-bottom: 60px;
             }
-            .packages-badge {
+            .estimator-badge {
                 display: inline-block;
-                background: rgba(212, 168, 83, 0.1);
-                border: 1px solid rgba(212, 168, 83, 0.35);
-                color: #B8941F;
-                padding: 7px 20px;
+                background: rgba(212, 168, 83, 0.15);
+                border: 1px solid rgba(212, 168, 83, 0.4);
+                color: #D4A853;
+                padding: 6px 18px;
                 border-radius: 50px;
-                font-size: 12px;
+                font-size: 13px;
                 font-weight: 700;
-                letter-spacing: 2px;
+                letter-spacing: 1px;
                 text-transform: uppercase;
-                margin-bottom: 18px;
+                margin-bottom: 15px;
             }
-            .packages-title {
+            .estimator-title {
                 font-family: 'Playfair Display', serif;
-                font-size: 44px;
+                font-size: 42px;
                 font-weight: 700;
                 color: #1a1a2e;
                 margin-bottom: 15px;
@@ -274,457 +272,690 @@
             .highlight-gold {
                 color: #D4A853;
             }
-            .packages-desc {
+            .estimator-desc {
                 font-size: 16px;
-                color: #666;
+                color: #6B7280;
                 max-width: 600px;
                 margin: 0 auto;
-                line-height: 1.8;
             }
-
-            /* Tabs switcher styling */
-            .packages-tabs-wrapper {
-                display: flex;
-                justify-content: center;
-                margin-bottom: 60px;
-                position: relative;
-                z-index: 1;
-            }
-            .packages-tabs {
-                display: flex;
-                background: #f5f5f5;
-                border: 1px solid rgba(0,0,0,0.06);
-                padding: 6px;
-                border-radius: 50px;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-            }
-            .tab-btn {
-                background: transparent;
-                border: none;
-                padding: 12px 32px;
-                font-size: 14px;
-                font-weight: 700;
-                color: #777;
-                border-radius: 50px;
-                cursor: pointer;
-                transition: all 0.35s ease;
-                outline: none;
-                letter-spacing: 0.5px;
-            }
-            .tab-btn.active {
-                background: #000000;
-                color: #ffffff;
-                box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-            }
-            .tab-btn:hover:not(.active) {
-                color: #1a1a2e;
-            }
-
-            /* Packages grid layout */
-            .packages-grid {
+            .estimator-grid {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 28px;
+                grid-template-columns: 1.6fr 1fr;
+                gap: 40px;
+                align-items: stretch;
                 max-width: 1200px;
                 margin: 0 auto;
-                align-items: stretch;
+            }
+            .estimator-card {
+                background: #f9f9fb;
+                border: 1px solid #e8e8f0;
+                border-radius: 24px;
+                padding: 40px;
+                color: #1a1a2e;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            }
+            .estimator-form {
+                display: flex;
+                flex-direction: column;
+                gap: 35px;
+            }
+            .estimator-group {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .group-label {
+                font-size: 16px;
+                font-weight: 600;
+                color: #1a1a2e;
+                letter-spacing: 0.5px;
+            }
+            .group-label span {
+                color: #D4A853;
+                font-size: 18px;
+                font-weight: 700;
+            }
+            .event-type-cards {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+            .type-card {
+                background: #ffffff;
+                border: 1.5px solid #e0e0e8;
+                border-radius: 16px;
+                padding: 20px;
+                text-align: center;
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .type-card:hover {
+                transform: translateY(-3px);
+                border-color: #D4A853;
+                background: rgba(212, 168, 83, 0.04);
+                box-shadow: 0 6px 20px rgba(212,168,83,0.1);
+            }
+            .type-card.active {
+                background: rgba(212, 168, 83, 0.1);
+                border-color: #D4A853;
+                box-shadow: 0 10px 25px rgba(212, 168, 83, 0.15);
+            }
+            .card-icon {
+                font-size: 32px;
+                display: block;
+                margin-bottom: 8px;
+            }
+            .card-label {
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                color: #1a1a2e;
+            }
+            .slider-container {
                 position: relative;
-                z-index: 1;
+                padding: 10px 0;
+            }
+            .custom-slider {
+                -webkit-appearance: none;
+                width: 100%;
+                height: 6px;
+                border-radius: 5px;
+                background: #e0e0e8;
+                outline: none;
+                margin: 15px 0;
+            }
+            .custom-slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                background: #D4A853;
+                cursor: pointer;
+                box-shadow: 0 0 15px rgba(212, 168, 83, 0.6);
+                transition: transform 0.1s;
+            }
+            .custom-slider::-webkit-slider-thumb:hover {
+                transform: scale(1.2);
+            }
+            .slider-labels {
+                display: flex;
+                justify-content: space-between;
+                font-size: 12px;
+                color: #9ca3af;
+            }
+            .catering-options {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .catering-card {
+                background: #ffffff;
+                border: 1.5px solid #e0e0e8;
+                border-radius: 16px;
+                padding: 20px;
+                cursor: pointer;
+                transition: all 0.3s;
+                display: block;
+            }
+            .catering-card:hover {
+                border-color: #D4A853;
+                background: rgba(212, 168, 83, 0.03);
+            }
+            .catering-card.active {
+                background: rgba(212, 168, 83, 0.08);
+                border-color: #D4A853;
+                box-shadow: 0 5px 20px rgba(212, 168, 83, 0.1);
+            }
+            .c-card-content {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+            .c-title {
+                font-size: 16px;
+                font-weight: 700;
+                color: #1a1a2e;
+            }
+            .catering-card.active .c-title {
+                color: #D4A853;
+            }
+            .c-desc {
+                font-size: 12px;
+                color: #6B7280;
+            }
+            .c-price {
+                font-size: 16px;
+                font-weight: 700;
+                color: #D4A853;
+                margin-top: 5px;
+            }
+            .c-price small {
+                color: #9ca3af;
+                font-size: 12px;
+                font-weight: 400;
+            }
+            .decor-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .decor-item {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                background: #ffffff;
+                border: 1.5px solid #e0e0e8;
+                border-radius: 12px;
+                padding: 15px;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+            .decor-item:hover {
+                border-color: #D4A853;
+                background: rgba(212, 168, 83, 0.04);
+            }
+            .decor-item input {
+                display: none;
+            }
+            .decor-box {
+                width: 20px;
+                height: 20px;
+                border: 2px solid #d1d5db;
+                border-radius: 5px;
+                position: relative;
+                display: inline-block;
+                flex-shrink: 0;
+                transition: all 0.2s;
+                background: transparent;
+            }
+            .decor-item input:checked + .decor-box {
+                background: #D4A853;
+                border-color: #D4A853;
+            }
+            .decor-item input:checked + .decor-box::after {
+                content: '✓';
+                color: #000;
+                font-size: 12px;
+                font-weight: 900;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .decor-name {
+                font-size: 13px;
+                font-weight: 500;
+                color: #374151;
+            }
+            .decor-item input:checked ~ .decor-name {
+                color: #D4A853;
+                font-weight: 600;
             }
 
-            /* --- Regular Card (Black) --- */
-            .package-card {
+            /* Summary Card */
+            .estimator-summary {
                 background: #000000;
-                border: 1px solid rgba(212,168,83,0.15);
-                border-radius: 24px;
-                padding: 40px 30px;
+                border: 1px solid rgba(212, 168, 83, 0.3);
+                box-shadow: 0 20px 50px rgba(26, 26, 46, 0.2);
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                position: relative;
-                box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             }
-            .package-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 25px 55px rgba(0,0,0,0.25);
-                border-color: rgba(212,168,83,0.4);
+            .summary-top {
+                text-align: center;
+                border-bottom: 1px solid rgba(212, 168, 83, 0.2);
+                padding-bottom: 30px;
+                margin-bottom: 30px;
             }
-
-            /* --- Popular / Featured Card (Black + Gold Border) --- */
-            .package-card.popular-card {
-                background: linear-gradient(145deg, #000000 0%, #111111 50%, #000000 100%);
-                border: 2px solid #D4A853;
-                color: #ffffff;
-                box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 0 30px rgba(212,168,83,0.08);
-                transform: scale(1.03);
-            }
-            .package-card.popular-card:hover {
-                box-shadow: 0 30px 70px rgba(0,0,0,0.35), 0 0 45px rgba(212,168,83,0.12);
-                transform: scale(1.03) translateY(-10px);
-            }
-            .popular-badge {
-                position: absolute;
-                top: -16px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: linear-gradient(90deg, #D4A853 0%, #e8be6a 50%, #b38936 100%);
-                color: #000;
-                padding: 6px 22px;
-                border-radius: 50px;
-                font-size: 11px;
-                font-weight: 800;
+            .summary-top h3 {
+                font-size: 14px;
+                font-weight: 600;
+                color: rgba(255, 255, 255, 0.7);
                 text-transform: uppercase;
                 letter-spacing: 1.5px;
-                box-shadow: 0 5px 20px rgba(212,168,83,0.4);
-                white-space: nowrap;
+                margin-bottom: 15px;
             }
-
-            /* Card top section */
-            .p-card-top {
-                text-align: center;
-                border-bottom: 1px solid rgba(255,255,255,0.08);
-                padding-bottom: 25px;
-                margin-bottom: 25px;
-            }
-            .popular-card .p-card-top {
-                border-bottom: 1px solid rgba(212,168,83,0.2);
-            }
-            .p-icon {
-                font-size: 38px;
-                display: block;
-                margin-bottom: 14px;
-            }
-            .p-name {
-                font-size: 20px;
-                font-weight: 700;
-                color: #ffffff;
-                margin-bottom: 12px;
-                letter-spacing: 0.3px;
-            }
-            .popular-card .p-name {
-                color: #D4A853;
-            }
-            .p-price-box {
+            .price-display {
                 display: flex;
                 justify-content: center;
                 align-items: baseline;
-                gap: 4px;
+                gap: 8px;
+                margin-bottom: 15px;
             }
-            .p-currency {
-                font-size: 16px;
+            .price-display .currency {
+                font-size: 20px;
                 font-weight: 700;
                 color: #D4A853;
             }
-            .popular-card .p-currency {
-                color: #D4A853;
-            }
-            .p-price {
-                font-size: 38px;
+            .price-display .total-amount {
+                font-size: 44px;
                 font-weight: 800;
-                color: #ffffff;
+                color: #fff;
+                letter-spacing: -1px;
+                text-shadow: 0 4px 20px rgba(212, 168, 83, 0.2);
             }
-            .popular-card .p-price {
-                color: #ffffff;
-            }
-            .p-unit {
+            .package-badge {
+                display: inline-block;
+                background: linear-gradient(90deg, #D4A853 0%, #b38936 100%);
+                color: #000;
+                padding: 6px 20px;
+                border-radius: 50px;
                 font-size: 13px;
-                color: rgba(255,255,255,0.45);
+                font-weight: 700;
+                letter-spacing: 0.5px;
+                box-shadow: 0 5px 15px rgba(212, 168, 83, 0.3);
             }
-            .popular-card .p-unit {
-                color: rgba(212,168,83,0.7);
+            .summary-details {
+                margin-bottom: 40px;
             }
-
-            /* Features list */
-            .p-features-list {
+            .summary-details h4 {
+                font-size: 14px;
+                color: #fff;
+                margin-bottom: 20px;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+            .breakdown-list {
                 list-style: none;
                 padding: 0;
-                margin: 0 0 35px 0;
+                margin: 0;
                 display: flex;
                 flex-direction: column;
-                gap: 13px;
+                gap: 15px;
             }
-            .p-features-list li {
-                font-size: 14px;
+            .breakdown-list li {
                 display: flex;
-                align-items: flex-start;
-                gap: 10px;
-                color: rgba(255,255,255,0.6);
-                line-height: 1.5;
-                text-align: left;
+                justify-content: space-between;
+                font-size: 14px;
+                border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+                padding-bottom: 10px;
             }
-            .popular-card .p-features-list li {
-                color: rgba(255,255,255,0.75);
+            .breakdown-list li span {
+                color: rgba(255, 255, 255, 0.6);
             }
-            .p-check {
-                color: #D4A853;
-                font-weight: 900;
-                flex-shrink: 0;
-                font-size: 15px;
+            .breakdown-list li strong {
+                color: #fff;
             }
-            .popular-card .p-check {
-                color: #D4A853;
+            .summary-actions {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
             }
-
-            /* Book button */
-            .btn-p-book {
+            .btn-whatsapp-quote {
+                background: #25D366;
+                color: #fff;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                gap: 8px;
-                background: transparent;
-                color: #D4A853;
-                border: 1.5px solid rgba(212,168,83,0.5);
-                padding: 14px 24px;
+                gap: 10px;
+                padding: 16px 30px;
                 border-radius: 50px;
                 text-decoration: none;
                 font-weight: 700;
-                font-size: 14px;
-                transition: all 0.3s ease;
-                margin-top: auto;
+                font-size: 15px;
+                transition: all 0.3s;
+                box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+                border: none;
                 cursor: pointer;
-                letter-spacing: 0.5px;
             }
-            .btn-p-book:hover {
-                background: linear-gradient(135deg, #D4A853, #B8941F);
-                color: #000000;
-                border-color: transparent;
-                box-shadow: 0 8px 25px rgba(212,168,83,0.35);
+            .btn-whatsapp-quote:hover {
+                background: #20ba56;
                 transform: translateY(-2px);
+                box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
             }
-            .popular-card .btn-p-book {
-                background: linear-gradient(135deg, #D4A853 0%, #e8be6a 50%, #b38936 100%);
-                color: #000000;
-                border-color: transparent;
-                box-shadow: 0 6px 20px rgba(212,168,83,0.35);
+            .btn-whatsapp-quote svg {
+                fill: #fff;
             }
-            .popular-card .btn-p-book:hover {
-                background: #ffffff;
-                color: #000000;
-                box-shadow: 0 8px 30px rgba(255,255,255,0.15);
-            }
-            .btn-p-book svg {
-                fill: currentColor;
-
-            }
-
-            /* Tab animation */
-            .tab-content {
-                display: none;
-                opacity: 0;
-                transition: opacity 0.5s ease-in-out;
-            }
-            .tab-content.active {
-                display: block;
-                opacity: 1;
+            .whatsapp-note {
+                font-size: 11px;
+                color: rgba(255, 255, 255, 0.5);
+                text-align: center;
+                line-height: 1.4;
             }
 
             @media (max-width: 1024px) {
-                .packages-grid {
+                .estimator-grid {
                     grid-template-columns: 1fr;
-                    max-width: 500px;
-                    gap: 40px;
                 }
-                .package-card {
-                    padding: 35px 25px;
+            }
+            @media (max-width: 600px) {
+                .event-type-cards {
+                    grid-template-columns: 1fr;
+                }
+                .decor-grid {
+                    grid-template-columns: 1fr;
+                }
+                .price-display .total-amount {
+                    font-size: 34px;
+                }
+                .estimator-card {
+                    padding: 25px;
                 }
             }
         </style>
 
         <div class="container">
-            <div class="packages-header" data-aos="fade-up">
-                <span class="packages-badge">💎 Luxury & Taste</span>
-                <h2 class="packages-title">Our Signature <span class="highlight-gold">Event Packages</span></h2>
-                <p class="packages-desc">Carefully curated catering and decoration packages tailored to make your celebrations truly majestic.</p>
+            <div class="estimator-header" data-aos="fade-up">
+                <span class="estimator-badge">✨ Interactive Planner</span>
+                <h2 class="estimator-title">Dream Event <span class="highlight-gold">Budget Estimator</span></h2>
+                <p class="estimator-desc">Plan your special day, choose premium services, and get an instant estimated cost in real-time.</p>
             </div>
+            
+            <div class="estimator-grid" data-aos="zoom-in">
+                <!-- Left: Interactive Selections -->
+                <div class="estimator-card estimator-form">
+                    <!-- Event Type Select -->
+                    <div class="estimator-group">
+                        <label class="group-label">1. Select Event Type</label>
+                        <div class="event-type-cards">
+                            <div class="type-card active" data-type="Decor" data-base="150000">
+                                <span class="card-icon">✨</span>
+                                <span class="card-label">Decor</span>
+                            </div>
+                            <div class="type-card" data-type="Food" data-base="200000">
+                                <span class="card-icon">🍽️</span>
+                                <span class="card-label">Food</span>
+                            </div>
+                            <div class="type-card" data-type="Venue" data-base="100000">
+                                <span class="card-icon">🏛️</span>
+                                <span class="card-label">Venue</span>
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- Tab Switcher -->
-            <div class="packages-tabs-wrapper" data-aos="fade-up">
-                <div class="packages-tabs">
-                    <button class="tab-btn active" onclick="switchTab(event, 'decor-packages')">Decor & Themes</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'catering-packages')">Catering & Menus</button>
+                    <!-- Guest Count Slider -->
+                    <div class="estimator-group">
+                        <label class="group-label" for="guest-range">2. Total Guests: <span id="guest-val">200</span> Guests</label>
+                        <div class="slider-container">
+                            <input type="range" id="guest-range" min="50" max="1000" step="50" value="200" class="custom-slider">
+                            <div class="slider-labels">
+                                <span>50</span>
+                                <span>500</span>
+                                <span>1000+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Packages Section -->
+                    <div class="estimator-group">
+                        <label class="group-label" id="package-section-title">3. Select Package</label>
+                        <div class="catering-options">
+                            <label class="catering-card active" id="pkg-card-0">
+                                <input type="radio" name="catering" value="basic" checked style="display:none;">
+                                <div class="c-card-content">
+                                    <span class="c-title" id="pkg-title-0">Basic Decor</span>
+                                    <span class="c-desc" id="pkg-desc-0">Standard stage, lighting, and seating</span>
+                                    <span class="c-price" id="pkg-price-0">PKR 50,000 <small id="pkg-unit-0">(Fixed)</small></span>
+                                </div>
+                            </label>
+                            <label class="catering-card" id="pkg-card-1">
+                                <input type="radio" name="catering" value="premium" style="display:none;">
+                                <div class="c-card-content">
+                                    <span class="c-title" id="pkg-title-1">Premium Decor</span>
+                                    <span class="c-desc" id="pkg-desc-1">Floral stage, imported lights, lounge seating</span>
+                                    <span class="c-price" id="pkg-price-1">PKR 150,000 <small id="pkg-unit-1">(Fixed)</small></span>
+                                </div>
+                            </label>
+                            <label class="catering-card" id="pkg-card-2">
+                                <input type="radio" name="catering" value="luxury" style="display:none;">
+                                <div class="c-card-content">
+                                    <span class="c-title" id="pkg-title-2">Luxury Decor</span>
+                                    <span class="c-desc" id="pkg-desc-2">Royal theme, chandeliers, complete marquee decor</span>
+                                    <span class="c-price" id="pkg-price-2">PKR 300,000 <small id="pkg-unit-2">(Fixed)</small></span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Decor Options -->
+                    <div class="estimator-group">
+                        <label class="group-label">4. Add-on Premium Decor & Services</label>
+                        <div class="decor-grid">
+                            <label class="decor-item">
+                                <input type="checkbox" id="decor-stage" data-price="80000" checked>
+                                <span class="decor-box"></span>
+                                <span class="decor-name">Stage & Backdrop Decor</span>
+                            </label>
+                            <label class="decor-item">
+                                <input type="checkbox" id="decor-flowers" data-price="60000">
+                                <span class="decor-box"></span>
+                                <span class="decor-name">Premium Imported Floral Setup</span>
+                            </label>
+                            <label class="decor-item">
+                                <input type="checkbox" id="decor-sound" data-price="35000">
+                                <span class="decor-box"></span>
+                                <span class="decor-name">Professional Sound & DJ Setup</span>
+                            </label>
+                            <label class="decor-item">
+                                <input type="checkbox" id="decor-entrance" data-price="25000">
+                                <span class="decor-box"></span>
+                                <span class="decor-name">Grand Entrance Royal Walkway</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Tab 1: Decor & Themes -->
-            <div id="decor-packages" class="tab-content active" data-aos="fade-up">
-                <div class="packages-grid">
-                    <!-- Silver Elegance -->
-                    <div class="package-card">
-                        <div class="p-card-top">
-                            <span class="p-icon">🌸</span>
-                            <h3 class="p-name">Silver Elegance</h3>
-                            <div class="p-price-box">
-                                <span class="p-currency">PKR</span>
-                                <span class="p-price">150,000</span>
-                                <span class="p-unit">/ event</span>
-                            </div>
+                <!-- Right: Dynamic Results Box -->
+                <div class="estimator-card estimator-summary">
+                    <div class="summary-top">
+                        <h3>Estimated Cost</h3>
+                        <div class="price-display">
+                            <span class="currency">PKR</span>
+                            <span class="total-amount" id="total-amount">0</span>
                         </div>
-                        <ul class="p-features-list">
-                            <li><span class="p-check">✓</span> <strong>Standard 24x10 ft</strong> Stage & Backdrop Setup</li>
-                            <li><span class="p-check">✓</span> Beautiful Local Fresh Flowers (Rose & Marigold)</li>
-                            <li><span class="p-check">✓</span> Ambient Fairy Lighting & Standard Spotlights</li>
-                            <li><span class="p-check">✓</span> Classic Entrance Gateway Decor</li>
-                            <li><span class="p-check">✓</span> Standard Table Covers & Seat Bows (up to 200 Guests)</li>
-                            <li><span class="p-check">✓</span> Standard Sound System & Mic</li>
-                        </ul>
-                        @php $waNum = $siteSettings['contact_whatsapp'] ?? '923008849180'; @endphp
-                        <a href="https://wa.me/{{ $waNum }}?text={{ urlencode('Hi MG Food & Event Planners! I am interested in booking the Silver Elegance Decor Package (PKR 150,000). Please share more details and availability.') }}" target="_blank" class="btn-p-book">
-                            Book Package
-                        </a>
+                        <div class="package-badge" id="package-badge">Standard Plan</div>
                     </div>
 
-                    <!-- Gold Royal -->
-                    <div class="package-card popular-card">
-                        <div class="popular-badge">Best Seller</div>
-                        <div class="p-card-top">
-                            <span class="p-icon">👑</span>
-                            <h3 class="p-name">Gold Royal Theme</h3>
-                            <div class="p-price-box">
-                                <span class="p-currency">PKR</span>
-                                <span class="p-price">320,000</span>
-                                <span class="p-unit">/ event</span>
-                            </div>
-                        </div>
-                        <ul class="p-features-list">
-                            <li><span class="p-check">✓</span> <strong>Grand 32x12 ft</strong> Royal Stage & Floral Wall</li>
-                            <li><span class="p-check">✓</span> Premium Imported Fresh Flowers (Roses, Lilies, Carnations)</li>
-                            <li><span class="p-check">✓</span> Interactive Moving Heads & LED Theme Up-lighting</li>
-                            <li><span class="p-check">✓</span> Grand Red Carpet & Golden Pillars Entrance Walkway</li>
-                            <li><span class="p-check">✓</span> Luxury Table Centerpieces & Decorated VIP Chairs</li>
-                            <li><span class="p-check">✓</span> Professional Sound System & DJ Setup</li>
-                            <li><span class="p-check">✓</span> Custom Media Wall / Photobooth Setup</li>
+                    <div class="summary-details">
+                        <h4>Estimator Details</h4>
+                        <ul class="breakdown-list">
+                            <li>
+                                <span>Event Base:</span>
+                                <strong id="sum-event">Decor</strong>
+                            </li>
+                            <li>
+                                <span>Total Guests:</span>
+                                <strong id="sum-guests">200</strong>
+                            </li>
+                            <li>
+                                <span>Package Selection:</span>
+                                <strong id="sum-catering">PKR 0</strong>
+                            </li>
+                            <li>
+                                <span>Add-on Decor Cost:</span>
+                                <strong id="sum-decor">PKR 80,000</strong>
+                            </li>
                         </ul>
-                        <a href="https://wa.me/{{ $waNum }}?text={{ urlencode('Hi MG Food & Event Planners! I am interested in booking the Gold Royal Theme Decor Package (PKR 320,000). Please share more details and availability.') }}" target="_blank" class="btn-p-book">
-                            Book Package
-                        </a>
                     </div>
 
-                    <!-- Imperial Castle -->
-                    <div class="package-card">
-                        <div class="p-card-top">
-                            <span class="p-icon">🏛️</span>
-                            <h3 class="p-name">Imperial Castle</h3>
-                            <div class="p-price-box">
-                                <span class="p-currency">PKR</span>
-                                <span class="p-price">650,000</span>
-                                <span class="p-unit">/ event</span>
-                            </div>
-                        </div>
-                        <ul class="p-features-list">
-                            <li><span class="p-check">✓</span> <strong>Luxury 40x16 ft</strong> Castle theme structure backdrop</li>
-                            <li><span class="p-check">✓</span> Extensive Exotic Floral cascade (Hydrangeas & Orchids)</li>
-                            <li><span class="p-check">✓</span> Heavy Mist machines, Sharpy spotlights, Concert Trussing</li>
-                            <li><span class="p-check">✓</span> Majestic Tunnel Entrance Walkway Setup</li>
-                            <li><span class="p-check">✓</span> Luxury custom tablecloths & fresh floral cascades per guest table</li>
-                            <li><span class="p-check">✓</span> Complete venue thematic mapping & layout</li>
-                        </ul>
-                        <a href="https://wa.me/{{ $waNum }}?text={{ urlencode('Hi MG Food & Event Planners! I am interested in booking the Imperial Castle Decor Package (PKR 650,000). Please share more details and availability.') }}" target="_blank" class="btn-p-book">
-                            Book Package
+                    <div class="summary-actions">
+                        @php
+                            $whatsappNumber = '923001789788';
+                        @endphp
+                        <a id="btn-whatsapp-quote" href="#" target="_blank" class="btn btn-whatsapp-quote">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                            </svg>
+                            Confirm via WhatsApp
                         </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tab 2: Catering & Menus -->
-            <div id="catering-packages" class="tab-content" data-aos="fade-up">
-                <div class="packages-grid">
-                    <!-- Traditional Feast -->
-                    <div class="package-card">
-                        <div class="p-card-top">
-                            <span class="p-icon">🍽️</span>
-                            <h3 class="p-name">Traditional Feast</h3>
-                            <div class="p-price-box">
-                                <span class="p-currency">PKR</span>
-                                <span class="p-price">1,600</span>
-                                <span class="p-unit">/ head</span>
-                            </div>
-                        </div>
-                        <ul class="p-features-list">
-                            <li><span class="p-check">✓</span> Premium Basmati Chicken Biryani</li>
-                            <li><span class="p-check">✓</span> Rich Chicken Qurma / Karahi</li>
-                            <li><span class="p-check">✓</span> Hot Fresh Tandoori Roti & Roghni Naan</li>
-                            <li><span class="p-check">✓</span> Shahi Kheer / Double Ka Meetha</li>
-                            <li><span class="p-check">✓</span> Raita, Salad & Fresh Mint Chutney</li>
-                            <li><span class="p-check">✓</span> Mineral Water & Assorted Soft Drinks</li>
-                        </ul>
-                        <a href="https://wa.me/{{ $waNum }}?text={{ urlencode('Hi MG Food & Event Planners! I am interested in booking the Traditional Feast Catering Package (PKR 1,600 / head). Please share more details and availability.') }}" target="_blank" class="btn-p-book">
-                            Book Package
-                        </a>
-                    </div>
-
-                    <!-- Deewan-e-Khas Buffet -->
-                    <div class="package-card popular-card">
-                        <div class="popular-badge">Most Popular</div>
-                        <div class="p-card-top">
-                            <span class="p-icon">🍲</span>
-                            <h3 class="p-name">Deewan-e-Khas Buffet</h3>
-                            <div class="p-price-box">
-                                <span class="p-currency">PKR</span>
-                                <span class="p-price">2,900</span>
-                                <span class="p-unit">/ head</span>
-                            </div>
-                        </div>
-                        <ul class="p-features-list">
-                            <li><span class="p-check">✓</span> Mutton Biryani / Special Kabuli Pulao</li>
-                            <li><span class="p-check">✓</span> Chicken White Karahi / Handi</li>
-                            <li><span class="p-check">✓</span> Live BBQ Counter (Chicken Boti, Seekh Kabab)</li>
-                            <li><span class="p-check">✓</span> Live Balochi Chicken Sajji Counter</li>
-                            <li><span class="p-check">✓</span> Assorted Breads (Roghni, Garlic, Plain)</li>
-                            <li><span class="p-check">✓</span> Gulab Jamun with Premium Vanilla Ice Cream</li>
-                            <li><span class="p-check">✓</span> Fresh Mint Margaritas, Mocktails & Soft Drinks</li>
-                        </ul>
-                        <a href="https://wa.me/{{ $waNum }}?text={{ urlencode('Hi MG Food & Event Planners! I am interested in booking the Deewan-e-Khas Buffet Catering Package (PKR 2,900 / head). Please share more details and availability.') }}" target="_blank" class="btn-p-book">
-                            Book Package
-                        </a>
-                    </div>
-
-                    <!-- Royal Shehnai Feast -->
-                    <div class="package-card">
-                        <div class="p-card-top">
-                            <span class="p-icon">👑</span>
-                            <h3 class="p-name">Royal Shehnai Feast</h3>
-                            <div class="p-price-box">
-                                <span class="p-currency">PKR</span>
-                                <span class="p-price">4,800</span>
-                                <span class="p-unit">/ head</span>
-                            </div>
-                        </div>
-                        <ul class="p-features-list">
-                            <li><span class="p-check">✓</span> Premium Mutton Kunna / Kabuli Pulao</li>
-                            <li><span class="p-check">✓</span> Live BBQ: Mutton Chops, Fish Tikka, Reshmi Kabab</li>
-                            <li><span class="p-check">✓</span> Live Wok Station: Fettuccine Alfredo & Manchurian</li>
-                            <li><span class="p-check">✓</span> Gourmet Fresh Naan & Rotis Basket</li>
-                            <li><span class="p-check">✓</span> Hot Gulab Jamun, Gajar Halwa, & Premium Kulfi</li>
-                            <li><span class="p-check">✓</span> Fresh Mocktails, Mint Margaritas, Kashmiri Chai</li>
-                            <li><span class="p-check">✓</span> Uniformed Butler Waiter Service & Royal Cutlery</li>
-                        </ul>
-                        <a href="https://wa.me/{{ $waNum }}?text={{ urlencode('Hi MG Food & Event Planners! I am interested in booking the Royal Shehnai Feast Catering Package (PKR 4,800 / head). Please share more details and availability.') }}" target="_blank" class="btn-p-book">
-                            Book Package
-                        </a>
+                        <small class="whatsapp-note">Clicking will send your selected choices to our team dynamically.</small>
                     </div>
                 </div>
             </div>
         </div>
 
         <script>
-            function switchTab(evt, tabId) {
-                // Get all elements with class="tab-content" and hide them
-                const tabContents = document.querySelectorAll(".tab-content");
-                tabContents.forEach(content => {
-                    content.classList.remove("active");
+            document.addEventListener('DOMContentLoaded', function() {
+                const typeCards = document.querySelectorAll('.type-card');
+                const guestRange = document.getElementById('guest-range');
+                const guestVal = document.getElementById('guest-val');
+                const cateringCards = document.querySelectorAll('.catering-card');
+                const decorCheckboxes = document.querySelectorAll('.decor-grid input[type="checkbox"]');
+                
+                const sumEvent = document.getElementById('sum-event');
+                const sumGuests = document.getElementById('sum-guests');
+                const sumCatering = document.getElementById('sum-catering');
+                const sumDecor = document.getElementById('sum-decor');
+                const totalAmount = document.getElementById('total-amount');
+                const packageBadge = document.getElementById('package-badge');
+                const btnWhatsapp = document.getElementById('btn-whatsapp-quote');
+
+                // Values setup
+                let activeType = 'Decor';
+                let basePrice = 150000;
+                let guestCount = 200;
+                let packageRate = 50000;
+                let packageName = 'Basic Decor';
+                let isPerHead = false;
+
+                // Package Data
+                const packagesData = {
+                    'Decor': {
+                        title: '3. Select Decor Package',
+                        options: [
+                            { val: 'basic', name: 'Basic Decor', desc: 'Standard stage, lighting, and seating', price: 1200, perHead: true },
+                            { val: 'premium', name: 'Premium Decor', desc: 'Floral stage, imported lights, lounge seating', price: 2500, perHead: true },
+                            { val: 'luxury', name: 'Luxury Decor', desc: 'Royal theme, chandeliers, complete marquee decor', price: 4000, perHead: true }
+                        ]
+                    },
+                    'Food': {
+                        title: '3. Catering & Menu Option',
+                        options: [
+                            { val: 'basic', name: 'Traditional Feast', desc: 'Standard Pakistani Menu (Qurma, Biryani, Naan, Sweet)', price: 1500, perHead: true },
+                            { val: 'premium', name: 'Deewan-e-Khas Buffet', desc: 'Premium BBQ, Sajji, Karahi, Chinese & Mocktails', price: 2800, perHead: true },
+                            { val: 'luxury', name: 'Royal Shehnai Feast', desc: 'Luxury live cooking stations, international starters', price: 4500, perHead: true }
+                        ]
+                    },
+                    'Venue': {
+                        title: '3. Select Venue Size/Type',
+                        options: [
+                            { val: 'basic', name: 'Standard Marquee', desc: 'Capacity up to 300 guests, basic amenities', price: 100000, perHead: false },
+                            { val: 'premium', name: 'Premium Banquet', desc: 'Capacity up to 600 guests, VIP lounges, valet', price: 250000, perHead: false },
+                            { val: 'luxury', name: 'Luxury Farmhouse', desc: 'Outdoor scenic view, poolside, capacity 1000+', price: 500000, perHead: false }
+                        ]
+                    }
+                };
+
+                function updatePackageUI() {
+                    const data = packagesData[activeType];
+                    document.getElementById('package-section-title').textContent = data.title;
+                    
+                    for(let i=0; i<3; i++) {
+                        document.getElementById('pkg-title-'+i).textContent = data.options[i].name;
+                        document.getElementById('pkg-desc-'+i).textContent = data.options[i].desc;
+                        document.getElementById('pkg-price-'+i).innerHTML = 'PKR ' + formatNumber(data.options[i].price) + ' <small id="pkg-unit-'+i+'">' + (data.options[i].perHead ? '/ head' : '(Fixed)') + '</small>';
+                    }
+                    
+                    // Reset selection to basic when switching type
+                    cateringCards.forEach(c => c.classList.remove('active'));
+                    document.getElementById('pkg-card-0').classList.add('active');
+                    document.querySelector('#pkg-card-0 input').checked = true;
+                    
+                    packageRate = data.options[0].price;
+                    packageName = data.options[0].name;
+                    isPerHead = data.options[0].perHead;
+                }
+
+                // Type Card Click
+                typeCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        typeCards.forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                        activeType = card.getAttribute('data-type');
+                        basePrice = parseInt(card.getAttribute('data-base'));
+                        
+                        updatePackageUI();
+                        calculateEstimates();
+                    });
                 });
 
-                // Get all elements with class="tab-btn" and remove the class "active"
-                const tabBtns = document.querySelectorAll(".tab-btn");
-                tabBtns.forEach(btn => {
-                    btn.classList.remove("active");
+                // Guest range slider
+                guestRange.addEventListener('input', () => {
+                    guestCount = parseInt(guestRange.value);
+                    guestVal.textContent = guestCount;
+                    calculateEstimates();
                 });
 
-                // Show the current tab, and add an "active" class to the button that opened the tab
-                document.getElementById(tabId).classList.add("active");
-                evt.currentTarget.classList.add("active");
-            }
+                // Catering/Package select
+                cateringCards.forEach((card, index) => {
+                    card.addEventListener('click', () => {
+                        cateringCards.forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                        
+                        const radio = card.querySelector('input[type="radio"]');
+                        radio.checked = true;
+                        
+                        const data = packagesData[activeType];
+                        packageRate = data.options[index].price;
+                        packageName = data.options[index].name;
+                        isPerHead = data.options[index].perHead;
+                        
+                        calculateEstimates();
+                    });
+                });
+
+                // Decor checkboxes
+                decorCheckboxes.forEach(cb => {
+                    cb.addEventListener('change', () => {
+                        calculateEstimates();
+                    });
+                });
+
+                function formatNumber(num) {
+                    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                }
+
+                function calculateEstimates() {
+                    // Compute package cost
+                    const packageCost = isPerHead ? (guestCount * packageRate) : packageRate;
+                    
+                    // Compute decor cost
+                    let decorCost = 0;
+                    let chosenDecor = [];
+                    decorCheckboxes.forEach(cb => {
+                        if (cb.checked) {
+                            decorCost += parseInt(cb.getAttribute('data-price'));
+                            chosenDecor.push(cb.parentNode.querySelector('.decor-name').textContent);
+                        }
+                    });
+
+                    // Compute total
+                    const total = packageCost + decorCost;
+
+                    // Update view
+                    sumEvent.textContent = activeType;
+                    sumGuests.textContent = guestCount;
+                    sumCatering.textContent = 'PKR ' + formatNumber(packageCost);
+                    sumDecor.textContent = 'PKR ' + formatNumber(decorCost);
+                    totalAmount.textContent = formatNumber(total);
+
+                    // Update Badge
+                    if (total < 500000) {
+                        packageBadge.textContent = 'Silver Standard Package';
+                        packageBadge.style.background = 'linear-gradient(90deg, #d1d5db 0%, #9ca3af 100%)';
+                    } else if (total < 1000000) {
+                        packageBadge.textContent = 'Gold Elite Package';
+                        packageBadge.style.background = 'linear-gradient(90deg, #D4A853 0%, #b38936 100%)';
+                    } else {
+                        packageBadge.textContent = 'Imperial Royal Package';
+                        packageBadge.style.background = 'linear-gradient(90deg, #ff4e50 0%, #f9d423 100%)';
+                        packageBadge.style.color = '#fff';
+                    }
+
+                    // WhatsApp message compile
+                    const adminWhatsapp = "923001789788";
+                    const decorString = chosenDecor.length > 0 ? chosenDecor.join(', ') : 'None';
+                    const msg = `Hello MG Food & Event Planners! I estimated my event budget on your website:\n\n• Event Type: ${activeType}\n• Guest Count: ${guestCount} Guests\n• Selected Package: ${packageName} (PKR ${formatNumber(packageCost)})\n• Chosen Add-ons: ${decorString} (PKR ${formatNumber(decorCost)})\n\nTotal Estimated Budget: PKR ${formatNumber(total)}\n\nI would like to discuss and book this setup. Please contact me back. Thank you!`;
+
+                    btnWhatsapp.href = `https://wa.me/${adminWhatsapp}?text=` + encodeURIComponent(msg);
+                }
+
+                // Initial load
+                updatePackageUI();
+                calculateEstimates();
+            });
         </script>
     </section>
 
