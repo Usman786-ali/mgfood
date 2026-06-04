@@ -212,207 +212,520 @@
 
     <!-- Separator Line -->
     <div style="height: 1px; background: linear-gradient(to right, transparent, #e0e0e0, transparent); margin: 0;">
-    </div>
+    </div>    <!-- Signature Event & Catering Packages Showcase -->
+    <section class="event-packages-section">
+        <style>
+            /* ============================================
+               PACKAGES SECTION — WHITE & GOLD LUXURY THEME
+               ============================================ */
+            .event-packages-section {
+                padding: 100px 0;
+                background: #ffffff;
+                position: relative;
+                overflow: hidden;
+            }
+            /* Subtle decorative golden glow orbs */
+            .event-packages-section::before {
+                content: '';
+                position: absolute;
+                top: -150px;
+                left: -150px;
+                width: 500px;
+                height: 500px;
+                background: radial-gradient(circle, rgba(212,168,83,0.06) 0%, transparent 70%);
+                pointer-events: none;
+            }
+            .event-packages-section::after {
+                content: '';
+                position: absolute;
+                bottom: -150px;
+                right: -150px;
+                width: 500px;
+                height: 500px;
+                background: radial-gradient(circle, rgba(212,168,83,0.06) 0%, transparent 70%);
+                pointer-events: none;
+            }
+            .packages-header {
+                text-align: center;
+                margin-bottom: 50px;
+                position: relative;
+                z-index: 1;
+            }
+            .packages-badge {
+                display: inline-block;
+                background: rgba(212, 168, 83, 0.1);
+                border: 1px solid rgba(212, 168, 83, 0.35);
+                color: #B8941F;
+                padding: 7px 20px;
+                border-radius: 50px;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                margin-bottom: 18px;
+            }
+            .packages-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 44px;
+                font-weight: 700;
+                color: #1a1a2e;
+                margin-bottom: 15px;
+            }
+            .highlight-gold {
+                color: #D4A853;
+            }
+            .packages-desc {
+                font-size: 16px;
+                color: #666;
+                max-width: 600px;
+                margin: 0 auto;
+                line-height: 1.8;
+            }
 
-    <!-- Ramadan Promo Section -->
-    <link rel="stylesheet" href="{{ asset('css/ramadan-style.css') }}?v={{ time() }}">
-    <section class="ramadan-promo">
+            /* Tabs switcher styling */
+            .packages-tabs-wrapper {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 60px;
+                position: relative;
+                z-index: 1;
+            }
+            .packages-tabs {
+                display: flex;
+                background: #f5f5f5;
+                border: 1px solid rgba(0,0,0,0.06);
+                padding: 6px;
+                border-radius: 50px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            }
+            .tab-btn {
+                background: transparent;
+                border: none;
+                padding: 12px 32px;
+                font-size: 14px;
+                font-weight: 700;
+                color: #777;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: all 0.35s ease;
+                outline: none;
+                letter-spacing: 0.5px;
+            }
+            .tab-btn.active {
+                background: #000000;
+                color: #ffffff;
+                box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            }
+            .tab-btn:hover:not(.active) {
+                color: #1a1a2e;
+            }
+
+            /* Packages grid layout */
+            .packages-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 28px;
+                max-width: 1200px;
+                margin: 0 auto;
+                align-items: stretch;
+                position: relative;
+                z-index: 1;
+            }
+
+            /* --- Regular Card (Black) --- */
+            .package-card {
+                background: #000000;
+                border: 1px solid rgba(212,168,83,0.15);
+                border-radius: 24px;
+                padding: 40px 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
+                box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            }
+            .package-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 25px 55px rgba(0,0,0,0.25);
+                border-color: rgba(212,168,83,0.4);
+            }
+
+            /* --- Popular / Featured Card (Black + Gold Border) --- */
+            .package-card.popular-card {
+                background: linear-gradient(145deg, #000000 0%, #111111 50%, #000000 100%);
+                border: 2px solid #D4A853;
+                color: #ffffff;
+                box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 0 30px rgba(212,168,83,0.08);
+                transform: scale(1.03);
+            }
+            .package-card.popular-card:hover {
+                box-shadow: 0 30px 70px rgba(0,0,0,0.35), 0 0 45px rgba(212,168,83,0.12);
+                transform: scale(1.03) translateY(-10px);
+            }
+            .popular-badge {
+                position: absolute;
+                top: -16px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(90deg, #D4A853 0%, #e8be6a 50%, #b38936 100%);
+                color: #000;
+                padding: 6px 22px;
+                border-radius: 50px;
+                font-size: 11px;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                box-shadow: 0 5px 20px rgba(212,168,83,0.4);
+                white-space: nowrap;
+            }
+
+            /* Card top section */
+            .p-card-top {
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+                padding-bottom: 25px;
+                margin-bottom: 25px;
+            }
+            .popular-card .p-card-top {
+                border-bottom: 1px solid rgba(212,168,83,0.2);
+            }
+            .p-icon {
+                font-size: 38px;
+                display: block;
+                margin-bottom: 14px;
+            }
+            .p-name {
+                font-size: 20px;
+                font-weight: 700;
+                color: #ffffff;
+                margin-bottom: 12px;
+                letter-spacing: 0.3px;
+            }
+            .popular-card .p-name {
+                color: #D4A853;
+            }
+            .p-price-box {
+                display: flex;
+                justify-content: center;
+                align-items: baseline;
+                gap: 4px;
+            }
+            .p-currency {
+                font-size: 16px;
+                font-weight: 700;
+                color: #D4A853;
+            }
+            .popular-card .p-currency {
+                color: #D4A853;
+            }
+            .p-price {
+                font-size: 38px;
+                font-weight: 800;
+                color: #ffffff;
+            }
+            .popular-card .p-price {
+                color: #ffffff;
+            }
+            .p-unit {
+                font-size: 13px;
+                color: rgba(255,255,255,0.45);
+            }
+            .popular-card .p-unit {
+                color: rgba(212,168,83,0.7);
+            }
+
+            /* Features list */
+            .p-features-list {
+                list-style: none;
+                padding: 0;
+                margin: 0 0 35px 0;
+                display: flex;
+                flex-direction: column;
+                gap: 13px;
+            }
+            .p-features-list li {
+                font-size: 14px;
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                color: rgba(255,255,255,0.6);
+                line-height: 1.5;
+                text-align: left;
+            }
+            .popular-card .p-features-list li {
+                color: rgba(255,255,255,0.75);
+            }
+            .p-check {
+                color: #D4A853;
+                font-weight: 900;
+                flex-shrink: 0;
+                font-size: 15px;
+            }
+            .popular-card .p-check {
+                color: #D4A853;
+            }
+
+            /* Book button */
+            .btn-p-book {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                background: transparent;
+                color: #D4A853;
+                border: 1.5px solid rgba(212,168,83,0.5);
+                padding: 14px 24px;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 14px;
+                transition: all 0.3s ease;
+                margin-top: auto;
+                cursor: pointer;
+                letter-spacing: 0.5px;
+            }
+            .btn-p-book:hover {
+                background: linear-gradient(135deg, #D4A853, #B8941F);
+                color: #000000;
+                border-color: transparent;
+                box-shadow: 0 8px 25px rgba(212,168,83,0.35);
+                transform: translateY(-2px);
+            }
+            .popular-card .btn-p-book {
+                background: linear-gradient(135deg, #D4A853 0%, #e8be6a 50%, #b38936 100%);
+                color: #000000;
+                border-color: transparent;
+                box-shadow: 0 6px 20px rgba(212,168,83,0.35);
+            }
+            .popular-card .btn-p-book:hover {
+                background: #ffffff;
+                color: #000000;
+                box-shadow: 0 8px 30px rgba(255,255,255,0.15);
+            }
+            .btn-p-book svg {
+                fill: currentColor;
+
+            }
+
+            /* Tab animation */
+            .tab-content {
+                display: none;
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
+            }
+            .tab-content.active {
+                display: block;
+                opacity: 1;
+            }
+
+            @media (max-width: 1024px) {
+                .packages-grid {
+                    grid-template-columns: 1fr;
+                    max-width: 500px;
+                    gap: 40px;
+                }
+                .package-card {
+                    padding: 35px 25px;
+                }
+            }
+        </style>
+
         <div class="container">
-            <!-- Ramadan Mubarak Banner -->
-            <div class="ramadan-mubarak-banner" data-aos="zoom-in">
-                <style>
-                    .ramadan-mubarak-banner {
-                        background: linear-gradient(135deg, #0d5016 0%, #1a7a28 40%, #0d5016 100%);
-                        border-radius: 24px;
-                        padding: 50px 40px;
-                        margin: 30px auto 40px;
-                        max-width: 820px;
-                        text-align: center;
-                        position: relative;
-                        overflow: hidden;
-                        box-shadow: 0 20px 60px rgba(13, 80, 22, 0.4), 0 0 0 2px rgba(212, 168, 83, 0.3);
-                        animation: ramadanGlow 3s ease-in-out infinite alternate;
-                    }
+            <div class="packages-header" data-aos="fade-up">
+                <span class="packages-badge">💎 Luxury & Taste</span>
+                <h2 class="packages-title">Our Signature <span class="highlight-gold">Event Packages</span></h2>
+                <p class="packages-desc">Carefully curated catering and decoration packages tailored to make your celebrations truly majestic.</p>
+            </div>
 
-                    @keyframes ramadanGlow {
-                        from {
-                            box-shadow: 0 20px 60px rgba(13, 80, 22, 0.4), 0 0 0 2px rgba(212, 168, 83, 0.3);
-                        }
-
-                        to {
-                            box-shadow: 0 25px 80px rgba(13, 80, 22, 0.6), 0 0 0 3px rgba(212, 168, 83, 0.6);
-                        }
-                    }
-
-                    .ramadan-mubarak-banner::before {
-                        content: '';
-                        position: absolute;
-                        top: -60px;
-                        right: -60px;
-                        width: 200px;
-                        height: 200px;
-                        background: radial-gradient(circle, rgba(212, 168, 83, 0.18) 0%, transparent 70%);
-                        border-radius: 50%;
-                    }
-
-                    .ramadan-mubarak-banner::after {
-                        content: '';
-                        position: absolute;
-                        bottom: -60px;
-                        left: -60px;
-                        width: 200px;
-                        height: 200px;
-                        background: radial-gradient(circle, rgba(212, 168, 83, 0.12) 0%, transparent 70%);
-                        border-radius: 50%;
-                    }
-
-                    .rmb-stars {
-                        font-size: 22px;
-                        letter-spacing: 6px;
-                        animation: starTwinkle 1.5s ease-in-out infinite alternate;
-                        display: block;
-                        margin-bottom: 10px;
-                    }
-
-                    @keyframes starTwinkle {
-                        from {
-                            opacity: 0.6;
-                            transform: scale(1);
-                        }
-
-                        to {
-                            opacity: 1;
-                            transform: scale(1.08);
-                        }
-                    }
-
-                    .rmb-crescent {
-                        font-size: 64px;
-                        display: block;
-                        margin-bottom: 6px;
-                        animation: crescentFloat 4s ease-in-out infinite;
-                        filter: drop-shadow(0 0 18px rgba(212, 168, 83, 0.7));
-                    }
-
-                    @keyframes crescentFloat {
-
-                        0%,
-                        100% {
-                            transform: translateY(0);
-                        }
-
-                        50% {
-                            transform: translateY(-8px);
-                        }
-                    }
-
-                    .rmb-arabic {
-                        font-size: 28px;
-                        color: #D4A853;
-                        font-weight: 700;
-                        letter-spacing: 2px;
-                        margin-bottom: 4px;
-                        display: block;
-                        text-shadow: 0 0 20px rgba(212, 168, 83, 0.5);
-                    }
-
-                    .rmb-title {
-                        font-size: 48px;
-                        font-weight: 800;
-                        color: #fff;
-                        letter-spacing: 3px;
-                        text-transform: uppercase;
-                        margin: 8px 0;
-                        display: block;
-                        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
-                        animation: titleShimmer 3s ease-in-out infinite alternate;
-                    }
-
-                    @keyframes titleShimmer {
-                        from {
-                            color: #fff;
-                            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
-                        }
-
-                        to {
-                            color: #ffe9a0;
-                            text-shadow: 0 2px 30px rgba(212, 168, 83, 0.6);
-                        }
-                    }
-
-                    .rmb-subtitle {
-                        font-size: 18px;
-                        color: rgba(255, 255, 255, 0.82);
-                        margin: 10px 0 24px;
-                        display: block;
-                        font-weight: 400;
-                        letter-spacing: 0.5px;
-                    }
-
-                    .rmb-divider {
-                        width: 80px;
-                        height: 2px;
-                        background: linear-gradient(to right, transparent, #D4A853, transparent);
-                        margin: 0 auto 22px;
-                        border-radius: 2px;
-                    }
-
-                    .rmb-badges {
-                        display: flex;
-                        justify-content: center;
-                        gap: 14px;
-                        flex-wrap: wrap;
-                    }
-
-                    .rmb-badge {
-                        background: rgba(212, 168, 83, 0.15);
-                        border: 1px solid rgba(212, 168, 83, 0.4);
-                        color: #D4A853;
-                        padding: 8px 20px;
-                        border-radius: 50px;
-                        font-size: 14px;
-                        font-weight: 600;
-                        letter-spacing: 0.5px;
-                        transition: all 0.3s;
-                    }
-
-                    .rmb-badge:hover {
-                        background: rgba(212, 168, 83, 0.3);
-                        border-color: #D4A853;
-                        transform: translateY(-2px);
-                    }
-
-                    @media (max-width: 600px) {
-                        .rmb-title {
-                            font-size: 32px;
-                        }
-
-                        .rmb-crescent {
-                            font-size: 48px;
-                        }
-
-                        .ramadan-mubarak-banner {
-                            padding: 36px 20px;
-                        }
-                    }
-                </style>
-
-                <span class="rmb-stars">✦ ✦ ✦ ✦ ✦</span>
-                <span class="rmb-crescent">🌙</span>
-                <span class="rmb-arabic">رَمَضَان مُبَارَك</span>
-                <span class="rmb-title">Ramadan Mubarak</span>
-                <span class="rmb-subtitle">May this holy month bring peace, blessings &amp; joy to you and your
-                    family</span>
-                <div class="rmb-divider"></div>
-                <div class="rmb-badges">
-                    <span class="rmb-badge">🍽️ Special Iftar Packages</span>
-                    <span class="rmb-badge">✨ Ramadan Decor Offers</span>
-                    <span class="rmb-badge">🤲 Blessed Month</span>
+            <!-- Tab Switcher -->
+            <div class="packages-tabs-wrapper" data-aos="fade-up">
+                <div class="packages-tabs">
+                    <button class="tab-btn active" onclick="switchTab(event, 'decor-packages')">Decor & Themes</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'catering-packages')">Catering & Menus</button>
                 </div>
             </div>
 
+            <!-- Tab 1: Decor & Themes -->
+            <div id="decor-packages" class="tab-content active" data-aos="fade-up">
+                <div class="packages-grid">
+                    <!-- Silver Elegance -->
+                    <div class="package-card">
+                        <div class="p-card-top">
+                            <span class="p-icon">🌸</span>
+                            <h3 class="p-name">Silver Elegance</h3>
+                            <div class="p-price-box">
+                                <span class="p-currency">PKR</span>
+                                <span class="p-price">150,000</span>
+                                <span class="p-unit">/ event</span>
+                            </div>
+                        </div>
+                        <ul class="p-features-list">
+                            <li><span class="p-check">✓</span> <strong>Standard 24x10 ft</strong> Stage & Backdrop Setup</li>
+                            <li><span class="p-check">✓</span> Beautiful Local Fresh Flowers (Rose & Marigold)</li>
+                            <li><span class="p-check">✓</span> Ambient Fairy Lighting & Standard Spotlights</li>
+                            <li><span class="p-check">✓</span> Classic Entrance Gateway Decor</li>
+                            <li><span class="p-check">✓</span> Standard Table Covers & Seat Bows (up to 200 Guests)</li>
+                            <li><span class="p-check">✓</span> Standard Sound System & Mic</li>
+                        </ul>
+                        @php $waNum = $siteSettings['contact_whatsapp'] ?? '923008849180'; @endphp
+                        <a href="https://wa.me/{{ $waNum }}?text={{ urlencode('Hi MG Food & Event Planners! I am interested in booking the Silver Elegance Decor Package (PKR 150,000). Please share more details and availability.') }}" target="_blank" class="btn-p-book">
+                            Book Package
+                        </a>
+                    </div>
 
+                    <!-- Gold Royal -->
+                    <div class="package-card popular-card">
+                        <div class="popular-badge">Best Seller</div>
+                        <div class="p-card-top">
+                            <span class="p-icon">👑</span>
+                            <h3 class="p-name">Gold Royal Theme</h3>
+                            <div class="p-price-box">
+                                <span class="p-currency">PKR</span>
+                                <span class="p-price">320,000</span>
+                                <span class="p-unit">/ event</span>
+                            </div>
+                        </div>
+                        <ul class="p-features-list">
+                            <li><span class="p-check">✓</span> <strong>Grand 32x12 ft</strong> Royal Stage & Floral Wall</li>
+                            <li><span class="p-check">✓</span> Premium Imported Fresh Flowers (Roses, Lilies, Carnations)</li>
+                            <li><span class="p-check">✓</span> Interactive Moving Heads & LED Theme Up-lighting</li>
+                            <li><span class="p-check">✓</span> Grand Red Carpet & Golden Pillars Entrance Walkway</li>
+                            <li><span class="p-check">✓</span> Luxury Table Centerpieces & Decorated VIP Chairs</li>
+                            <li><span class="p-check">✓</span> Professional Sound System & DJ Setup</li>
+                            <li><span class="p-check">✓</span> Custom Media Wall / Photobooth Setup</li>
+                        </ul>
+                        <a href="https://wa.me/{{ $waNum }}?text={{ urlencode('Hi MG Food & Event Planners! I am interested in booking the Gold Royal Theme Decor Package (PKR 320,000). Please share more details and availability.') }}" target="_blank" class="btn-p-book">
+                            Book Package
+                        </a>
+                    </div>
+
+                    <!-- Imperial Castle -->
+                    <div class="package-card">
+                        <div class="p-card-top">
+                            <span class="p-icon">🏛️</span>
+                            <h3 class="p-name">Imperial Castle</h3>
+                            <div class="p-price-box">
+                                <span class="p-currency">PKR</span>
+                                <span class="p-price">650,000</span>
+                                <span class="p-unit">/ event</span>
+                            </div>
+                        </div>
+                        <ul class="p-features-list">
+                            <li><span class="p-check">✓</span> <strong>Luxury 40x16 ft</strong> Castle theme structure backdrop</li>
+                            <li><span class="p-check">✓</span> Extensive Exotic Floral cascade (Hydrangeas & Orchids)</li>
+                            <li><span class="p-check">✓</span> Heavy Mist machines, Sharpy spotlights, Concert Trussing</li>
+                            <li><span class="p-check">✓</span> Majestic Tunnel Entrance Walkway Setup</li>
+                            <li><span class="p-check">✓</span> Luxury custom tablecloths & fresh floral cascades per guest table</li>
+                            <li><span class="p-check">✓</span> Complete venue thematic mapping & layout</li>
+                        </ul>
+                        <a href="https://wa.me/{{ $waNum }}?text={{ urlencode('Hi MG Food & Event Planners! I am interested in booking the Imperial Castle Decor Package (PKR 650,000). Please share more details and availability.') }}" target="_blank" class="btn-p-book">
+                            Book Package
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Catering & Menus -->
+            <div id="catering-packages" class="tab-content" data-aos="fade-up">
+                <div class="packages-grid">
+                    <!-- Traditional Feast -->
+                    <div class="package-card">
+                        <div class="p-card-top">
+                            <span class="p-icon">🍽️</span>
+                            <h3 class="p-name">Traditional Feast</h3>
+                            <div class="p-price-box">
+                                <span class="p-currency">PKR</span>
+                                <span class="p-price">1,600</span>
+                                <span class="p-unit">/ head</span>
+                            </div>
+                        </div>
+                        <ul class="p-features-list">
+                            <li><span class="p-check">✓</span> Premium Basmati Chicken Biryani</li>
+                            <li><span class="p-check">✓</span> Rich Chicken Qurma / Karahi</li>
+                            <li><span class="p-check">✓</span> Hot Fresh Tandoori Roti & Roghni Naan</li>
+                            <li><span class="p-check">✓</span> Shahi Kheer / Double Ka Meetha</li>
+                            <li><span class="p-check">✓</span> Raita, Salad & Fresh Mint Chutney</li>
+                            <li><span class="p-check">✓</span> Mineral Water & Assorted Soft Drinks</li>
+                        </ul>
+                        <a href="https://wa.me/{{ $waNum }}?text={{ urlencode('Hi MG Food & Event Planners! I am interested in booking the Traditional Feast Catering Package (PKR 1,600 / head). Please share more details and availability.') }}" target="_blank" class="btn-p-book">
+                            Book Package
+                        </a>
+                    </div>
+
+                    <!-- Deewan-e-Khas Buffet -->
+                    <div class="package-card popular-card">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="p-card-top">
+                            <span class="p-icon">🍲</span>
+                            <h3 class="p-name">Deewan-e-Khas Buffet</h3>
+                            <div class="p-price-box">
+                                <span class="p-currency">PKR</span>
+                                <span class="p-price">2,900</span>
+                                <span class="p-unit">/ head</span>
+                            </div>
+                        </div>
+                        <ul class="p-features-list">
+                            <li><span class="p-check">✓</span> Mutton Biryani / Special Kabuli Pulao</li>
+                            <li><span class="p-check">✓</span> Chicken White Karahi / Handi</li>
+                            <li><span class="p-check">✓</span> Live BBQ Counter (Chicken Boti, Seekh Kabab)</li>
+                            <li><span class="p-check">✓</span> Live Balochi Chicken Sajji Counter</li>
+                            <li><span class="p-check">✓</span> Assorted Breads (Roghni, Garlic, Plain)</li>
+                            <li><span class="p-check">✓</span> Gulab Jamun with Premium Vanilla Ice Cream</li>
+                            <li><span class="p-check">✓</span> Fresh Mint Margaritas, Mocktails & Soft Drinks</li>
+                        </ul>
+                        <a href="https://wa.me/{{ $waNum }}?text={{ urlencode('Hi MG Food & Event Planners! I am interested in booking the Deewan-e-Khas Buffet Catering Package (PKR 2,900 / head). Please share more details and availability.') }}" target="_blank" class="btn-p-book">
+                            Book Package
+                        </a>
+                    </div>
+
+                    <!-- Royal Shehnai Feast -->
+                    <div class="package-card">
+                        <div class="p-card-top">
+                            <span class="p-icon">👑</span>
+                            <h3 class="p-name">Royal Shehnai Feast</h3>
+                            <div class="p-price-box">
+                                <span class="p-currency">PKR</span>
+                                <span class="p-price">4,800</span>
+                                <span class="p-unit">/ head</span>
+                            </div>
+                        </div>
+                        <ul class="p-features-list">
+                            <li><span class="p-check">✓</span> Premium Mutton Kunna / Kabuli Pulao</li>
+                            <li><span class="p-check">✓</span> Live BBQ: Mutton Chops, Fish Tikka, Reshmi Kabab</li>
+                            <li><span class="p-check">✓</span> Live Wok Station: Fettuccine Alfredo & Manchurian</li>
+                            <li><span class="p-check">✓</span> Gourmet Fresh Naan & Rotis Basket</li>
+                            <li><span class="p-check">✓</span> Hot Gulab Jamun, Gajar Halwa, & Premium Kulfi</li>
+                            <li><span class="p-check">✓</span> Fresh Mocktails, Mint Margaritas, Kashmiri Chai</li>
+                            <li><span class="p-check">✓</span> Uniformed Butler Waiter Service & Royal Cutlery</li>
+                        </ul>
+                        <a href="https://wa.me/{{ $waNum }}?text={{ urlencode('Hi MG Food & Event Planners! I am interested in booking the Royal Shehnai Feast Catering Package (PKR 4,800 / head). Please share more details and availability.') }}" target="_blank" class="btn-p-book">
+                            Book Package
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <script>
+            function switchTab(evt, tabId) {
+                // Get all elements with class="tab-content" and hide them
+                const tabContents = document.querySelectorAll(".tab-content");
+                tabContents.forEach(content => {
+                    content.classList.remove("active");
+                });
+
+                // Get all elements with class="tab-btn" and remove the class "active"
+                const tabBtns = document.querySelectorAll(".tab-btn");
+                tabBtns.forEach(btn => {
+                    btn.classList.remove("active");
+                });
+
+                // Show the current tab, and add an "active" class to the button that opened the tab
+                document.getElementById(tabId).classList.add("active");
+                evt.currentTarget.classList.add("active");
+            }
+        </script>
     </section>
 
     <!-- Separator Line -->
