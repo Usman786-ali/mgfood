@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/admin-styles.css') }}">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+    @yield('styles')
 </head>
 
 <body>
@@ -97,6 +98,11 @@
                 <a href="{{ route('admin.settings.index') }}"
                     class="nav-item {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                     <i class="fas fa-cog"></i> Site Settings
+                </a>
+                <a href="{{ route('admin.estimator.index') }}"
+                    class="nav-item {{ request()->routeIs('admin.estimator.*') ? 'active' : '' }}">
+                    <span class="icon">🧮</span>
+                    Cost Estimator
                 </a>
                 <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
                     <a href="{{ route('home') }}" target="_blank" class="nav-item" style="color: #3498db;">

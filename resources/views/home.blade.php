@@ -650,18 +650,14 @@
                     <div class="estimator-group">
                         <label class="group-label">1. Select Event Type</label>
                         <div class="event-type-cards">
-                            <div class="type-card active" data-type="Decor" data-base="150000">
-                                <span class="card-icon">✨</span>
-                                <span class="card-label">Decor</span>
+                            @foreach($estimatorTypes as $index => $etype)
+                            <div class="type-card {{ $index === 0 ? 'active' : '' }}"
+                                 data-type="{{ $etype->name }}"
+                                 data-base="{{ $etype->base_price }}">
+                                <span class="card-icon">{{ $etype->icon }}</span>
+                                <span class="card-label">{{ $etype->name }}</span>
                             </div>
-                            <div class="type-card" data-type="Food" data-base="200000">
-                                <span class="card-icon">🍽️</span>
-                                <span class="card-label">Food</span>
-                            </div>
-                            <div class="type-card" data-type="Venue" data-base="100000">
-                                <span class="card-icon">🏛️</span>
-                                <span class="card-label">Venue</span>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
 
@@ -709,30 +705,11 @@
                         </div>
                     </div>
 
-                    <!-- Decor Options -->
+                    <!-- Add-on Options (dynamic by type) -->
                     <div class="estimator-group">
-                        <label class="group-label">4. Add-on Premium Decor & Services</label>
-                        <div class="decor-grid">
-                            <label class="decor-item">
-                                <input type="checkbox" id="decor-stage" data-price="80000" checked>
-                                <span class="decor-box"></span>
-                                <span class="decor-name">Stage & Backdrop Decor</span>
-                            </label>
-                            <label class="decor-item">
-                                <input type="checkbox" id="decor-flowers" data-price="60000">
-                                <span class="decor-box"></span>
-                                <span class="decor-name">Premium Imported Floral Setup</span>
-                            </label>
-                            <label class="decor-item">
-                                <input type="checkbox" id="decor-sound" data-price="35000">
-                                <span class="decor-box"></span>
-                                <span class="decor-name">Professional Sound & DJ Setup</span>
-                            </label>
-                            <label class="decor-item">
-                                <input type="checkbox" id="decor-entrance" data-price="25000">
-                                <span class="decor-box"></span>
-                                <span class="decor-name">Grand Entrance Royal Walkway</span>
-                            </label>
+                        <label class="group-label" id="addon-section-title">4. Add-on Premium Decor & Services</label>
+                        <div class="decor-grid" id="addon-grid">
+                            <!-- Items injected by JS based on selected type -->
                         </div>
                     </div>
                 </div>
@@ -792,7 +769,6 @@
                 const guestRange = document.getElementById('guest-range');
                 const guestVal = document.getElementById('guest-val');
                 const cateringCards = document.querySelectorAll('.catering-card');
-                const decorCheckboxes = document.querySelectorAll('.decor-grid input[type="checkbox"]');
                 
                 const sumEvent = document.getElementById('sum-event');
                 const sumGuests = document.getElementById('sum-guests');
@@ -810,42 +786,33 @@
                 let packageName = 'Basic Decor';
                 let isPerHead = false;
 
-                // Package Data
-                const packagesData = {
-                    'Decor': {
-                        title: '3. Select Decor Package',
-                        options: [
-                            { val: 'basic', name: 'Basic Decor', desc: 'Standard stage, lighting, and seating', price: 1200, perHead: true },
-                            { val: 'premium', name: 'Premium Decor', desc: 'Floral stage, imported lights, lounge seating', price: 2500, perHead: true },
-                            { val: 'luxury', name: 'Luxury Decor', desc: 'Royal theme, chandeliers, complete marquee decor', price: 4000, perHead: true }
-                        ]
-                    },
-                    'Food': {
-                        title: '3. Catering & Menu Option',
-                        options: [
-                            { val: 'basic', name: 'Traditional Feast', desc: 'Standard Pakistani Menu (Qurma, Biryani, Naan, Sweet)', price: 1500, perHead: true },
-                            { val: 'premium', name: 'Deewan-e-Khas Buffet', desc: 'Premium BBQ, Sajji, Karahi, Chinese & Mocktails', price: 2800, perHead: true },
-                            { val: 'luxury', name: 'Royal Shehnai Feast', desc: 'Luxury live cooking stations, international starters', price: 4500, perHead: true }
-                        ]
-                    },
-                    'Venue': {
-                        title: '3. Select Venue Size/Type',
-                        options: [
-                            { val: 'basic', name: 'Standard Marquee', desc: 'Capacity up to 300 guests, basic amenities', price: 100000, perHead: false },
-                            { val: 'premium', name: 'Premium Banquet', desc: 'Capacity up to 600 guests, VIP lounges, valet', price: 250000, perHead: false },
-                            { val: 'luxury', name: 'Luxury Farmhouse', desc: 'Outdoor scenic view, poolside, capacity 1000+', price: 500000, perHead: false }
-                        ]
-                    }
-                };
+                // Package Data — loaded from database
+                const packagesData = @json($packagesData ?? []);
+
+                // Add-on Items per Type — loaded from database
+                const addonsData = @json($addonsData ?? []);
 
                 function updatePackageUI() {
                     const data = packagesData[activeType];
                     document.getElementById('package-section-title').textContent = data.title;
                     
+                    // For Venue: show range PKR min – max across all options
+                    const isVenue = activeType === 'Venue';
+                    const minPrice = Math.min(...data.options.map(o => o.price));
+                    const maxPrice = Math.max(...data.options.map(o => o.price));
+
                     for(let i=0; i<3; i++) {
                         document.getElementById('pkg-title-'+i).textContent = data.options[i].name;
                         document.getElementById('pkg-desc-'+i).textContent = data.options[i].desc;
-                        document.getElementById('pkg-price-'+i).innerHTML = 'PKR ' + formatNumber(data.options[i].price) + ' <small id="pkg-unit-'+i+'">' + (data.options[i].perHead ? '/ head' : '(Fixed)') + '</small>';
+                        if (isVenue) {
+                            document.getElementById('pkg-price-'+i).innerHTML =
+                                'PKR ' + formatNumber(minPrice) + ' – ' + formatNumber(maxPrice) +
+                                ' <small id="pkg-unit-'+i+'">(Range)</small>';
+                        } else {
+                            document.getElementById('pkg-price-'+i).innerHTML =
+                                'PKR ' + formatNumber(data.options[i].price) +
+                                ' <small id="pkg-unit-'+i+'">' + (data.options[i].perHead ? '/ head' : '(Fixed)') + '</small>';
+                        }
                     }
                     
                     // Reset selection to basic when switching type
@@ -856,6 +823,26 @@
                     packageRate = data.options[0].price;
                     packageName = data.options[0].name;
                     isPerHead = data.options[0].perHead;
+
+                    // Update Add-on grid based on active type
+                    const addonData = addonsData[activeType];
+                    document.getElementById('addon-section-title').textContent = addonData.title;
+                    const addonGrid = document.getElementById('addon-grid');
+                    addonGrid.innerHTML = '';
+                    addonData.items.forEach(item => {
+                        const label = document.createElement('label');
+                        label.className = 'decor-item';
+                        label.innerHTML = `
+                            <input type="checkbox" id="${item.id}" data-price="${item.price}" ${item.checked ? 'checked' : ''}>
+                            <span class="decor-box"></span>
+                            <span class="decor-name">${item.name}</span>`;
+                        addonGrid.appendChild(label);
+                    });
+
+                    // Re-bind checkbox listeners after DOM rebuild
+                    addonGrid.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                        cb.addEventListener('change', calculateEstimates);
+                    });
                 }
 
                 // Type Card Click
@@ -896,12 +883,7 @@
                     });
                 });
 
-                // Decor checkboxes
-                decorCheckboxes.forEach(cb => {
-                    cb.addEventListener('change', () => {
-                        calculateEstimates();
-                    });
-                });
+                // Decor checkboxes — initial bind handled in updatePackageUI after grid is built
 
                 function formatNumber(num) {
                     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -911,10 +893,10 @@
                     // Compute package cost
                     const packageCost = isPerHead ? (guestCount * packageRate) : packageRate;
                     
-                    // Compute decor cost
+                    // Compute addon cost from dynamically rendered grid
                     let decorCost = 0;
                     let chosenDecor = [];
-                    decorCheckboxes.forEach(cb => {
+                    document.querySelectorAll('#addon-grid input[type="checkbox"]').forEach(cb => {
                         if (cb.checked) {
                             decorCost += parseInt(cb.getAttribute('data-price'));
                             chosenDecor.push(cb.parentNode.querySelector('.decor-name').textContent);

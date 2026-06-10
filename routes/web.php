@@ -20,7 +20,52 @@ Route::get('/', function () {
 
     $siteSettings = App\Models\SiteSetting::all()->pluck('value', 'key')->toArray();
 
-    return view('home', compact('clients', 'portfolioItems', 'siteSettings', 'reviews', 'reels'));
+    $estimatorTypes = App\Models\EstimatorType::where('is_active', true)
+        ->orderBy('order')
+        ->with(['packages' => fn($q) => $q->orderBy('order'),
+                'addons'   => fn($q) => $q->where('is_active', true)->orderBy('order')])
+        ->get();
+
+    // Pre-build JS data arrays to avoid complex expressions inside @json() in Blade
+    $packageTitles = ['Decor' => '3. Select Decor Package', 'Food' => '3. Catering & Menu Option'];
+    $addonTitles   = ['Decor' => '4. Add-on Premium Decor & Services', 'Food' => '4. Add-on Food & Beverage Extras'];
+
+    $packagesData = $estimatorTypes->mapWithKeys(function ($t) use ($packageTitles) {
+        return [
+            $t->name => [
+                'title'   => $packageTitles[$t->name] ?? '3. Select Package',
+                'options' => $t->packages->map(function ($p) {
+                    $valMap = [1 => 'basic', 2 => 'premium', 3 => 'luxury'];
+                    return [
+                        'val'     => $valMap[$p->order] ?? 'basic',
+                        'name'    => $p->name,
+                        'desc'    => $p->description,
+                        'price'   => $p->price,
+                        'perHead' => (bool) $p->per_head,
+                    ];
+                })->values(),
+            ],
+        ];
+    });
+
+    $addonsData = $estimatorTypes->mapWithKeys(function ($t) use ($addonTitles) {
+        $firstId = $t->addons->first() ? $t->addons->first()->id : null;
+        return [
+            $t->name => [
+                'title' => $addonTitles[$t->name] ?? '4. Add-on Services',
+                'items' => $t->addons->map(function ($a, $i) use ($firstId, $t) {
+                    return [
+                        'id'      => 'addon-' . $a->id,
+                        'name'    => $a->name,
+                        'price'   => $a->price,
+                        'checked' => $i === 0 && $a->id === $firstId && $t->name === 'Decor',
+                    ];
+                })->values(),
+            ],
+        ];
+    });
+
+    return view('home', compact('clients', 'portfolioItems', 'siteSettings', 'reviews', 'reels', 'estimatorTypes', 'packagesData', 'addonsData'));
 })->name('home');
 
 Route::get('/portfolio', function () {
@@ -158,6 +203,30 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Google Reviews Management
         Route::resource('reviews', App\Http\Controllers\Admin\GoogleReviewController::class);
+
+        // Cost Estimator Management
+        Route::prefix('estimator')->name('estimator.')->group(function () {
+            Route::get('/', [App\Http\Controllers\Admin\EstimatorController::class, 'index'])->name('index');
+
+            // Types
+            Route::get('/type/create',              [App\Http\Controllers\Admin\EstimatorController::class, 'createType'])->name('type.create');
+            Route::post('/type',                    [App\Http\Controllers\Admin\EstimatorController::class, 'storeType'])->name('type.store');
+            Route::get('/type/{type}/edit',         [App\Http\Controllers\Admin\EstimatorController::class, 'editType'])->name('type.edit');
+            Route::put('/type/{type}',              [App\Http\Controllers\Admin\EstimatorController::class, 'updateType'])->name('type.update');
+            Route::delete('/type/{type}',           [App\Http\Controllers\Admin\EstimatorController::class, 'destroyType'])->name('type.destroy');
+
+            // Packages
+            Route::get('/type/{type}/packages',                      [App\Http\Controllers\Admin\EstimatorController::class, 'packagesIndex'])->name('packages');
+            Route::post('/type/{type}/packages',                     [App\Http\Controllers\Admin\EstimatorController::class, 'storePackage'])->name('package.store');
+            Route::put('/type/{type}/packages/{package}',            [App\Http\Controllers\Admin\EstimatorController::class, 'updatePackage'])->name('package.update');
+            Route::delete('/type/{type}/packages/{package}',         [App\Http\Controllers\Admin\EstimatorController::class, 'destroyPackage'])->name('package.destroy');
+
+            // Add-ons
+            Route::get('/type/{type}/addons',                        [App\Http\Controllers\Admin\EstimatorController::class, 'addonsIndex'])->name('addons');
+            Route::post('/type/{type}/addons',                       [App\Http\Controllers\Admin\EstimatorController::class, 'storeAddon'])->name('addon.store');
+            Route::put('/type/{type}/addons/{addon}',                [App\Http\Controllers\Admin\EstimatorController::class, 'updateAddon'])->name('addon.update');
+            Route::delete('/type/{type}/addons/{addon}',             [App\Http\Controllers\Admin\EstimatorController::class, 'destroyAddon'])->name('addon.destroy');
+        });
     });
 });
 
