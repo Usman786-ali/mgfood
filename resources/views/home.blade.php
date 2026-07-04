@@ -2115,6 +2115,75 @@
         </footer>
         <script src="{{ asset('js/script.js') }}?v={{ time() }}"></script>
 
+        <!-- Office Location Change Popup -->
+        <div id="locationPopup" style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.55); align-items:center; justify-content:center;">
+            <div style="background:#fff; border:2px solid #D4A853; border-radius:16px; max-width:380px; width:92%; padding:24px; box-shadow:0 20px 50px rgba(212,168,83,0.2); animation:popupFadeIn 0.4s ease; position:relative;">
+
+                <!-- Close -->
+                <button onclick="closeLocationPopup()" style="position:absolute; top:12px; right:14px; background:#f5f5f5; border:1px solid #e0e0e0; color:#555; width:26px; height:26px; border-radius:50%; cursor:pointer; font-size:13px;">✕</button>
+
+                <!-- Title -->
+                <div style="text-align:center; margin-bottom:18px;">
+                    <span style="font-size:26px;">📍</span>
+                    <h3 style="color:#b38936; font-family:'Playfair Display',serif; font-size:18px; margin:6px 0 4px;">We've Moved!</h3>
+                    <p style="color:#888; font-size:11px; margin:0;">Our office has a new address</p>
+                </div>
+
+                <!-- New Location (shown first) -->
+                <div style="background:linear-gradient(135deg,#fffbf0,#fef3d0); border:1.5px solid #D4A853; border-radius:10px; padding:14px; margin-bottom:10px;">
+                    <p style="color:#b38936; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin:0 0 5px;">✅ New Location</p>
+                    <p style="color:#1a1a2e; font-size:13px; line-height:1.6; margin:0; font-weight:600;">Mezzanine Floor Plot No, 4-C 15th Commercial St, D.H.A Phase II Extension Phase 2, Karachi, 75500, Pakistan</p>
+                </div>
+
+                <!-- Old Location (fades in after 2s) -->
+                <div id="oldLocBox" style="background:#fafafa; border:1.5px solid #e8e8e8; border-radius:10px; padding:14px; margin-bottom:18px; opacity:0; transition:opacity 0.6s ease;">
+                    <p style="color:#e57373; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin:0 0 5px;">❌ Old Location</p>
+                    <p style="color:#aaa; font-size:12px; line-height:1.6; margin:0; text-decoration:line-through;">Mezzanine Floor Building, 19-C South Park Avenue, D.H.A Phase II Extension Phase 2, Karachi</p>
+                </div>
+
+                <!-- Buttons -->
+                <div style="display:flex; gap:10px;">
+                    <a href="https://maps.google.com/?q=4-C+15th+Commercial+St+DHA+Phase+2+Extension+Karachi" target="_blank"
+                       style="flex:1; background:linear-gradient(90deg,#D4A853,#b38936); color:#fff; text-align:center; padding:11px; border-radius:50px; text-decoration:none; font-weight:700; font-size:13px;">
+                        📍 View on Map
+                    </a>
+                    <button onclick="closeLocationPopup()"
+                            style="flex:1; background:#fff; color:#b38936; border:1.5px solid #D4A853; padding:11px; border-radius:50px; font-size:13px; font-weight:600; cursor:pointer;">
+                        Got it!
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            @keyframes popupFadeIn {
+                from { opacity:0; transform:scale(0.9) translateY(10px); }
+                to   { opacity:1; transform:scale(1) translateY(0); }
+            }
+        </style>
+
+        <script>
+            window.addEventListener('load', function() {
+                if (!sessionStorage.getItem('locationPopupShown')) {
+                    setTimeout(function() {
+                        document.getElementById('locationPopup').style.display = 'flex';
+                        setTimeout(function() {
+                            document.getElementById('oldLocBox').style.opacity = '1';
+                        }, 2000);
+                        sessionStorage.setItem('locationPopupShown', 'true');
+                    }, 5000);
+                }
+            });
+
+            function closeLocationPopup() {
+                document.getElementById('locationPopup').style.display = 'none';
+            }
+
+            document.getElementById('locationPopup').addEventListener('click', function(e) {
+                if (e.target === this) closeLocationPopup();
+            });
+        </script>
+
 </body>
 
 </html>

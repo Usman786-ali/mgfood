@@ -424,43 +424,45 @@
                         </small>
                     </div>
                 </div>
-                <!-- SEO & VERIFICATION -->
-                <div class="admin-section-box"
-                    style="background: #fdf2f2; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #e74c3c;">
-                    <h3 style="margin: 0 0 25px; color: #e74c3c; font-size: 20px;">
-                        🔍 SEO & Webmaster Verification
-                    </h3>
-                    <div class="form-group">
-                        <label for="google_verification">Google Search Console Verification Tag</label>
-                        <input type="text" id="google_verification" name="google_verification"
-                            value="{{ $settings['social']->where('key', 'google_verification')->first()->value ?? '' }}"
-                            placeholder='<meta name="google-site-verification" content="..." />'>
-                        <small style="color: #666; display: block; margin-top: 8px;">
-                            <strong>Step:</strong> Copy the HTML meta tag from Google Search Console and paste it here. It
-                            usually looks like <code>&lt;meta name="google-site-verification" content="..." /&gt;</code>.
-                        </small>
-                    </div>
-                    <div class="form-group"
-                        style="margin-top: 25px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px;">
-                        <label for="google_analytics">Google Analytics Tracking Code (Global Site Tag)</label>
-                        <textarea id="google_analytics" name="google_analytics" rows="5"
-                            placeholder="Paste your gtag.js or analytics.js code here">{{ $settings['social']->where('key', 'google_analytics')->first()->value ?? '' }}</textarea>
-                        <small style="color: #666; display: block; margin-top: 8px;">
-                            <strong>Step:</strong> Copy the full <code>&lt;script&gt;</code> block from Google Analytics and
-                            paste it here. This will help you track visitors on your website.
-                        </small>
-                    </div>
-                </div>
+            </div>
 
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Save All Settings</button>
-                    <a href="{{ route('home') }}" target="_blank" class="btn btn-secondary">Preview Home Page</a>
+            <!-- SEO & VERIFICATION -->
+            <div class="admin-section-box"
+                style="background: #fdf2f2; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid #e74c3c;">
+                <h3 style="margin: 0 0 25px; color: #e74c3c; font-size: 20px;">
+                    🔍 SEO & Webmaster Verification
+                </h3>
+                <div class="form-group">
+                    <label for="google_verification">Google Search Console Verification Tag</label>
+                    <input type="text" id="google_verification" name="google_verification"
+                        value="{{ $settings['social']->where('key', 'google_verification')->first()->value ?? '' }}"
+                        placeholder='<meta name="google-site-verification" content="..." />'>
+                    <small style="color: #666; display: block; margin-top: 8px;">
+                        <strong>Step:</strong> Copy the HTML meta tag from Google Search Console and paste it here. It
+                        usually looks like <code>&lt;meta name="google-site-verification" content="..." /&gt;</code>.
+                    </small>
                 </div>
+                <div class="form-group"
+                    style="margin-top: 25px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px;">
+                    <label for="google_analytics">Google Analytics Tracking Code (Global Site Tag)</label>
+                    <textarea id="google_analytics" name="google_analytics" rows="5"
+                        placeholder="Paste your gtag.js or analytics.js code here">{{ $settings['social']->where('key', 'google_analytics')->first()->value ?? '' }}</textarea>
+                    <small style="color: #666; display: block; margin-top: 8px;">
+                        <strong>Step:</strong> Copy the full <code>&lt;script&gt;</code> block from Google Analytics and
+                        paste it here. This will help you track visitors on your website.
+                    </small>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Save All Settings</button>
+                <a href="{{ route('home') }}" target="_blank" class="btn btn-secondary">Preview Home Page</a>
+            </div>
         </form>
     </div>
 @endsection
 
-@push('styles')
+@section('styles')
     <style>
         .alert-success {
             background: #d4edda;
@@ -490,9 +492,17 @@
             }
         }
     </style>
+@endsection
+
+@section('scripts')
     <script>
-        document.getElementById('settingsForm').addEventListener('submit', function () {
-            document.getElementById('uploadLoader').style.display = 'flex';
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.getElementById('settingsForm');
+            if (form) {
+                form.addEventListener('submit', function () {
+                    document.getElementById('uploadLoader').style.display = 'flex';
+                });
+            }
         });
     </script>
-@endpush
+@endsection
